@@ -7,6 +7,7 @@ var UP:Vector3 = Vector3(0,1,0)
 var Look:Vector3 = Vector3()
 var Left:Vector3 = Vector3()
 
+onready var player:Player = $boy1
 var onHit:bool = false
 
 func _ready():
@@ -36,3 +37,7 @@ func _on_MoveController_Move(speedFront, speedLeft, time):
 
 func _on_MoveController_onHit():
 	onHit = false
+
+
+func _on_TouchScreenButton_pressed():
+	player.Prone();

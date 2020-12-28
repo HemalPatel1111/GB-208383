@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://src/Scenes/ScenesCamera.gd" type="Script" id=2]
 [ext_resource path="res://assets/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/characters/boy1.gltf" type="PackedScene" id=5]
+[ext_resource path="res://assets/characters/boy1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/H.tscn" type="PackedScene" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 200, 200 )
@@ -16,12 +17,15 @@ transmission_enabled = true
 transmission = Color( 0, 0, 0, 1 )
 uv1_scale = Vector3( 150, 150, 1 )
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 100.0
+
 [node name="Level 1" type="Spatial"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.00683986, 0.0171215, -0.0982857, 0, 0.985164, 0.171617, 0.0997658, 0.00117384, -0.00673838, -5, 5, 0 )
+transform = Transform( 0.099989, 0.000254292, -0.00145976, 0, 0.985164, 0.171617, 0.00148174, -0.0171598, 0.0985056, 0, 5, 4 )
 environment = ExtResource( 1 )
 current = true
 fov = 50.0
@@ -38,11 +42,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, 3 )
 
 [node name="Gifts" type="Spatial" parent="."]
 
-[node name="boy1" parent="." instance=ExtResource( 5 )]
-transform = Transform( -0.1, 8.74228e-08, 0, 8.74228e-09, 1, 8.74228e-09, 7.64274e-16, 8.74228e-08, -0.1, 0, 0, 0 )
-
 [node name="untitled" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.01, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 2.33336, 0 )
+transform = Transform( 0.005, 0, 0, 0, 0.05, 0, 0, 0, 0.005, 0, 0.125169, 0 )
 
 [node name="MoveController" parent="." instance=ExtResource( 4 )]
 anchor_top = 1.0
@@ -51,5 +52,14 @@ margin_left = 15.0
 margin_top = -215.0
 margin_right = 215.0
 margin_bottom = -15.0
+
+[node name="boy1" parent="." instance=ExtResource( 5 )]
+transform = Transform( -0.5, 0, -1.62921e-07, 0, 5, 0, 1.62921e-07, 0, -0.5, 0, 0, 2.64591 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 81.3098, 82.4176 )
+normal = ExtResource( 7 )
+shape = SubResource( 3 )
 [connection signal="Move" from="MoveController" to="." method="_on_MoveController_Move"]
 [connection signal="onHit" from="MoveController" to="." method="_on_MoveController_onHit"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
