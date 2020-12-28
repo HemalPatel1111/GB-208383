@@ -54,7 +54,7 @@ margin_right = 215.0
 margin_bottom = -15.0
 
 [node name="boy1" parent="." instance=ExtResource( 5 )]
-transform = Transform( -0.5, 0, -1.62921e-07, 0, 5, 0, 1.62921e-07, 0, -0.5, 0, 0, 2.64591 )
+transform = Transform( 0.5, 0, 0, 0, 5, 0, 0, 0, 0.5, 0, 0, 1.81319 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 position = Vector2( 81.3098, 82.4176 )
