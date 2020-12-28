@@ -4,7 +4,8 @@
 [ext_resource path="res://src/Scenes/ScenesCamera.gd" type="Script" id=2]
 [ext_resource path="res://assets/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/atwriter.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/characters/boy1.gltf" type="PackedScene" id=5]
+[ext_resource path="res://assets/H.tscn" type="PackedScene" id=6]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 200, 200 )
@@ -15,18 +16,12 @@ transmission_enabled = true
 transmission = Color( 0, 0, 0, 1 )
 uv1_scale = Vector3( 150, 150, 1 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 39
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 5 )
-
 [node name="Level 1" type="Spatial"]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.0683986, 0.0173767, -0.997507, 0, 0.999848, 0.0174175, 0.997658, 0.00119133, -0.0683882, -2.13, 5, 0 )
+transform = Transform( -0.00683986, 0.0171215, -0.0982857, 0, 0.985164, 0.171617, 0.0997658, 0.00117384, -0.00673838, -5, 5, 0 )
 environment = ExtResource( 1 )
 current = true
 fov = 50.0
@@ -34,11 +29,20 @@ fov = 50.0
 [node name="Landscape" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
+__meta__ = {
+"_editor_description_": "j"
+}
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, 3 )
 
 [node name="Gifts" type="Spatial" parent="."]
+
+[node name="boy1" parent="." instance=ExtResource( 5 )]
+transform = Transform( -0.1, 8.74228e-08, 0, 8.74228e-09, 1, 8.74228e-09, 7.64274e-16, 8.74228e-08, -0.1, 0, 0, 3.95271 )
+
+[node name="untitled" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.01, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0 )
 
 [node name="MoveController" parent="." instance=ExtResource( 4 )]
 anchor_top = 1.0
@@ -47,19 +51,5 @@ margin_left = 15.0
 margin_top = -215.0
 margin_right = 215.0
 margin_bottom = -15.0
-
-[node name="Label" type="Label" parent="."]
-anchor_right = 1.0
-anchor_bottom = 0.082
-margin_right = -2.0
-margin_bottom = 33.8
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.921569, 0.6, 0.317647, 1 )
-text = "Hemarth's"
-align = 1
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="Move" from="MoveController" to="." method="_on_MoveController_Move"]
 [connection signal="onHit" from="MoveController" to="." method="_on_MoveController_onHit"]
