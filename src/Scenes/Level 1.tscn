@@ -39,10 +39,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, 3 )
 [node name="Gifts" type="Spatial" parent="."]
 
 [node name="boy1" parent="." instance=ExtResource( 5 )]
-transform = Transform( -0.1, 8.74228e-08, 0, 8.74228e-09, 1, 8.74228e-09, 7.64274e-16, 8.74228e-08, -0.1, 0, 0, 3.95271 )
+transform = Transform( -0.1, 8.74228e-08, 0, 8.74228e-09, 1, 8.74228e-09, 7.64274e-16, 8.74228e-08, -0.1, 0, 0, 0 )
 
 [node name="untitled" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.01, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0 )
+transform = Transform( 0.01, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 2.33336, 0 )
 
 [node name="MoveController" parent="." instance=ExtResource( 4 )]
 anchor_top = 1.0
