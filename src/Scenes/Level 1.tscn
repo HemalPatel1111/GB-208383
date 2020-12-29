@@ -28,6 +28,7 @@ current = true
 fov = 50.0
 
 [node name="Landscape" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.131773, -2.38419e-07, -1.88443 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 __meta__ = {
@@ -73,4 +74,3 @@ __meta__ = {
 [connection signal="Move" from="MoveController" to="." method="_on_MoveController_Move"]
 [connection signal="onHit" from="MoveController" to="." method="_on_MoveController_onHit"]
 [connection signal="pressed" from="Player" to="." method="_on_Button_pressed"]
-[connection signal="ready" from="Options" to="." method="_on_Options_ready"]

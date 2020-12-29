@@ -6,6 +6,7 @@ var pos:Vector3 = Vector3(0,0,0)
 var UP:Vector3 = Vector3(0,1,0)
 var Look:Vector3 = Vector3()
 var Left:Vector3 = Vector3()
+var _delta:float = 0.0
 
 onready var player:Player = $boy1
 var onHit:bool = false
@@ -23,6 +24,7 @@ func _ready():
 		$Options.add_item(x)
 	
 func _process(delta):
+	_delta = delta
 	pass
 
 func _input(event):
@@ -39,8 +41,8 @@ func _on_MoveController_Move(speedFront, speedLeft, time):
 	Look = global_transform.basis.z
 	Left = global_transform.basis.x
 	
-	pos += speedFront * Look.rotated(global_transform.basis.y,rot.y / 180) * time / 100
-	pos += speedLeft * Left.rotated(global_transform.basis.y,rot.y / 180) * time / 100
+	pos += speedFront * Look.rotated(global_transform.basis.y,rot.y / 180) * _delta / 10
+	pos += speedLeft * Left.rotated(global_transform.basis.y,rot.y / 180) * _delta / 10
 	$Camera.translation = pos
 
 func _on_MoveController_onHit():
