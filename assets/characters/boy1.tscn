@@ -1707,6 +1707,7 @@ tracks/66/keys = PoolRealArray( 0, 1, -0.00824617, -0.0291565, 0.0915645, 0.6856
 [sub_resource type="Animation" id=10]
 resource_name = "walking in place"
 length = 1.2
+loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Boy/Skeleton:index_3_l_end")
 tracks/0/interp = 1
@@ -2181,7 +2182,7 @@ tracks/66/keys = PoolRealArray( 0, 1, -0.00824617, -0.0291565, 0.0915645, 0.6856
 script = ExtResource( 7 )
 
 [node name="Boy" type="Spatial" parent="."]
-transform = Transform( 0.0199661, 0.00115159, -0.000170663, -0.000238337, 0.00117361, -0.0199641, -0.00113951, 0.0199323, 0.00118535, -0.00824618, -0.0291562, 0.0915645 )
+transform = Transform( 0.0199661, 0.00115159, -0.000170663, -0.000238338, 0.00117362, -0.0199641, -0.00113951, 0.0199323, 0.00118535, -0.00824617, -0.0291565, 0.0915645 )
 
 [node name="Skeleton" type="Skeleton" parent="Boy"]
 bones/0/name = "root"

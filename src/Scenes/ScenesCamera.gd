@@ -13,7 +13,15 @@ var onHit:bool = false
 func _ready():
 	pos = $Camera.translation
 	rot = $Camera.rotation * 180
-
+	player.loadAnimation()
+	var list = player.AnimationList
+	
+	for x in list:
+		var anim:Animation =  $boy1/AnimationPlayer.get_animation(x)
+		if anim.has_loop() :
+			x = "L " + x
+		$Options.add_item(x)
+	
 func _process(delta):
 	pass
 
@@ -39,11 +47,4 @@ func _on_MoveController_onHit():
 	onHit = false
 
 func _on_Button_pressed():
-	var id = $Options.get_selected_id()
-	player.animate($Options.get_item_text(id))
-
-func _on_Options_ready():
-	var list = $boy1/AnimationPlayer.get_animation_list()
-	
-	for x in list:
-		$Options.add_item(x)
+	player.animate($Options.get_selected_id())

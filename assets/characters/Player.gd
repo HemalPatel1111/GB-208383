@@ -1,18 +1,27 @@
 extends Spatial
 class_name Player
 
-var animation:bool = false
+var backward:bool = false
 var cur_anim:String
+var AnimationList:PoolStringArray
+var loop:bool = false
 
-func animate(x:String):	
-	if(cur_anim != x):
-		animation = false;
+func loadAnimation():
+	AnimationList = $AnimationPlayer.get_animation_list()
+
+func animate(x:int):
+	var name:String = AnimationList[x]
+	if(cur_anim != name):
+		backward = false;
+		loop = $AnimationPlayer.get_animation(name).has_loop()
 	
-	cur_anim = x
+	cur_anim = name
 	
-	if animation:
-		$AnimationPlayer.play_backwards(cur_anim)
+	if backward:
+		if not loop:
+			$AnimationPlayer.play_backwards(cur_anim)
+		else:
+			$AnimationPlayer.stop()
 	else:
 		$AnimationPlayer.play(cur_anim)
-		
-	animation = not animation
+	backward = not backward
