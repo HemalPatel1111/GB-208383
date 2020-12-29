@@ -38,6 +38,12 @@ func _on_MoveController_Move(speedFront, speedLeft, time):
 func _on_MoveController_onHit():
 	onHit = false
 
+func _on_Button_pressed():
+	var id = $Options.get_selected_id()
+	player.animate($Options.get_item_text(id))
 
-func _on_TouchScreenButton_pressed():
-	player.Prone();
+func _on_Options_ready():
+	var list = $boy1/AnimationPlayer.get_animation_list()
+	
+	for x in list:
+		$Options.add_item(x)

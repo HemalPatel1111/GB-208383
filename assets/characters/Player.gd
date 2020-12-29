@@ -1,12 +1,18 @@
 extends Spatial
 class_name Player
 
-var Prone:bool = false
+var animation:bool = false
+var cur_anim:String
 
-func Prone():
-	if Prone:
-		$AnimationPlayer.play_backwards("walking")
+func animate(x:String):	
+	if(cur_anim != x):
+		animation = false;
+	
+	cur_anim = x
+	
+	if animation:
+		$AnimationPlayer.play_backwards(cur_anim)
 	else:
-		$AnimationPlayer.play("walking")
+		$AnimationPlayer.play(cur_anim)
 		
-	Prone = not Prone
+	animation = not animation
