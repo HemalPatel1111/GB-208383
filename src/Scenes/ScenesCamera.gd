@@ -29,8 +29,8 @@ func _process(delta):
 
 func _input(event):
 	if onHit and event is InputEventMouseMotion:
-		rot.y += -event.relative.x * mouse_sens * 5
-		rot.x += -event.relative.y * mouse_sens
+		rot.y += -event.relative.x * mouse_sens * _delta * 500
+		rot.x += -event.relative.y * mouse_sens * _delta * 500
 		rot.x = min(max(rot.x,-90),90)
 		$Camera.rotation = rot / 180
 		
