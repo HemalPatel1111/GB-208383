@@ -11,17 +11,22 @@ func loadAnimation():
 
 func animate(x:int):
 	var name:String = AnimationList[x]
-	if(cur_anim != name):
-		backward = false;
-		loop = $AnimationPlayer.get_animation(name).has_loop()
+	play_animation(name)
+
+func play_animation(name:String, forward:bool = true, speed:float = 1.0):
+	$AnimationPlayer.set_speed_scale(speed)
 	
-	cur_anim = name
-	
-	if backward:
-		if not loop:
-			$AnimationPlayer.play_backwards(cur_anim)
+	if not $AnimationPlayer.get_current_animation() == name:
+		if forward:
+			$AnimationPlayer.play(name)
 		else:
-			$AnimationPlayer.stop()
+			$AnimationPlayer.play_backwards(name)
 	else:
-		$AnimationPlayer.play(cur_anim)
-	backward = not backward
+		if forward:
+			if backward:
+				$AnimationPlayer.play(name)
+		else:
+			if not backward:
+				$AnimationPlayer.play_backwards(name)
+	
+	backward = not forward

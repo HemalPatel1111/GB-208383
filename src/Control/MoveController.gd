@@ -1,7 +1,7 @@
 extends TextureButton
 
 export var antiRotation:bool= true
-export var sensitivity:float = 0.1
+export var sensitivity:float = 0.01
 
 var ptr_pos_at_Rest:Vector2 = Vector2(65,65)
 var ptr_pos:Vector2 = Vector2()
