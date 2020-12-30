@@ -22,10 +22,7 @@ func _process(delta):
 	var pos = $Pointer.get_position()
 	var deltaPos = ptr_pos_at_Rest - pos
 	
-	oldFRONT = FRONT
-	oldLEFT = LEFT
-	FRONT = ptr_pos.y * sensitivity
-	LEFT = ptr_pos.x * sensitivity
+	_calc_Component()
 	
 	if(!onHit):
 		$Pointer.set_position(pos + deltaPos / 5)
@@ -54,7 +51,14 @@ func _on_Move_gui_input(event):
 	
 	if _rotResistance.length() > 0:
 		_rotResistance *= 0
-	
+		
+	if event is InputEventMouseButton:
+		if onHit :
+			var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
+			ptr_pos = min(dir.length(),100) * dir.normalized()
+			_calc_Component()
+			emit_signal("Move", FRONT, LEFT)
+			
 	if event is InputEventMouseMotion:
 		if onHit:
 			if antiRotation:
@@ -63,7 +67,7 @@ func _on_Move_gui_input(event):
 		var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
 		ptr_pos = min(dir.length(),100) * dir.normalized()
 		
-		
+		_calc_Component()
 		emit_signal("Move", FRONT, LEFT)
 	else:
 		FRONT = 0
@@ -78,7 +82,7 @@ func _on_Pointer_gui_input(event):
 	if event is InputEventMouseButton:
 		if onHit :
 			ptr_pos = event.position - ptr_size / 2
-			
+			_calc_Component()
 			emit_signal("Move", FRONT, LEFT)
 	if event is InputEventMouseMotion:
 		var delta = event.relative
