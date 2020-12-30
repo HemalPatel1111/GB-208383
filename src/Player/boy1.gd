@@ -1,26 +1,35 @@
 extends Player
+class_name Boy1, "res://src/Player/boy1.gd"
 
-func loadAnimation():
-	_loadAnimation($AnimationPlayer)
+onready var animPlayer:AnimationPlayer = $AnimationPlayer
+
+func loadAnimationList() -> PoolStringArray:
+	_loadAnimationList($AnimationPlayer)
+	return AnimationList
 	
 func animate(x:int):
 	var name:String = AnimationList[x]
 	play_animation(name)
-
-func play_animation(name:String, forward:bool = true, speed:float = 1.0):
-	$AnimationPlayer.set_speed_scale(speed)
 	
-	if not $AnimationPlayer.get_current_animation() == name:
+func walk(move_dir:Vector3):
+	pass
+	
+func get_animation(x:String) -> Animation:
+	return animPlayer.get_animation(x)
+	
+func play_animation(name:String, forward:bool = true, speed:float = 1.0):
+	animPlayer.set_speed_scale(speed)
+	
+	if not animPlayer.get_current_animation() == name:
 		if forward:
-			$AnimationPlayer.play(name)
+			animPlayer.play(name)
 		else:
-			$AnimationPlayer.play_backwards(name)
+			animPlayer.play_backwards(name)
 	else:
 		if forward:
 			if backward:
-				$AnimationPlayer.play(name)
+				animPlayer.play(name)
 		else:
 			if not backward:
-				$AnimationPlayer.play_backwards(name)
-	
+				animPlayer.play_backwards(name)
 	backward = not forward

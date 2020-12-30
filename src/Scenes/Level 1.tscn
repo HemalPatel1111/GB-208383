@@ -21,45 +21,9 @@ extents = Vector3( 200, 0.1, 200 )
 [node name="Level 1" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="UI" type="Node2D" parent="."]
-
-[node name="MoveController" parent="UI" instance=ExtResource( 4 )]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 15.0
-margin_top = 385.0
-margin_right = 215.0
-margin_bottom = 585.0
-
-[node name="Player" type="Button" parent="UI"]
-margin_left = 158.0
-margin_top = 21.0
-margin_right = 210.0
-margin_bottom = 41.0
-text = "play"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Options" type="OptionButton" parent="UI"]
-margin_left = 34.0
-margin_top = 20.0
-margin_right = 152.0
-margin_bottom = 40.0
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.882423, 0, -0.470458, 0, 1, 0, 0.470458, 0, 0.882423, -3.66147, 1.73025, 4.57662 )
 light_energy = 4.72
-
-[node name="boy1" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.87142, 0, 0 )
-
-[node name="tracker" type="Spatial" parent="boy1"]
-transform = Transform( -0.2, 0, -6.51682e-08, 0, 0.2, 0, 6.51682e-08, 0, -0.2, 0, 3, -5 )
 
 [node name="Gifts" type="Spatial" parent="."]
 
@@ -79,13 +43,58 @@ shape = SubResource( 3 )
 
 [node name="Camera" type="InterpolatedCamera" parent="."]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -5, 0.5, 0 )
-target = NodePath("../boy1/tracker")
+target = NodePath("../player/tracker")
 speed = 2.0
 enabled = true
 
 [node name="House" type="Spatial" parent="."]
 
 [node name="Farm_house" parent="House" instance=ExtResource( 6 )]
+
+[node name="player" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.8124, 0, 0 )
+
+[node name="tracker" type="Spatial" parent="player"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 2.5, -5 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.005
+margin_right = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2D" type="Node2D" parent="UI"]
+position = Vector2( -1, 2 )
+
+[node name="MoveController" parent="UI" instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -220.0
+margin_right = 220.0
+margin_bottom = -20.0
+
+[node name="Player" type="Button" parent="UI"]
+margin_left = 157.0
+margin_top = 23.0
+margin_right = 209.0
+margin_bottom = 43.0
+text = "play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="OptionButton" parent="UI"]
+margin_left = 33.0
+margin_top = 22.0
+margin_right = 151.0
+margin_bottom = 42.0
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="Move" from="UI/MoveController" to="." method="_on_MoveController_Move"]
 [connection signal="onHit" from="UI/MoveController" to="." method="_on_MoveController_onHit"]
 [connection signal="pressed" from="UI/Player" to="." method="_on_Button_pressed"]
