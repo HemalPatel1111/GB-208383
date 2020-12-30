@@ -2,6 +2,7 @@ extends Spatial
 class_name Player, "res://src/Player/Player.gd"
 
 const Walk = "Standard Walking in place"
+const Run = "Standard Running in place"
 const IdleBreath = "Standard Breathing Idle"
 
 var backward:bool = false
