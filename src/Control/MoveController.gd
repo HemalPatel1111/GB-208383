@@ -29,7 +29,7 @@ func _process(delta):
 	LEFT = ptr_pos.x * sensitivity
 	
 	if(!onHit):
-		$Pointer.set_position(pos + deltaPos / 10)
+		$Pointer.set_position(pos + deltaPos / 5)
 		ptr_pos = pos - ptr_pos_at_Rest
 		if ptr_pos.length() > 0.1:
 			emit_signal("Move", FRONT, LEFT)
