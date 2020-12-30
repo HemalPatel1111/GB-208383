@@ -1,8 +1,9 @@
 extends Spatial
 
-var UP:Vector3 = Vector3(0,1,0)
-var PLAYER_SCALE:float = 0.2 * 5
-var PLAYER_WALK:float = 2.5417 * PLAYER_SCALE
+var UP:Vector3 = Vector3(0,1,0) #UP direction
+
+var PLAYER_SCALE:float = 0.2 #describes how much scalled the player is
+var PLAYER_WALK:float = 2.5417 * PLAYER_SCALE #describes how long a player can walk per walk animation
 
 var mouse_sens = 0.05
 var rot:Vector3 = Vector3()
@@ -10,63 +11,94 @@ var rot:Vector3 = Vector3()
 var Look:Vector3 = Vector3()
 var Left:Vector3 = Vector3()
 
-var _delta:float = 0.0
+var frameTime:float = 0.0
 
 var velocity:Vector3 = Vector3()
-var g:float = 9.81
+var velocityg:Vector3 = Vector3()
+var velocityp:Vector3 = Vector3()
 
-onready var player:Player = $boy1
+var trackerPos:Vector3 = Vector3()
+var gravity_accl:float = 9.81
+
+onready var player:Player = $player
+onready var playerCharacter:KinematicBody = $player/Boy
+onready var tracker:Spatial = $player/tracker
+onready var options:OptionButton = $UI/Options
+
 var onHit:bool = false
+var move_dir:Vector2 = Vector2()
 
 func _ready():
-	rot = $boy1/tracker.rotation * 180
+	rot = tracker.rotation * 180
 	player.loadAnimation()
+	
 	var list = player.AnimationList
+	var count:int = 0
 	
 	for x in list:
 		var anim:Animation =  $boy1/AnimationPlayer.get_animation(x)
+		var check:bool = false
+		
+		if x == Player.IdleBreath:
+			check = true
+		
 		if anim.has_loop() :
 			x = "L " + x
-		$UI/Options.add_item(x)
+		options.add_item(x)
+		if check:
+			options._select_int(count)
+		count+=1
+		
+	trackerPos = tracker.translation
 	
 func _process(delta):
-	_delta = delta
+	frameTime = delta	
+	rot = tracker.rotation * 180
 	
-	rot = $boy1/tracker.rotation * 180
-	velocity.y -= g * delta
+	Look = global_transform.basis.z
+	Left = global_transform.basis.x
+	Look = Look.rotated(global_transform.basis.y, rot.y / 180)
+	Left = Left.rotated(global_transform.basis.y, rot.y / 180)
 	
-	if $boy1/Boy.is_on_floor():
-		velocity.y = abs(velocity.y) * sqrt(0.3)
-		
-	velocity = $boy1/Boy.move_and_slide(velocity,UP)
+	if move_dir.length() > 0.1:
+		playerCharacter.rotation.y = PI/2 + atan2(move_dir.y,-move_dir.x);
+	
+	velocityp = velocityp * 0
+	
+	if move_dir.length() > 0.1:
+		player.play_animation(Player.Walk, true, sqrt(abs(move_dir.length())))
+		velocityp = move_dir.x * Left * PLAYER_WALK
+		velocityp += move_dir.y * Look * PLAYER_WALK
+	else:
+		player.animate(options.get_selected_id())
+	
+	velocityg.y -= gravity_accl * delta
+	
+	if playerCharacter.is_on_floor():
+		velocityg.y = abs(velocityg.y) * sqrt(0.1)
+	
+	velocity = playerCharacter.move_and_slide(velocityg + velocityp,UP)
+	
+	tracker.translation = playerCharacter.translation
+	tracker.translation += -trackerPos.z * Look
+	tracker.translation += trackerPos.y * UP
+	tracker.translation += trackerPos.x * Left
 
 func _input(event):
 	if onHit and event is InputEventMouseMotion:
-		rot.y += -event.relative.x * mouse_sens * _delta * 500
-		rot.x += -event.relative.y * mouse_sens * _delta * 500
+		rot.y += -event.relative.x * mouse_sens * frameTime * 500
+		rot.x += -event.relative.y * mouse_sens * frameTime * 500
 		rot.x = min(max(rot.x,-90),90)
-		$boy1/tracker.rotation = rot / 180
+		tracker.rotation = rot / 180
 		
 	if event is InputEventMouseButton:
 		onHit = (event.button_mask == 1)
 
-func _on_MoveController_Move(speedFront, speedLeft, time):
-	Look = global_transform.basis.z
-	Left = global_transform.basis.x
-	Look = Look.rotated(global_transform.basis.y,rot.y / 180)
-	
-	if speedFront > 0.1:
-		player.play_animation("Standard Walking in place", false, speedFront)
-		player.translate(speedFront * Look * _delta * PLAYER_WALK)
-	elif speedFront < 0.1:
-		player.play_animation("Standard Walking in place", true, abs(speedFront))
-		player.translate(speedFront * Look * _delta * PLAYER_WALK)
-	else:
-		player.play_animation("Standard Breathing Idle")
-	
+func _on_MoveController_Move(speedFront, speedLeft):
+	move_dir.x = speedLeft;  move_dir.y = speedFront
 
 func _on_MoveController_onHit():
 	onHit = false
 
 func _on_Button_pressed():
-	player.animate($UI/Options.get_selected_id())
+	player.animate(options.get_selected_id())

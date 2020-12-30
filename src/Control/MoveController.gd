@@ -9,7 +9,7 @@ var ptr_size:Vector2 = Vector2(60,60)
 
 var _rotResistance:Vector2 = Vector2()
 
-signal Move(speedFront, speedLeft, time)
+signal Move(speedFront, speedLeft)
 signal onHit()
 
 var FRONT :float = 0
@@ -31,11 +31,9 @@ func _process(delta):
 	if(!onHit):
 		$Pointer.set_position(pos + deltaPos / 10)
 		ptr_pos = pos - ptr_pos_at_Rest
-		
 		if ptr_pos.length() > 0.1:
-			emit_signal("Move", FRONT, LEFT, delta)
+			emit_signal("Move", FRONT, LEFT)
 	else:
-		emit_signal("Move", FRONT, LEFT, delta)
 		$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
 
 func _on_gui(event):
@@ -72,6 +70,8 @@ func _on_Pointer_gui_input(event):
 	if event is InputEventMouseButton:
 		if onHit :
 			ptr_pos = event.position - ptr_size / 2
+			
+			emit_signal("Move", FRONT, LEFT)
 	if event is InputEventMouseMotion:
 		var delta = event.relative
 		
@@ -80,6 +80,8 @@ func _on_Pointer_gui_input(event):
 			ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
 			if antiRotation:
 				_rotResistance = event.relative
-		else:
-			FRONT = 0
-			LEFT = 0
+			
+			emit_signal("Move", FRONT, LEFT)
+		#else:
+		#	FRONT = 0
+		#	LEFT = 0

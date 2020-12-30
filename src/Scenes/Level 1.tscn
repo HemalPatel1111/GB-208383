@@ -3,7 +3,7 @@
 [ext_resource path="res://src/Scenes/ScenesCamera.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/characters/boy1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Player/boy1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/houses/Farm_house.tscn" type="PackedScene" id=6]
 
 [sub_resource type="PlaneMesh" id=1]
@@ -56,10 +56,10 @@ transform = Transform( 0.882423, 0, -0.470458, 0, 1, 0, 0.470458, 0, 0.882423, -
 light_energy = 4.72
 
 [node name="boy1" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.6222, 0, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.87142, 0, 0 )
 
 [node name="tracker" type="Spatial" parent="boy1"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 2, -3 )
+transform = Transform( -0.2, 0, -6.51682e-08, 0, 0.2, 0, 6.51682e-08, 0, -0.2, 0, 3, -5 )
 
 [node name="Gifts" type="Spatial" parent="."]
 

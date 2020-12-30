@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Player",
 "language": "GDScript",
-"path": "res://assets/characters/Player.gd"
+"path": "res://src/Player/Player.gd"
 } ]
 _global_script_class_icons={
 "GitAPI": "",
