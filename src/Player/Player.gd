@@ -9,6 +9,15 @@ var cur_anim:String
 var AnimationList:PoolStringArray
 var loop:bool = false
 
+func init():
+	pass
+
+func update(delta):
+	pass
+
+func set_move(speedFront, speedLeft):
+	pass
+
 # Loads Animation list
 func loadAnimationList() -> PoolStringArray:
 	return PoolStringArray()

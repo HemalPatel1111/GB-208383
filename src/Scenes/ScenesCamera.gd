@@ -4,7 +4,6 @@ var UP:Vector3 = Vector3(0,1,0) #Camera UP direction
 var Look:Vector3 = Vector3() 	#Camera Look direction
 var Left:Vector3 = Vector3() 	#Camera Left direction
 
-
 var rot:Vector3 = Vector3() 	#Camera Target rotation
 
 var velocity:Vector3 = Vector3() 	#Player Overall Velocity
@@ -62,8 +61,7 @@ func _ready():
 			animations._select_int(count)
 		
 		count+=1
-		
-	
+
 func _process(delta):	
 	frameTime = delta
 	rot = camera.rotation
@@ -114,6 +112,8 @@ func _input(event):
 
 func _on_MoveController_Move(speedFront, speedLeft):
 	move_dir.x = speedLeft;  move_dir.z = speedFront
+	if move_dir.length() > 0.1:
+		move_dir = move_dir.normalized() * max(move_dir.length(), 0.7)
 
 func _on_MoveController_onHit():
 	onHit = false
