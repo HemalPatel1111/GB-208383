@@ -11,6 +11,12 @@ var _rotResistance:Vector2 = Vector2()
 
 signal Move(speedFront, speedLeft)
 signal onHit()
+signal run(run)
+
+const RUN_WAIT:float = 2.0
+var runWait:float = RUN_WAIT
+
+var run:bool = false
 
 var FRONT :float = 0
 var oldFRONT :float = 0
@@ -24,13 +30,29 @@ func _process(delta):
 	
 	_calc_Component()
 	
-	if(!onHit):
-		$Pointer.set_position(pos + deltaPos / 5)
-		ptr_pos = pos - ptr_pos_at_Rest
-		if ptr_pos.length() > 0.1:
-			emit_signal("Move", FRONT, LEFT)
+	if ptr_pos.y <= -90:
+		if runWait > 0:
+			runWait -= delta
+		else:
+			runWait = 0
+			run = true
+			emit_signal("run", run)
 	else:
-		$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
+		runWait = RUN_WAIT
+		run = false
+		emit_signal("run", run)
+
+	if not run:
+		if(!onHit):
+			$Pointer.set_position(pos + deltaPos / 5)
+			ptr_pos = pos - ptr_pos_at_Rest
+			if ptr_pos.length() > 0.1:
+				emit_signal("Move", FRONT, LEFT)
+		else:
+			$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
+	else:
+		if(onHit):
+			$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
 
 func _calc_Component():
 	oldFRONT = FRONT
@@ -49,29 +71,30 @@ func _on_gui(event):
 func _on_Move_gui_input(event):
 	_on_gui(event)
 	
-	if _rotResistance.length() > 0:
-		_rotResistance *= 0
-		
-	if event is InputEventMouseButton:
-		if onHit :
+	if not run:
+		if _rotResistance.length() > 0:
+			_rotResistance *= 0
+			
+		if event is InputEventMouseButton:
+			if onHit :
+				var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
+				ptr_pos = min(dir.length(),100) * dir.normalized()
+				_calc_Component()
+				emit_signal("Move", FRONT, LEFT)
+				
+		if event is InputEventMouseMotion:
+			if onHit:
+				if antiRotation:
+					_rotResistance = event.relative
+		if onHit:
 			var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
 			ptr_pos = min(dir.length(),100) * dir.normalized()
+			
 			_calc_Component()
 			emit_signal("Move", FRONT, LEFT)
-			
-	if event is InputEventMouseMotion:
-		if onHit:
-			if antiRotation:
-				_rotResistance = event.relative
-	if onHit:
-		var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
-		ptr_pos = min(dir.length(),100) * dir.normalized()
-		
-		_calc_Component()
-		emit_signal("Move", FRONT, LEFT)
-	else:
-		FRONT = 0
-		LEFT = 0
+		else:
+			FRONT = 0
+			LEFT = 0
 
 func _on_Pointer_gui_input(event):
 	_on_gui(event)
@@ -79,7 +102,7 @@ func _on_Pointer_gui_input(event):
 	if _rotResistance.length() > 0:
 		_rotResistance *= 0
 	
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and not run:
 		if onHit :
 			ptr_pos = event.position - ptr_size / 2
 			_calc_Component()

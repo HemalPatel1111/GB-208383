@@ -42,7 +42,7 @@ shape = SubResource( 3 )
 [node name="Farm_house" parent="House" instance=ExtResource( 6 )]
 
 [node name="player" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.8124, 0, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.8124, 0.995891, 0 )
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
@@ -63,21 +63,41 @@ margin_top = -300.0
 margin_right = 300.0
 margin_bottom = -100.0
 
-[node name="Player" type="Button" parent="UI"]
-margin_left = 157.0
-margin_top = 23.0
-margin_right = 209.0
-margin_bottom = 43.0
-text = "play"
+[node name="idle" type="Button" parent="UI"]
+margin_left = 32.0
+margin_top = 45.0
+margin_right = 51.0
+margin_bottom = 65.0
+text = "I"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="walk" type="Button" parent="UI"]
+margin_left = 55.1914
+margin_top = 45.0
+margin_right = 80.1914
+margin_bottom = 65.0
+text = "W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="run" type="Button" parent="UI"]
+margin_left = 83.7646
+margin_top = 45.0
+margin_right = 108.765
+margin_bottom = 65.0
+text = "R"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Options" type="OptionButton" parent="UI"]
 margin_left = 33.0
-margin_top = 22.0
-margin_right = 151.0
-margin_bottom = 42.0
+margin_top = 20.0
+margin_right = 256.0
+margin_bottom = 40.0
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -90,4 +110,7 @@ light_bake_mode = 2
 shadow_enabled = true
 [connection signal="Move" from="UI/MoveController" to="." method="_on_MoveController_Move"]
 [connection signal="onHit" from="UI/MoveController" to="." method="_on_MoveController_onHit"]
-[connection signal="pressed" from="UI/Player" to="." method="_on_Button_pressed"]
+[connection signal="run" from="UI/MoveController" to="." method="_on_MoveController_run"]
+[connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
+[connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
+[connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
