@@ -4,6 +4,7 @@ var UP:Vector3 = Vector3(0,1,0) #Camera UP direction
 var Look:Vector3 = Vector3() 	#Camera Look direction
 var Left:Vector3 = Vector3() 	#Camera Left direction
 
+
 var rot:Vector3 = Vector3() 	#Camera Target rotation
 
 var velocity:Vector3 = Vector3() 	#Player Overall Velocity
