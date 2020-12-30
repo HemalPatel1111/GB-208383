@@ -1,9 +1,14 @@
 extends Spatial
 
+const  PLAYER_SCALE:float = 0.2 					#Scalling of the player
+const  PLAYER_WALK	:float = 2.4642 * PLAYER_SCALE #player walk length per walk animation
+const  PLAYER_RUN	:float = 9.1094 * PLAYER_SCALE #player run length per walk animation
+const  mouse_sens	:float = 0.15					#Mouse sensitivity
+const  gravity_accl:float = 9.81					#Gravitational Acceleration
+
 var UP:Vector3 = Vector3(0,1,0) #Camera UP direction
 var Look:Vector3 = Vector3() 	#Camera Look direction
 var Left:Vector3 = Vector3() 	#Camera Left direction
-
 
 var rot:Vector3 = Vector3() 	#Camera Target rotation
 
@@ -15,14 +20,9 @@ var trackerTranslation:Vector3 = Vector3() 	#Position of player Camera
 var trackerDirBase:Vector3 = Vector3() 	#Position of player Camera
 var trackerDir:Vector3 = Vector3() 	#Position of player Camera 
 var trackerDist:float = 10.0
+var frameTime	:float = 0.0					#Time since last frame
 
 var move_dir:Vector3 = Vector3()	#direction of movement of player
-
-var frameTime	:float = 0.0					#Time since last frame
-var PLAYER_SCALE:float = 0.2 					#Scalling of the player
-var PLAYER_WALK	:float = 2.5417 * PLAYER_SCALE #player walk length per walk animation
-var mouse_sens	:float = 0.15					#Mouse sensitivity
-var gravity_accl:float = 9.81					#Gravitational Acceleration
 
 var onHit	:bool = false	#If the screen is on hit or the Move Controller
 
@@ -84,9 +84,9 @@ func _process(delta):
 	velocityp = velocityp * 0
 	
 	if move_dir.length() > 0.1:
-		player.play_animation(Player.Walk, true, sqrt(abs(move_dir.length())))
-		velocityp = move_dir.x * Left * PLAYER_WALK
-		velocityp += move_dir.z * Look * PLAYER_WALK
+		player.play_animation(Player.Run, true, sqrt(abs(move_dir.length())))
+		velocityp = move_dir.x * Left * PLAYER_RUN
+		velocityp += move_dir.z * Look * PLAYER_RUN
 	else:
 		player.animate(animations.get_selected_id())
 	
