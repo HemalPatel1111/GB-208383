@@ -18,7 +18,6 @@ var LEFT  :float = 0
 var oldLEFT  :float = 0
 var onHit:bool=false
 
-
 func _process(delta):
 	var pos = $Pointer.get_position()
 	var deltaPos = ptr_pos_at_Rest - pos
