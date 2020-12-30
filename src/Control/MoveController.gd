@@ -35,6 +35,12 @@ func _process(delta):
 	else:
 		$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
 
+func _calc_Component():
+	oldFRONT = FRONT
+	oldLEFT = LEFT
+	FRONT = ptr_pos.y * sensitivity
+	LEFT = ptr_pos.x * sensitivity
+
 func _on_gui(event):
 	if event is InputEventMouseButton:
 		if event.button_mask == 1 :
@@ -55,7 +61,10 @@ func _on_Move_gui_input(event):
 				_rotResistance = event.relative
 	if onHit:
 		var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
-		ptr_pos = min(dir.length(),100) * dir.normalized()		
+		ptr_pos = min(dir.length(),100) * dir.normalized()
+		
+		
+		emit_signal("Move", FRONT, LEFT)
 	else:
 		FRONT = 0
 		LEFT = 0
