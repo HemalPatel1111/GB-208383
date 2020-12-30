@@ -13,7 +13,25 @@ var loop:bool = false
 # Loads Animation list
 func loadAnimationList() -> PoolStringArray:
 	return PoolStringArray()
-	
+
+func move_and_slide(vel:Vector3, up:Vector3) -> Vector3:
+	return vel
+
+func set_move_dir(speedFront:float, speedLeft:float):
+	pass
+
+func update_rotation(dir:Vector2, mouse_sens:float, frameTime:float):
+	pass
+
+func init():
+	pass
+
+func update(delta, Look:Vector3, Left:Vector3, UP:Vector3, id:int):
+	pass
+
+func is_on_floor()->bool:
+	return false
+
 # Animates the character
 func animate(x:int):
 	pass
