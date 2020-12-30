@@ -51,6 +51,9 @@ enabled = true
 
 [node name="Farm_house" parent="House" instance=ExtResource( 6 )]
 
+[node name="boy1" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15858, 0, 0 )
+
 [node name="player" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.8124, 0, 0 )
 
