@@ -16,10 +16,8 @@ var loop:bool = false
 
 func set_idle_id(id:int):
 	idle_id = id
-	
 func set_walk_id(id:int):
 	walk_id = id
-	
 func set_run_id(id:int):
 	run_id = id
 

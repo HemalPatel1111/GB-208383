@@ -78,6 +78,3 @@ func _on_walk_pressed():
 
 func _on_run_pressed():
 	player.set_run_id(animations.get_selected_id())
-
-func _on_list_pressed():
-	print_debug("Idle : " + str(player.idle_id) + " Walk : " + str(player.walk_id) + " Run : " + str(player.run_id))
