@@ -40,6 +40,11 @@ func _ready():
 			player.set_idle_id(count)
 		
 		count+=1
+		
+	for x in ["Hand", "Pistol", "Rifle"]:
+		$UI/Weapon.add_item(x)
+		
+	player.set_weapon(0)
 
 func _process(delta):	
 	frameTime = delta
@@ -53,13 +58,11 @@ func _process(delta):
 	
 	velocity = player.move_and_slide(velocityg,UP)
 
-var index:int = -1
-
 func _input(event):
-	if onHit and event is InputEventScreenDrag:
+	if onHit and event is InputEventMouseMotion:
 		player.update_rotate(event.relative)
-	if event is InputEventScreenTouch:
-		onHit = true
+	if event is InputEventMouseButton:
+		onHit = (event.button_mask == 1)
 
 func _on_MoveController_Move(speedFront, speedLeft):
 	player.set_move(speedFront, speedLeft)
@@ -78,3 +81,15 @@ func _on_walk_pressed():
 
 func _on_run_pressed():
 	player.set_run_id(animations.get_selected_id())
+
+func _on_list_pressed():
+	print_debug("Idle : " + str(player.idle_id) + " Walk : " + str(player.walk_id) + " Run : " + str(player.run_id) + " Fire : " + str(player.fire_id))
+
+func _on_fire_pressed():
+	player.set_fire_id(animations.get_selected_id())
+
+func _on_Weapon_item_selected(index):
+	player.set_weapon(index)
+
+func _on_fireWeapon_button_down():
+	player.fireIt(true)

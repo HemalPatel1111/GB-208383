@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://src/assets/Button Fire.png" type="Texture" id=1]
 [ext_resource path="res://src/Scenes/LevelBase.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
@@ -93,11 +94,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="fire" type="Button" parent="UI"]
+margin_left = 112.355
+margin_top = 45.8409
+margin_right = 137.355
+margin_bottom = 65.8409
+text = "F"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fireWeapon" type="TextureButton" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -165.666
+margin_top = -220.22
+margin_right = -115.666
+margin_bottom = -170.22
+texture_normal = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="list" type="Button" parent="UI"]
+margin_left = 218.729
+margin_top = 47.9431
+margin_right = 253.729
+margin_bottom = 67.9431
+text = "List"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Options" type="OptionButton" parent="UI"]
 margin_left = 33.0
 margin_top = 20.0
 margin_right = 256.0
 margin_bottom = 40.0
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon" type="OptionButton" parent="UI"]
+margin_left = 34.6818
+margin_top = 77.181
+margin_right = 257.682
+margin_bottom = 97.181
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -114,3 +160,7 @@ shadow_enabled = true
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="UI/fire" to="." method="_on_fire_pressed"]
+[connection signal="button_down" from="UI/fireWeapon" to="." method="_on_fireWeapon_button_down"]
+[connection signal="pressed" from="UI/list" to="." method="_on_list_pressed"]
+[connection signal="item_selected" from="UI/Weapon" to="." method="_on_Weapon_item_selected"]
