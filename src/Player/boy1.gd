@@ -94,6 +94,12 @@ func set_move(speedFront, speedLeft):
 func loadAnimationList() -> PoolStringArray:
 	_loadAnimationList($AnimationPlayer)
 	return AnimationList
+
+func is_on_floor() -> bool:
+	return playerCharacter.is_on_floor()
+	
+func move_and_slide(velocityg:Vector3, UP:Vector3) -> Vector3:
+	return playerCharacter.move_and_slide(velocityg,UP)
 	
 func animate_id(id:int, forward:bool = true):
 	var name:String = AnimationList[id]

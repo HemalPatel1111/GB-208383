@@ -21,6 +21,12 @@ func set_walk_id(id:int):
 func set_run_id(id:int):
 	run_id = id
 
+func move_and_slide(velocityg:Vector3, UP:Vector3) -> Vector3:
+	return Vector3()
+
+func is_on_floor() -> bool:
+	return false
+
 func init():
 	pass
 

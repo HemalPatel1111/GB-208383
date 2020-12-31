@@ -7,16 +7,15 @@ var Left:Vector3 = Vector3() 	#Camera Left direction
 var velocity:Vector3 = Vector3() 	#Player Overall Velocity
 var velocityg:Vector3 = Vector3() 	#Player Velocity due to gravity
 
-var frameTime	:float = 0.0					#Time since last frame
-var gravity_accl:float = 9.81					#Gravitational Acceleration
+var frameTime	:float = 0.0	#Time since last frame
+var gravity_accl:float = 9.81	#Gravitational Acceleration
 
 var onHit	:bool = false	#If the screen is on hit or the Move Controller
 
-onready var player			:Player 		= $player			#the player root
-onready var playerCharacter	:KinematicBody	= $player/Boy		#the player root
-onready var animations		:OptionButton 	= $UI/Options		#animation List
+onready var player		:Player 		= $player		#the player root
+onready var animations	:OptionButton 	= $UI/Options	#animation List
 
-func _ready():	
+func _ready():
 	var list:PoolStringArray
 	var count:int = 0
 	
@@ -48,11 +47,11 @@ func _process(delta):
 	
 	velocityg.y -= gravity_accl * delta
 	
-	if playerCharacter.is_on_floor():
+	if player.is_on_floor():
 		velocityg.y = abs(velocityg.y) * sqrt(0)
 		if abs(velocityg.y) < 0.1: velocityg *= 0
 	
-	velocity = playerCharacter.move_and_slide(velocityg,UP)
+	velocity = player.move_and_slide(velocityg,UP)
 
 func _input(event):
 	if onHit and event is InputEventMouseMotion:
@@ -68,7 +67,6 @@ func _on_MoveController_onHit():
 
 func _on_MoveController_run(run):
 	player.set_run(run)
-
 
 func _on_idle_pressed():
 	player.set_idle_id(animations.get_selected_id())

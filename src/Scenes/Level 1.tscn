@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://src/Scenes/ScenesCamera.gd" type="Script" id=2]
+[ext_resource path="res://src/Scenes/LevelBase.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Player/boy1.tscn" type="PackedScene" id=5]
