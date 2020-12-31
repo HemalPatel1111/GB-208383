@@ -58,11 +58,13 @@ func _process(delta):
 	
 	velocity = player.move_and_slide(velocityg,UP)
 
+var index:int = -1
+
 func _input(event):
-	if onHit and event is InputEventMouseMotion:
+	if onHit and event is InputEventScreenDrag:
 		player.update_rotate(event.relative)
-	if event is InputEventMouseButton:
-		onHit = (event.button_mask == 1)
+	if event is InputEventScreenTouch:
+		onHit = true
 
 func _on_MoveController_Move(speedFront, speedLeft):
 	player.set_move(speedFront, speedLeft)
