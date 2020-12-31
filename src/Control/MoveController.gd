@@ -84,7 +84,7 @@ func _on_Move_gui_input(event):
 #		else:
 #			FRONT = 0
 #			LEFT = 0
-	pass
+	pass 
 	
 func _on_Pointer_gui_input(event):
 #	_on_gui(event)
