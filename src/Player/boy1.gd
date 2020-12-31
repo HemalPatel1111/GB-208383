@@ -1,5 +1,4 @@
 extends Player
-
 class_name Boy1, "res://src/Player/boy1.gd"
 
 onready var animPlayer:AnimationPlayer = $AnimationPlayer
@@ -24,14 +23,6 @@ var move_dir:Vector3 = Vector3()	#direction of movement of player
 var PLAYER_SCALE:float = 0.2 					#Scalling of the player
 var PLAYER_WALK	:float = 2.4642 * PLAYER_SCALE #player walk length per walk animation
 var PLAYER_RUN	:float = 9.1094 * PLAYER_SCALE #player walk length per walk animation
-var PLAYER_WALK_PISTOL:float = 4.1693
-var PLAYER_RUN_PISTOL:float = 4.9035
-var PLAYER_WALK_RIFLE:float = 1.5812
-var PLAYER_RUN_RIFLE:float = 4.9166
-
-var player_walk:float = PLAYER_WALK
-var player_run:float = PLAYER_RUN
-
 var mouse_sens	:float = 0.25					#Mouse sensitivity
 var frameTime	:float = 0.0					#Time since last frame
 
@@ -53,21 +44,6 @@ func init():
 	trackerDirBase = trackerDirBase.normalized()
 	trackerDir = trackerDirBase
 
-func set_weapon(weapon_id:int):
-	match weapon_id:
-		Weapon.WEAPON_HAND:
-			idle_id = 43 ; walk_id = 51; run_id = 49; fire_id = 1
-			player_walk = PLAYER_WALK
-			player_run = PLAYER_RUN
-		Weapon.WEAPON_PISTOL:
-			idle_id = 3; walk_id = 14; run_id = 9; fire_id = 10
-			player_walk = PLAYER_WALK
-			player_run = PLAYER_RUN
-		Weapon.WEAPON_RIFLE:
-			idle_id = 27; walk_id = 42; run_id = 35; fire_id = 20
-			player_walk = PLAYER_WALK
-			player_run = PLAYER_RUN
-
 func update(delta):
 	frameTime = delta
 	#rot = camera.rotation
@@ -87,19 +63,16 @@ func update(delta):
 	
 	velocityp = velocityp * 0
 	
-	if fire:
-		_fire()
-	else:
-		if move_dir.length() > 0.1:
-				if run:
-					_run()
-				else:
-					_walk()
+	if move_dir.length() > 0.1:
+		if run:
+			_run()
 		else:
-			if idle_id >= 0:
-				animate_id(idle_id)
-			else:
-				animate(IdleBreath)
+			_walk()
+	else:
+		if idle_id >= 0:
+			animate_id(idle_id)
+		else:
+			animate(IdleBreath)
 	
 	velocityp = playerCharacter.move_and_slide(velocityp,UP)
 	
@@ -135,17 +108,14 @@ func animate_id(id:int, forward:bool = true):
 func animate(name:String, forward:bool = true):
 	play_animation(name)
 
-func _fire():
-	if fire_id >= 0 : animate_id(fire_id)
-
 func _walk():
 	if walk_id >= 0:
 		animate_id(walk_id)
 	else:
 		play_animation(Player.Walk, true, sqrt(abs(move_dir.length())))
 
-	velocityp = move_dir.x * Left * player_walk
-	velocityp += move_dir.z * Look * player_walk
+	velocityp = move_dir.x * Left * PLAYER_WALK
+	velocityp += move_dir.z * Look * PLAYER_WALK
 
 func _run():
 	if run_id >= 0:
@@ -153,8 +123,8 @@ func _run():
 	else:
 		play_animation(Player.Run, true, sqrt(abs(move_dir.length())))
 	
-	velocityp = move_dir.x * Left * player_run
-	velocityp += move_dir.z * Look * player_run
+	velocityp = move_dir.x * Left * PLAYER_RUN
+	velocityp += move_dir.z * Look * PLAYER_RUN
 
 func get_animation(x:String) -> Animation:
 	return animPlayer.get_animation(x)
@@ -180,7 +150,3 @@ func play_animation(name:String, forward:bool = true, speed:float = 1.0):
 			if not backward:
 				animPlayer.play_backwards(name)
 	backward = not forward
-
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	fireIt(false)

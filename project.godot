@@ -23,17 +23,11 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://src/Player/Player.gd"
-}, {
-"base": "Node",
-"class": "Weap",
-"language": "GDScript",
-"path": "res://src/Player/weapon.gd"
 } ]
 _global_script_class_icons={
 "Boy1": "res://src/Player/boy1.gd",
 "GitAPI": "",
-"Player": "res://src/Player/Player.gd",
-"Weap": ""
+"Player": "res://src/Player/Player.gd"
 }
 
 [application]
@@ -41,10 +35,6 @@ _global_script_class_icons={
 config/name="Santa In Danger"
 run/main_scene="res://src/Scenes/Level 1.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-Weapon="*res://src/Player/weapon.gd"
 
 [gdnative]
 

@@ -40,11 +40,6 @@ func _ready():
 			player.set_idle_id(count)
 		
 		count+=1
-		
-	for x in ["Hand", "Pistol", "Rifle"]:
-		$UI/Weapon.add_item(x)
-		
-	player.set_weapon(0)
 
 func _process(delta):	
 	frameTime = delta
@@ -85,13 +80,4 @@ func _on_run_pressed():
 	player.set_run_id(animations.get_selected_id())
 
 func _on_list_pressed():
-	print_debug("Idle : " + str(player.idle_id) + " Walk : " + str(player.walk_id) + " Run : " + str(player.run_id) + " Fire : " + str(player.fire_id))
-
-func _on_fire_pressed():
-	player.set_fire_id(animations.get_selected_id())
-
-func _on_Weapon_item_selected(index):
-	player.set_weapon(index)
-
-func _on_fireWeapon_button_down():
-	player.fireIt(true)
+	print_debug("Idle : " + str(player.idle_id) + " Walk : " + str(player.walk_id) + " Run : " + str(player.run_id))
