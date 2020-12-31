@@ -1,10 +1,13 @@
 extends TextureButton
 
+export var antiRotation:bool= true
 export var sensitivity:float = 0.01
 
 var ptr_pos_at_Rest:Vector2 = Vector2(65,65)
 var ptr_pos:Vector2 = Vector2()
 var ptr_size:Vector2 = Vector2(60,60)
+
+var _rotResistance:Vector2 = Vector2()
 
 signal Move(speedFront, speedLeft)
 signal onHit()
@@ -20,8 +23,6 @@ var oldFRONT :float = 0
 var LEFT  :float = 0
 var oldLEFT  :float = 0
 var onHit:bool=false
-
-var out:bool = true
 
 func _process(delta):
 	var pos = $Pointer.get_position()
@@ -41,17 +42,17 @@ func _process(delta):
 		run = false
 		emit_signal("run", run)
 
-#	if not run:
-	if(out):
-		$Pointer.set_position(pos + deltaPos / 5)
-		ptr_pos = pos - ptr_pos_at_Rest
-		if ptr_pos.length() > 0.1:
-			emit_signal("Move", FRONT, LEFT)
+	if not run:
+		if(!onHit):
+			$Pointer.set_position(pos + deltaPos / 5)
+			ptr_pos = pos - ptr_pos_at_Rest
+			if ptr_pos.length() > 0.1:
+				emit_signal("Move", FRONT, LEFT)
+		else:
+			$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
 	else:
-		$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
-#	else:
-#		if(onHit):
-#			$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
+		if(onHit):
+			$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
 
 func _calc_Component():
 	oldFRONT = FRONT
@@ -60,55 +61,62 @@ func _calc_Component():
 	LEFT = ptr_pos.x * sensitivity
 
 func _on_gui(event):
-	if event is InputEventScreenTouch:
-		onHit = true
-		emit_signal("onHit")
+	if event is InputEventMouseButton:
+		if event.button_mask == 1 :
+			onHit = true
+			emit_signal("onHit")
+		else :
+			onHit = false
 
 func _on_Move_gui_input(event):
-#	_on_gui(event)
-#
-#	if not run:
-#		if event is InputEventScreenTouch:
-#			if onHit :
-#				var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
-#				ptr_pos = min(dir.length(),100) * dir.normalized()
-#				_calc_Component()
-#				emit_signal("Move", FRONT, LEFT)
-#
-#		elif event is InputEventScreenDrag:
-#			var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
-#			ptr_pos = min(dir.length(),100) * dir.normalized()
-#
-#			_calc_Component()
-#			emit_signal("Move", FRONT, LEFT)
-#		else:
-#			FRONT = 0
-#			LEFT = 0
-	pass 
+	_on_gui(event)
 	
-func _on_Pointer_gui_input(event):
-#	_on_gui(event)
-	out = false
-	
-	if event is InputEventScreenTouch:
-#		if not run:
-		ptr_pos = event.position - ptr_size / 2
-		_calc_Component()
-		emit_signal("Move", FRONT, LEFT)
-	elif event is InputEventScreenDrag:
-		var delta = event.relative
+	if not run:
+		if _rotResistance.length() > 0:
+			_rotResistance *= 0
+			
+		if event is InputEventMouseButton:
+			if onHit :
+				var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
+				ptr_pos = min(dir.length(),100) * dir.normalized()
+				_calc_Component()
+				emit_signal("Move", FRONT, LEFT)
+				
+		if event is InputEventMouseMotion:
+			if onHit:
+				if antiRotation:
+					_rotResistance = event.relative
+		if onHit:
+			var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
+			ptr_pos = min(dir.length(),100) * dir.normalized()
+			
+			_calc_Component()
+			emit_signal("Move", FRONT, LEFT)
+		else:
+			FRONT = 0
+			LEFT = 0
 
-		ptr_pos += delta
-		ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
+func _on_Pointer_gui_input(event):
+	_on_gui(event)
+	
+	if _rotResistance.length() > 0:
+		_rotResistance *= 0
+	
+	if event is InputEventMouseButton and not run:
+		if onHit :
+			ptr_pos = event.position - ptr_size / 2
+			_calc_Component()
+			emit_signal("Move", FRONT, LEFT)
+	if event is InputEventMouseMotion:
+		var delta = event.relative
 		
-		emit_signal("Move", FRONT, LEFT)
-	elif event is InputEventMouse:
-		
-	elif event is InputEventMouse:
-		
-	else:
-		out = true
-		FRONT = 0
-		LEFT = 0
-		
-		emit_signal("Move", FRONT, LEFT)
+		if onHit:
+			ptr_pos += delta
+			ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
+			if antiRotation:
+				_rotResistance = event.relative
+			
+			emit_signal("Move", FRONT, LEFT)
+		#else:
+		#	FRONT = 0
+		#	LEFT = 0
