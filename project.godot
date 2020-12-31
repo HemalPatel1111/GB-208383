@@ -36,10 +36,6 @@ config/name="Santa In Danger"
 run/main_scene="res://src/Scenes/Level 1.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-Weapon="*res://src/Player/weapon.gd"
-
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]
