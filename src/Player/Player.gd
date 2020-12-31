@@ -8,6 +8,9 @@ const IdleBreath = "Standard Breathing Idle"
 var idle_id:int = -1
 var walk_id:int = -1
 var run_id:int = -1
+var fire_id:int = -1
+
+var fire:bool = false
 
 var backward:bool = false
 var cur_anim:String
@@ -22,6 +25,16 @@ func set_walk_id(id:int):
 	
 func set_run_id(id:int):
 	run_id = id
+	
+func set_fire_id(id:int):
+	fire_id = id
+
+func set_weapon(weapon_id:int):
+	pass
+
+func fireIt(value:bool):
+	fire = value
+	pass
 
 func move_and_slide(velocityg:Vector3, UP:Vector3) -> Vector3:
 	return Vector3()
