@@ -4,7 +4,9 @@
 [ext_resource path="res://src/Menu/TouchTest.gd" type="Script" id=2]
 [ext_resource path="res://assets/Fonts/atwriter.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Control/MoveController1.gd" type="Script" id=5]
+[ext_resource path="res://src/Control/MoveControllerTS.gd" type="Script" id=5]
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -60,11 +62,12 @@ __meta__ = {
 }
 
 [node name="Move" parent="." instance=ExtResource( 4 )]
-margin_left = 28.5794
-margin_top = 339.71
-margin_right = 228.579
-margin_bottom = 539.71
+margin_left = 304.787
+margin_top = 341.297
+margin_right = 504.787
+margin_bottom = 541.297
 script = ExtResource( 5 )
 [connection signal="gui_input" from="." to="." method="_on_Node2D_gui_input"]
 [connection signal="gui_input" from="btn1" to="." method="_on_Node2D_gui_input"]
 [connection signal="gui_input" from="btn2" to="." method="_on_Node2D_gui_input"]
+[connection signal="run" from="Move" to="." method="_on_Move_run"]

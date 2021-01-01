@@ -1,4 +1,5 @@
 extends TextureButton
+class_name MoveController
 
 export var antiRotation:bool= true
 export var sensitivity:float = 0.01

@@ -11,12 +11,16 @@ var df:= [Vector2(),Vector2(),Vector2(),Vector2(),Vector2()]
 
 var fingerCount = 0
 
+var run:bool = false
+
 func _process(delta):
 	$Label.text = "Type : " + type 
 	$Label.text += ("\nPointer : " + getPoint(p) + " delta : " + getPoint(dp)) if fingerCount == 0 else ""
 	if fingerCount > 0:
 		for i in range(0,fingerCount):
-			$Label.text += "\n finger[" + str(i+1) + "]   -> p : " + getPoint(f[i]) + " dp : " + getPoint(df[i])
+			$Label.text += "\nfinger[" + str(i+1) + "]   -> p : " + getPoint(f[i]) + " dp : " + getPoint(df[i])
+	if run:
+		$Label.text += "\n run"
 
 func getPoint(P:Vector2) -> String:
 	return "(" + str(P.x) + "," + str(P.y) + ")"
@@ -47,3 +51,7 @@ func _on_Node2D_gui_input(event):
 			f[e.index] = e.position
 	else:
 		type = "None"
+
+
+func _on_Move_run(run):
+	$".".run = run

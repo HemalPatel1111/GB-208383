@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://src/assets/Button Fire.png" type="Texture" id=1]
-[ext_resource path="res://src/Scenes/LevelBase.gd" type="Script" id=2]
+[ext_resource path="res://assets/Textures/Buttons/Button Fire.png" type="Texture" id=1]
+[ext_resource path="res://src/Scenes/LevelBaseTS.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Player/boy1.tscn" type="PackedScene" id=5]
@@ -163,8 +163,8 @@ transform = Transform( 0.882423, 0, -0.470458, 0, 1, 0, 0.470458, 0, 0.882423, -
 light_specular = 1.0
 light_bake_mode = 2
 shadow_enabled = true
+[connection signal="gui_input" from="UI" to="." method="_on_UI_gui_input"]
 [connection signal="Move" from="UI/MoveController" to="." method="_on_MoveController_Move"]
-[connection signal="onHit" from="UI/MoveController" to="." method="_on_MoveController_onHit"]
 [connection signal="run" from="UI/MoveController" to="." method="_on_MoveController_run"]
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
