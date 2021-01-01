@@ -95,13 +95,12 @@ func _on_fireWeapon_button_down():
 	player.fireIt(true)
 
 func _input(event):
-	if event is InputEventScreenDrag:
-		if !moveController.getFinger(event.index):
-			player.update_rotate(event.relative)
+	if not (event is InputEventScreenTouch or event is InputEventScreenDrag):
+		return
 
-	if event is InputEventScreenTouch:
-		if action:
-			moveController.setFinger(event.index, true)
+	if event is InputEventScreenDrag:
+		if moveController.index != (event.index):
+			player.update_rotate(event.relative)
 	pass
 
 func _on_UI_gui_input(event):
