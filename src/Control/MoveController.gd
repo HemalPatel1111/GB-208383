@@ -1,4 +1,5 @@
 extends TextureButton
+class_name MoveController
 
 export var antiRotation:bool= true
 export var sensitivity:float = 0.01
@@ -87,9 +88,9 @@ func _on_Move_gui_input(event):
 			if onHit:
 				if antiRotation:
 					_rotResistance = event.relative
-		if onHit:
-			var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
-			ptr_pos = min(dir.length(),100) * dir.normalized()
+			if onHit:
+				var dir = event.position - ptr_pos_at_Rest - ptr_size / 2
+				ptr_pos = min(dir.length(),100) * dir.normalized()
 			
 			_calc_Component(true)
 		else:

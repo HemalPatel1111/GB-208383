@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://git_api.gdns"
 }, {
+"base": "TextureButton",
+"class": "MoveController",
+"language": "GDScript",
+"path": "res://src/Control/MoveController.gd"
+}, {
+"base": "TextureButton",
+"class": "MoveControllerTS",
+"language": "GDScript",
+"path": "res://src/Control/MoveControllerTS.gd"
+}, {
 "base": "Spatial",
 "class": "Player",
 "language": "GDScript",
@@ -32,6 +42,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Boy1": "res://src/Player/boy1.gd",
 "GitAPI": "",
+"MoveController": "",
+"MoveControllerTS": "",
 "Player": "res://src/Player/Player.gd",
 "Weap": ""
 }
@@ -39,12 +51,18 @@ _global_script_class_icons={
 [application]
 
 config/name="Santa In Danger"
-run/main_scene="res://src/Scenes/Level 1.tscn"
+run/main_scene="res://src/Menu/Main.tscn"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [autoload]
 
 Weapon="*res://src/Player/weapon.gd"
+
+[display]
+
+window/size/fullscreen=true
+window/dpi/allow_hidpi=true
 
 [gdnative]
 
