@@ -163,7 +163,6 @@ transform = Transform( 0.882423, 0, -0.470458, 0, 1, 0, 0.470458, 0, 0.882423, -
 light_specular = 1.0
 light_bake_mode = 2
 shadow_enabled = true
-[connection signal="gui_input" from="UI" to="." method="_on_UI_gui_input"]
 [connection signal="Move" from="UI/MoveController" to="." method="_on_MoveController_Move"]
 [connection signal="run" from="UI/MoveController" to="." method="_on_MoveController_run"]
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]

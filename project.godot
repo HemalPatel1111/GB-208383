@@ -52,7 +52,7 @@ _global_script_class_icons={
 
 config/name="Santa In Danger"
 run/main_scene="res://src/Menu/Main.tscn"
-boot_splash/image="res://assets/Wallpapers/splash.png"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [autoload]

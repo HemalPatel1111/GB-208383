@@ -28,7 +28,11 @@ var fingers = 0
 # $"." means class/script itself
 
 func getFinger(index:int) -> bool:
-	return fingers[index]
+	return finger[index]
+	
+func setFinger(index:int, value:bool):
+	if !finger[index]:
+		finger[index] = value
 
 func _process(delta):
 	var pos = $Pointer.get_position()

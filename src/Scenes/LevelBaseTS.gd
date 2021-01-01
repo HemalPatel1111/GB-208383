@@ -14,6 +14,8 @@ onready var player		:Player 		= $player		#the player root
 onready var animations	:OptionButton 	= $UI/Options	#animation List
 onready var moveController	:MoveControllerTS 	= $UI/MoveController	#animation List
 
+var action:float = 0
+
 func _ready():
 	var list:PoolStringArray
 	var count:int = 0
@@ -61,6 +63,7 @@ var finger = [false, false, false, false, false]
 
 func _on_MoveController_Move(speedFront, speedLeft):
 	player.set_move(speedFront, speedLeft)
+	action = (abs(speedFront) + abs(speedLeft) == 0)
 
 func _on_MoveController_run(run):
 	player.set_run(run)
@@ -86,9 +89,21 @@ func _on_Weapon_item_selected(index):
 func _on_fireWeapon_button_down():
 	player.fireIt(true)
 
-
-func _on_UI_gui_input(event):
+func _input(event):
 	if event is InputEventScreenDrag:
 		if !moveController.getFinger(event.index):
-				player.update_rotate(event.relative)
+			player.update_rotate(event.relative)
 
+	if event is InputEventScreenTouch:
+		if action:
+			moveController.setFinger(event.index, true)
+	pass
+
+func _on_UI_gui_input(event):
+#	if event is InputEventScreenDrag:
+#		if !finger[event.index]:
+#				player.update_rotate(event.relative)
+#
+#	if event is InputEventScreenTouch:
+#		finger[event.index] = moveController.getFinger(event.index)
+	pass
