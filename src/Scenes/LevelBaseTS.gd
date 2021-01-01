@@ -58,6 +58,11 @@ func _process(delta):
 		if abs(velocityg.y) < 0.1: velocityg *= 0
 	
 	velocity = player.move_and_slide(velocityg,UP)
+	$UI/Finger.text = "Fingers"
+	$UI/FingerMove.text = "Move Fingers (Last finger : " + str(moveController.index)  + ")"
+	for x in range(0, 5):
+		$UI/Finger.text += "\n" + ("true" if finger[x] else "false")
+		$UI/FingerMove.text += "\n" + ("true" if moveController.finger[x] else "false")
 
 var finger = [false, false, false, false, false]
 
