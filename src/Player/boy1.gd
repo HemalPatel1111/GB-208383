@@ -24,10 +24,10 @@ var move_dir:Vector3 = Vector3()	#direction of movement of player
 var PLAYER_SCALE:float = 0.2 					#Scalling of the player
 var PLAYER_WALK	:float = 2.4642 * PLAYER_SCALE #player walk length per walk animation
 var PLAYER_RUN	:float = 9.1094 * PLAYER_SCALE #player walk length per walk animation
-var PLAYER_WALK_PISTOL:float = 4.1693
-var PLAYER_RUN_PISTOL:float = 4.9035
-var PLAYER_WALK_RIFLE:float = 1.5812
-var PLAYER_RUN_RIFLE:float = 4.9166
+var PLAYER_WALK_PISTOL:float = 4.1693 * PLAYER_SCALE
+var PLAYER_RUN_PISTOL:float = 4.9035 * PLAYER_SCALE
+var PLAYER_WALK_RIFLE:float = 1.5812 * PLAYER_SCALE
+var PLAYER_RUN_RIFLE:float = 4.9166 * PLAYER_SCALE
 
 var player_walk:float = PLAYER_WALK
 var player_run:float = PLAYER_RUN
@@ -61,12 +61,12 @@ func set_weapon(weapon_id:int):
 			player_run = PLAYER_RUN
 		Weapon.WEAPON_PISTOL:
 			idle_id = 3; walk_id = 14; run_id = 9; fire_id = 10
-			player_walk = PLAYER_WALK
-			player_run = PLAYER_RUN
+			player_walk = PLAYER_WALK_PISTOL
+			player_run = PLAYER_RUN_PISTOL
 		Weapon.WEAPON_RIFLE:
 			idle_id = 27; walk_id = 42; run_id = 35; fire_id = 20
-			player_walk = PLAYER_WALK
-			player_run = PLAYER_RUN
+			player_walk = PLAYER_WALK_RIFLE
+			player_run = PLAYER_RUN_RIFLE
 
 func update(delta):
 	frameTime = delta
