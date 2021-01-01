@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Textures/Buttons/Button Fire.png" type="Texture" id=1]
 [ext_resource path="res://src/Scenes/LevelBaseTS.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Player/boy1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Scenes/Farm_house.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/joystick_control/assets/joystick.gd" type="Script" id=7]
+[ext_resource path="res://addons/joystick_control/assets/ball.png" type="Texture" id=8]
+[ext_resource path="res://addons/joystick_control/assets/background.png" type="Texture" id=9]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 200, 200 )
@@ -158,11 +161,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Finger" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -78.5
+margin_top = 1.0
+margin_right = 78.5
+margin_bottom = 141.0
+
+[node name="FingerMove" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -78.5
+margin_top = 1.0
+margin_right = 78.5
+margin_bottom = 141.0
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.882423, 0, -0.470458, 0, 1, 0, 0.470458, 0, 0.882423, -3.98457, 0.996172, 3.62648 )
 light_specular = 1.0
 light_bake_mode = 2
 shadow_enabled = true
+
+[node name="Joystick" type="Control" parent="."]
+margin_left = 408.576
+margin_top = 363.678
+margin_right = 448.576
+margin_bottom = 403.678
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+radius = 64.0
+deadzone = 8.0
+proximity = 96.0
+background_texture = ExtResource( 9 )
+ball_texture = ExtResource( 8 )
+action_left = "ui_left"
+action_right = "ui_right"
+action_up = "ui_up"
+action_down = "ui_down"
 [connection signal="Move" from="UI/MoveController" to="." method="_on_MoveController_Move"]
 [connection signal="run" from="UI/MoveController" to="." method="_on_MoveController_run"]
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
