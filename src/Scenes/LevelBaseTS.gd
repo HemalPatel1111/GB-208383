@@ -1,20 +1,19 @@
 extends Spatial
 
-var UP:Vector3 = Vector3(0,1,0) #Camera UP direction
-var Look:Vector3 = Vector3() 	#Camera Look direction
-var Left:Vector3 = Vector3() 	#Camera Left direction
+var UP:  Vector3 = Vector3(0,1,0) #Camera UP direction
+var Look:Vector3 = Vector3()	 #Camera Look direction
+var Left:Vector3 = Vector3()	 #Camera Left direction
 
-var velocity:Vector3 = Vector3() 	#Player Overall Velocity
-var velocityg:Vector3 = Vector3() 	#Player Velocity due to gravity
+var velocity:  Vector3 = Vector3() #Player Overall Velocity
+var velocityg: Vector3 = Vector3() #Player Velocity due to gravity
 
-var frameTime	:float = 0.0	#Time since last frame
-var gravity_accl:float = 9.81	#Gravitational Acceleration
+var frameTime	 :float = 0.0  #Time since last frame
+var gravity_accl :float = 9.81 #Gravitational Acceleration
 
-onready var player		:Player 		= $player		#the player root
-onready var animations	:OptionButton 	= $UI/Options	#animation List
-onready var moveController	:MoveControllerTS 	= $UI/MoveController	#animation List
-
-var action:float = 0
+onready var player		   :Player 			 = $player #the player root
+onready var animations	   :OptionButton 	 = $UI/Options #animation List
+onready var fireWeapon	   :FireWeapon 		 = $UI/fireWeapon #Fire-weapon button
+onready var moveController :MoveControllerTS = $UI/MoveController #player movement controller
 
 func _ready():
 	var list:PoolStringArray
@@ -45,6 +44,8 @@ func _ready():
 	for x in ["Hand", "Pistol", "Rifle"]:
 		$UI/Weapon.add_item(x)
 		
+	fireWeapon.set_Player(player)
+	moveController.set_Player(player)
 	player.set_weapon(0)
 
 func _process(delta):	
@@ -58,20 +59,6 @@ func _process(delta):
 		if abs(velocityg.y) < 0.1: velocityg *= 0
 	
 	velocity = player.move_and_slide(velocityg,UP)
-	$UI/Finger.text = "Fingers"
-	$UI/FingerMove.text = "Move Fingers (Last finger : " + str(moveController.index)  + ")"
-	for x in range(0, 5):
-		$UI/Finger.text += "\n" + ("true" if finger[x] else "false")
-		$UI/FingerMove.text += "\n" + ("true" if moveController.finger[x] else "false")
-
-var finger = [false, false, false, false, false]
-
-func _on_MoveController_Move(speedFront, speedLeft):
-	player.set_move(speedFront, speedLeft)
-	action = (abs(speedFront) + abs(speedLeft) == 0)
-
-func _on_MoveController_run(run):
-	player.set_run(run)
 
 func _on_idle_pressed():
 	player.set_idle_id(animations.get_selected_id())
@@ -101,13 +88,4 @@ func _input(event):
 	if event is InputEventScreenDrag:
 		if moveController.index != (event.index):
 			player.update_rotate(event.relative)
-	pass
-
-func _on_UI_gui_input(event):
-#	if event is InputEventScreenDrag:
-#		if !finger[event.index]:
-#				player.update_rotate(event.relative)
-#
-#	if event is InputEventScreenTouch:
-#		finger[event.index] = moveController.getFinger(event.index)
 	pass

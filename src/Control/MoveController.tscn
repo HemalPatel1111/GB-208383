@@ -31,6 +31,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="Move" from="." to="." method="_on_Move"]
-[connection signal="gui_input" from="." to="." method="_on_Move_gui_input"]
 [connection signal="run" from="." to="." method="_on_run"]
 [connection signal="gui_input" from="Pointer" to="." method="_on_Pointer_gui_input"]

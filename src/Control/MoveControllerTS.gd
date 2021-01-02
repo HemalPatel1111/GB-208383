@@ -8,7 +8,6 @@ var ptr_pos:Vector2 = Vector2()
 var ptr_size:Vector2 = Vector2(60,60)
 
 signal Move(speedFront, speedLeft)
-signal onHit()
 signal run(run)
 
 const RUN_WAIT:float = 2.0
@@ -22,7 +21,10 @@ var runWait	:float = RUN_WAIT
 var onHit	:bool = true
 var run		:bool = false
 
-var finger = [false, false, false, false, false]
+var _player:Player = null
+
+func set_Player(player:Player):
+	_player = player
 
 # $"." means class/script itself
 
@@ -72,10 +74,6 @@ func _touch_started(event: InputEventScreenTouch) -> bool:
 func _touch_ended(event: InputEventScreenTouch) -> bool:
 	return not event.pressed and index == event.index
 
-
-func _on_Move_gui_input(event):
-	pass
-	
 func _input(event):
 	if not (event is InputEventScreenTouch or event is InputEventScreenDrag):
 		return
@@ -120,20 +118,27 @@ func _input(event):
 				_calc_Component(true)
 
 func _on_Pointer_gui_input(event):
-	if event is InputEventScreenTouch:
-		var e:InputEventScreenTouch = event
+#	if event is InputEventScreenTouch:
+#		var e:InputEventScreenTouch = event
+#
+#		if _touch_started(event) and get_rect().has_point(e.position):
+#			index = e.index
+#			onHit = true
+#		elif _touch_ended(e):
+#			index = -1
+#			onHit = false
+#
+#	elif event is InputEventScreenDrag:
+#		var e:InputEventScreenDrag = event
+#
+#		if index == e.index:
+#			ptr_pos += e.relative
+#			ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
+#			_calc_Component(true)
+	pass
 
-		if _touch_started(event) and get_rect().has_point(e.position):
-			index = e.index
-			onHit = true
-		elif _touch_ended(e):
-			index = -1
-			onHit = false
+func _on_Move(speedFront, speedLeft):
+	_player.set_move(speedFront, speedLeft)
 
-	elif event is InputEventScreenDrag:
-		var e:InputEventScreenDrag = event
-
-		if index == e.index:
-			ptr_pos += e.relative
-			ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
-			_calc_Component(true)
+func _on_run(run):
+	_player.set_run(run)

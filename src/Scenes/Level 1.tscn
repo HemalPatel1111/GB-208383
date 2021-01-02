@@ -114,6 +114,14 @@ __meta__ = {
 }
 
 [node name="fireWeapon" parent="UI" instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -164.283
+margin_top = -243.187
+margin_right = -64.2833
+margin_bottom = -143.187
 
 [node name="list" type="Button" parent="UI"]
 margin_left = 218.729
@@ -173,7 +181,6 @@ transform = Transform( 0.882423, 0, -0.470458, 0, 1, 0, 0.470458, 0, 0.882423, -
 light_specular = 1.0
 light_bake_mode = 2
 shadow_enabled = true
-[connection signal="Move" from="UI/MoveController" to="UI/MoveController" method="_on_MoveController_Move"]
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
