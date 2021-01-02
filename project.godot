@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://git_api.gdns"
 }, {
+"base": "Control",
+"class": "Joystick",
+"language": "GDScript",
+"path": "res://Joystick/Joystick.gd"
+}, {
 "base": "TextureButton",
 "class": "MoveController",
 "language": "GDScript",
@@ -39,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Player/Player.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Player1",
+"language": "GDScript",
+"path": "res://Test/Player.gd"
+}, {
 "base": "Node",
 "class": "Weap",
 "language": "GDScript",
@@ -48,9 +58,11 @@ _global_script_class_icons={
 "Boy1": "res://src/Player/boy1.gd",
 "FireWeapon": "",
 "GitAPI": "",
+"Joystick": "",
 "MoveController": "",
 "MoveControllerTS": "",
 "Player": "res://src/Player/Player.gd",
+"Player1": "",
 "Weap": ""
 }
 
@@ -69,6 +81,10 @@ Weapon="*res://src/Player/weapon.gd"
 
 window/size/fullscreen=true
 window/dpi/allow_hidpi=true
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
 
 [gdnative]
 

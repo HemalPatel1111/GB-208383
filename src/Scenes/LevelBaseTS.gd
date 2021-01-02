@@ -58,6 +58,11 @@ func _process(delta):
 		if abs(velocityg.y) < 0.1: velocityg *= 0
 	
 	velocity = player.move_and_slide(velocityg,UP)
+	$UI/Finger.text = "Fingers"
+	$UI/FingerMove.text = "Move Fingers (Last finger : " + str(moveController.index)  + ")"
+	for x in range(0, 5):
+		$UI/Finger.text += "\n" + ("true" if finger[x] else "false")
+		$UI/FingerMove.text += "\n" + ("true" if moveController.finger[x] else "false")
 
 var finger = [false, false, false, false, false]
 
@@ -90,13 +95,12 @@ func _on_fireWeapon_button_down():
 	player.fireIt(true)
 
 func _input(event):
-	if event is InputEventScreenDrag:
-		if !moveController.getFinger(event.index):
-			player.update_rotate(event.relative)
+	if not (event is InputEventScreenTouch or event is InputEventScreenDrag):
+		return
 
-	if event is InputEventScreenTouch:
-		if action:
-			moveController.setFinger(event.index, true)
+	if event is InputEventScreenDrag:
+		if moveController.index != (event.index):
+			player.update_rotate(event.relative)
 	pass
 
 func _on_UI_gui_input(event):

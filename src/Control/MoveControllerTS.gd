@@ -23,16 +23,8 @@ var onHit	:bool = true
 var run		:bool = false
 
 var finger = [false, false, false, false, false]
-var fingers = 0
 
 # $"." means class/script itself
-
-func getFinger(index:int) -> bool:
-	return finger[index]
-	
-func setFinger(index:int, value:bool):
-	if !finger[index]:
-		finger[index] = value
 
 func _process(delta):
 	var pos = $Pointer.get_position()
@@ -72,44 +64,76 @@ func _calc_Component(signalIt:bool = false):
 	if signalIt:
 		emit_signal("Move", FRONT, LEFT)
 
+var index:int = -1
+
+func _touch_started(event: InputEventScreenTouch) -> bool:
+	return event.pressed and index == -1
+
+func _touch_ended(event: InputEventScreenTouch) -> bool:
+	return not event.pressed and index == event.index
+
+
 func _on_Move_gui_input(event):
+	pass
+	
+func _input(event):
+	if not (event is InputEventScreenTouch or event is InputEventScreenDrag):
+		return
+		
 	if not run:
 		if event is InputEventScreenTouch:
 			var e:InputEventScreenTouch = event
 			
-			if e.pressed and get_rect().has_point(e.position + get_position()):
-				ptr_pos = e.position - ptr_pos_at_Rest
+			if _touch_started(event) and get_rect().has_point(e.position):
+				ptr_pos = e.position - ptr_pos_at_Rest - get_position()
 				_calc_Component(true)
-				finger[e.index] = true
-			else:
-				finger[e.index] = false
+				
+				index = e.index
+				onHit = true
+			elif _touch_ended(e):
+				index = -1
+				onHit = false
 		
-		if event is InputEventScreenDrag:
+		elif event is InputEventScreenDrag:
 			var e:InputEventScreenDrag = event
 			
-			if finger[e.index]:
+			if index == e.index:
 				ptr_pos += e.relative
 				ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
 				_calc_Component(true)
-		
-		onHit = false
-		for i in range(0,5):
-			onHit = onHit or finger[i]
+	else:
+		if event is InputEventScreenTouch:
+			var e:InputEventScreenTouch = event
+			
+			if _touch_started(event) and get_rect().has_point(e.position):
+				index = e.index
+				onHit = true
+			elif _touch_ended(e):
+				index = -1
+				onHit = false
+		elif event is InputEventScreenDrag:
+			var e:InputEventScreenDrag = event
+			
+			if index == e.index:
+				ptr_pos += e.relative
+				ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
+				_calc_Component(true)
 
 func _on_Pointer_gui_input(event):
-	
 	if event is InputEventScreenTouch:
 		var e:InputEventScreenTouch = event
-		
-		if e.pressed and get_rect().has_point(e.position + get_position()):
-			finger[e.index] = true
-		else:
-			finger[e.index] = false
-	
-	if event is InputEventScreenDrag:
+
+		if _touch_started(event) and get_rect().has_point(e.position):
+			index = e.index
+			onHit = true
+		elif _touch_ended(e):
+			index = -1
+			onHit = false
+
+	elif event is InputEventScreenDrag:
 		var e:InputEventScreenDrag = event
-		
-		if finger[e.index]:
+
+		if index == e.index:
 			ptr_pos += e.relative
 			ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
 			_calc_Component(true)
