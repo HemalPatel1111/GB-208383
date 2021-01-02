@@ -1,6 +1,4 @@
 extends Node
-class_name Weap
+class_name Weapon
 
-var WEAPON_HAND:int = 0
-var WEAPON_PISTOL:int = 1
-var WEAPON_RIFLE:int = 2
+enum {WEAPON_HAND, WEAPON_PISTOL, WEAPON_RIFLE}

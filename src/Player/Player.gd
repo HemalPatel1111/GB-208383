@@ -29,12 +29,11 @@ func set_run_id(id:int):
 func set_fire_id(id:int):
 	fire_id = id
 
-func set_weapon(weapon_id:int):
+func set_weapon(weapon:int) :
 	pass
 
 func fireIt(value:bool):
 	fire = value
-	pass
 
 func move_and_slide(velocityg:Vector3, UP:Vector3) -> Vector3:
 	return Vector3()

@@ -32,15 +32,16 @@ var PLAYER_RUN_RIFLE:float = 4.9166 * PLAYER_SCALE
 var player_walk:float = PLAYER_WALK
 var player_run:float = PLAYER_RUN
 
-var mouse_sens	:float = 0.25					#Mouse sensitivity
+export var mouse_sens			:float = 0.01					#Mouse sensitivity
+export var rotation_multiplier	:float = 25.0
 var frameTime	:float = 0.0					#Time since last frame
 
 onready var player			:Player 		= $"."			#the player root
 onready var playerCharacter :KinematicBody 	= $Boy		#the player Character
 onready var camera			:Camera			= $Camera
 
-func set_run(run:bool):
-	player.run = run
+func set_run(running:bool):
+	run = running
 
 func init():
 	rot = camera.rotation
@@ -53,18 +54,18 @@ func init():
 	trackerDirBase = trackerDirBase.normalized()
 	trackerDir = trackerDirBase
 
-func set_weapon(weapon_id:int):
-	match weapon_id:
+func set_weapon(weapon:int):
+	match weapon:
 		Weapon.WEAPON_HAND:
-			idle_id = 43 ; walk_id = 51; run_id = 49; fire_id = 1
+			idle_id = 66 ; walk_id = 72; run_id = 70; fire_id = 1
 			player_walk = PLAYER_WALK
 			player_run = PLAYER_RUN
 		Weapon.WEAPON_PISTOL:
-			idle_id = 3; walk_id = 14; run_id = 9; fire_id = 10
+			idle_id = 3; walk_id = 19; run_id = 9; fire_id = 10
 			player_walk = PLAYER_WALK_PISTOL
 			player_run = PLAYER_RUN_PISTOL
 		Weapon.WEAPON_RIFLE:
-			idle_id = 27; walk_id = 42; run_id = 35; fire_id = 20
+			idle_id = 33; walk_id = 60; run_id = 47; fire_id = 26
 			player_walk = PLAYER_WALK_RIFLE
 			player_run = PLAYER_RUN_RIFLE
 
@@ -108,8 +109,8 @@ func update(delta):
 	camera.translation += trackerDir * trackerDist
 
 func update_rotate(dir:Vector2):
-	rot.y += -dir.x * mouse_sens * frameTime
-	rot.x += -dir.y * mouse_sens * frameTime
+	rot.y += -dir.x * mouse_sens * frameTime * rotation_multiplier
+	rot.x += -dir.y * mouse_sens * frameTime * rotation_multiplier
 	rot.x = -min(max(-rot.x,-PI/8),PI/2)
 	camera.rotation = rot
 
@@ -125,15 +126,15 @@ func loadAnimationList() -> PoolStringArray:
 func is_on_floor() -> bool:
 	return playerCharacter.is_on_floor()
 	
-func move_and_slide(velocityg:Vector3, UP:Vector3) -> Vector3:
-	return playerCharacter.move_and_slide(velocityg,UP)
+func move_and_slide(velocityg:Vector3, _Up:Vector3) -> Vector3:
+	return playerCharacter.move_and_slide(velocityg,_Up)
 	
 func animate_id(id:int, forward:bool = true):
 	var name:String = AnimationList[id]
-	play_animation(name)
+	play_animation(name, forward)
 
 func animate(name:String, forward:bool = true):
-	play_animation(name)
+	play_animation(name, forward)
 
 func _fire():
 	if fire_id >= 0 : animate_id(fire_id)

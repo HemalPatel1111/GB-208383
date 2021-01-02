@@ -8,7 +8,7 @@ var velocity:  Vector3 = Vector3() #Player Overall Velocity
 var velocityg: Vector3 = Vector3() #Player Velocity due to gravity
 
 var frameTime	 :float = 0.0  #Time since last frame
-var gravity_accl :float = 9.81 #Gravitational Acceleration
+export var gravity :float = 9.81 #Gravitational Acceleration
 
 onready var player		   :Player 			 = $player #the player root
 onready var animations	   :OptionButton 	 = $UI/Options #animation List
@@ -46,13 +46,13 @@ func _ready():
 		
 	fireWeapon.set_Player(player)
 	moveController.set_Player(player)
-	player.set_weapon(0)
+	player.set_weapon(Weapon.WEAPON_HAND)
 
 func _process(delta):	
 	frameTime = delta
 	player.update(delta)
 	
-	velocityg.y -= gravity_accl * delta
+	velocityg.y -= gravity * delta
 	
 	if player.is_on_floor():
 		velocityg.y = abs(velocityg.y) * sqrt(0)

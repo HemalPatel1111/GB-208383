@@ -17,3 +17,4 @@ __meta__ = {
 scale = Vector2( 0.33, 0.33 )
 normal = ExtResource( 1 )
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_TouchScreenButton_released"]

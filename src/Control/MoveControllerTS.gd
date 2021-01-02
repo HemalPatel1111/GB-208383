@@ -2,15 +2,15 @@ extends TextureButton
 class_name MoveControllerTS
 
 export var sensitivity:float = 0.01
+export var RUN_WAIT:float = 0.1
 
-var ptr_pos_at_Rest:Vector2 = Vector2(65,65)
+var ptr_pos_at_Rest:Vector2 = Vector2()
 var ptr_pos:Vector2 = Vector2()
-var ptr_size:Vector2 = Vector2(60,60)
+var ptr_size:Vector2 = Vector2()
 
 signal Move(speedFront, speedLeft)
 signal run(run)
 
-const RUN_WAIT:float = 2.0
 
 var FRONT	:float = 0
 var oldFRONT:float = 0
@@ -23,6 +23,10 @@ var run		:bool = false
 
 var _player:Player = null
 
+func _ready():
+	ptr_size = $Pointer.get_rect().size
+	ptr_pos_at_Rest = get_rect().size / 2
+
 func set_Player(player:Player):
 	_player = player
 
@@ -30,7 +34,7 @@ func set_Player(player:Player):
 
 func _process(delta):
 	var pos = $Pointer.get_position()
-	var deltaPos = ptr_pos_at_Rest - pos
+	var deltaPos = ptr_pos_at_Rest - pos - ptr_size / 2
 	
 	_calc_Component()
 	
@@ -49,14 +53,14 @@ func _process(delta):
 	if not run:
 		if(!onHit):
 			$Pointer.set_position(pos + deltaPos / 5)
-			ptr_pos = pos - ptr_pos_at_Rest
+			ptr_pos = pos - ptr_pos_at_Rest + ptr_size / 2
 			if ptr_pos.length() > 0.1:
 				emit_signal("Move", FRONT, LEFT)
 		else:
-			$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
+			$Pointer.set_position(ptr_pos_at_Rest + ptr_pos - ptr_size / 2)
 	else:
 		if(onHit):
-			$Pointer.set_position(ptr_pos_at_Rest + ptr_pos)
+			$Pointer.set_position(ptr_pos_at_Rest + ptr_pos - ptr_size / 2)
 
 func _calc_Component(signalIt:bool = false):
 	oldFRONT = FRONT
@@ -70,6 +74,15 @@ var index:int = -1
 
 func _touch_started(event: InputEventScreenTouch) -> bool:
 	return event.pressed and index == -1
+	
+func _holded(event: InputEventScreenTouch) -> bool:
+	return _holded_Move(event) or _holded_Pointer(event)
+
+func _holded_Move(event: InputEventScreenTouch) -> bool:
+	return get_rect().has_point(event.position)
+	
+func _holded_Pointer(event: InputEventScreenTouch) -> bool:
+	return $Pointer.get_rect().has_point(event.position - get_position())
 
 func _touch_ended(event: InputEventScreenTouch) -> bool:
 	return not event.pressed and index == event.index
@@ -82,7 +95,7 @@ func _input(event):
 		if event is InputEventScreenTouch:
 			var e:InputEventScreenTouch = event
 			
-			if _touch_started(event) and get_rect().has_point(e.position):
+			if _touch_started(e) and _holded(e):
 				ptr_pos = e.position - ptr_pos_at_Rest - get_position()
 				_calc_Component(true)
 				
@@ -103,7 +116,7 @@ func _input(event):
 		if event is InputEventScreenTouch:
 			var e:InputEventScreenTouch = event
 			
-			if _touch_started(event) and get_rect().has_point(e.position):
+			if _touch_started(event) and  _holded_Pointer(e):
 				index = e.index
 				onHit = true
 			elif _touch_ended(e):
@@ -117,28 +130,8 @@ func _input(event):
 				ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
 				_calc_Component(true)
 
-func _on_Pointer_gui_input(event):
-#	if event is InputEventScreenTouch:
-#		var e:InputEventScreenTouch = event
-#
-#		if _touch_started(event) and get_rect().has_point(e.position):
-#			index = e.index
-#			onHit = true
-#		elif _touch_ended(e):
-#			index = -1
-#			onHit = false
-#
-#	elif event is InputEventScreenDrag:
-#		var e:InputEventScreenDrag = event
-#
-#		if index == e.index:
-#			ptr_pos += e.relative
-#			ptr_pos = min(ptr_pos.length(),100) * ptr_pos.normalized()
-#			_calc_Component(true)
-	pass
-
 func _on_Move(speedFront, speedLeft):
 	_player.set_move(speedFront, speedLeft)
 
-func _on_run(run):
-	_player.set_run(run)
+func _on_run(running):
+	_player.set_run(running)
