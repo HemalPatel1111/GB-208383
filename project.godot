@@ -82,10 +82,6 @@ Weapon="*res://src/Player/weapon.gd"
 window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 
-[editor_plugins]
-
-enabled=PoolStringArray(  )
-
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]
