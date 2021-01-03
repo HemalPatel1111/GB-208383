@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="SunLight" type="DirectionalLight"]
+transform = Transform( -1.62921e-07, -0.573577, 0.819152, 0, 0.819152, 0.573577, -1, 9.34475e-08, -1.33457e-07, 0, 5, 5 )
+light_specular = 1.0
+light_bake_mode = 2
+shadow_enabled = true

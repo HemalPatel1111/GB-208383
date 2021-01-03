@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Control/fireWeapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Scenes/LevelBaseTS.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Player/boy1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Scenes/Farm_house.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=7]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 200, 200 )
@@ -174,14 +175,16 @@ margin_bottom = 142.122
 align = 1
 valign = 1
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.882423, 0, -0.470458, 0, 1, 0, 0.470458, 0, 0.882423, -3.98457, 0.996172, 3.62648 )
-light_specular = 1.0
-light_bake_mode = 2
-shadow_enabled = true
+[node name="SunLight" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0.573577, -0.819152, 0, 0.819152, 0.573576, 1, 9.34475e-08, -1.33457e-07, 0, 5, 7.76414 )
+shadow_bias = 0.01
+directional_shadow_blend_splits = true
+directional_shadow_normal_bias = 0.2
+directional_shadow_bias_split_scale = 0.1
+directional_shadow_max_distance = 200.0
 
 [node name="player" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.6745, 0.997942, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.6745, -0.0143234, 0 )
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
