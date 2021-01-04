@@ -92,7 +92,9 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 quality/driver/fallback_to_gles2=true
+vram_compression/import_bptc=true
 vram_compression/import_etc=true
+vram_compression/import_pvrtc=true
 quality/shadow_atlas/size.mobile=4096
 quality/shadows/filter_mode.mobile=1
 quality/reflections/texture_array_reflections.mobile=true
