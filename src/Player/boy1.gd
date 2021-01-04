@@ -56,15 +56,15 @@ func init():
 
 func set_weapon(weapon:int):
 	match weapon:
-		Weapon.WEAPON_HAND:
+		Weapon.HAND:
 			idle_id = 66 ; walk_id = 72; run_id = 70; fire_id = 1
 			player_walk = PLAYER_WALK
 			player_run = PLAYER_RUN
-		Weapon.WEAPON_PISTOL:
+		Weapon.PISTOL:
 			idle_id = 3; walk_id = 19; run_id = 9; fire_id = 10
 			player_walk = PLAYER_WALK_PISTOL
 			player_run = PLAYER_RUN_PISTOL
-		Weapon.WEAPON_RIFLE:
+		Weapon.RIFLE:
 			idle_id = 33; walk_id = 60; run_id = 47; fire_id = 26
 			player_walk = PLAYER_WALK_RIFLE
 			player_run = PLAYER_RUN_RIFLE

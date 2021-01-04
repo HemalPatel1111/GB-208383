@@ -43,6 +43,11 @@ _global_script_classes=[ {
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://src/Player/weapon.gd"
+}, {
+"base": "Control",
+"class": "WeaponSelector",
+"language": "GDScript",
+"path": "res://src/Control/WeaponSelector.gd"
 } ]
 _global_script_class_icons={
 "Boy1": "res://src/Player/boy1.gd",
@@ -51,7 +56,8 @@ _global_script_class_icons={
 "MoveController": "",
 "MoveControllerTS": "",
 "Player": "res://src/Player/Player.gd",
-"Weapon": ""
+"Weapon": "",
+"WeaponSelector": ""
 }
 
 [application]
@@ -63,6 +69,7 @@ config/icon="res://icon.png"
 
 [display]
 
+window/size/borderless=true
 window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 

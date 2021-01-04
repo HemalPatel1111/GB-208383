@@ -1,0 +1,267 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/Control/fireWeapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Scenes/LevelBaseTS.gd" type="Script" id=2]
+[ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
+[ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Player/boy1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Scenes/House.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Control/WeaponSelector.tscn" type="PackedScene" id=8]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 200, 200 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 3 )
+transmission_enabled = true
+transmission = Color( 0, 0, 0, 1 )
+uv1_scale = Vector3( 150, 150, 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 200, 0.1, 200 )
+
+[node name="Level 1" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Gifts" type="Spatial" parent="."]
+
+[node name="Ground" type="StaticBody" parent="."]
+
+[node name="Landscape" type="MeshInstance" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8905, -2.38419e-07, 15.5255 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+shape = SubResource( 3 )
+
+[node name="Houses" type="Spatial" parent="."]
+
+[node name="House" parent="Houses" instance=ExtResource( 6 )]
+
+[node name="House2" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, -7.83244, 2.45, 0.504423 )
+
+[node name="House3" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, -5.23276 )
+
+[node name="House4" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, -7.83244, 2.45, -4.72833 )
+
+[node name="House5" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, -10.2511 )
+
+[node name="House6" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, -7.83244, 2.45, -9.74663 )
+
+[node name="House7" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, -15.4838 )
+
+[node name="House8" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, -7.83244, 2.45, -14.9794 )
+
+[node name="House9" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, 10.2939 )
+
+[node name="House10" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, -7.83244, 2.45, 10.7984 )
+
+[node name="House11" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, 5.06119 )
+
+[node name="House12" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, -7.83244, 2.45, 5.56561 )
+
+[node name="House13" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6077, 2.45, 0 )
+
+[node name="House14" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, 8.77522, 2.45, 0.504423 )
+
+[node name="House25" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -5.24958e-05, 0, -1, 0, 1, 0, 1, 0, -5.24958e-05, 4.57135, 2.45, 16.8726 )
+
+[node name="House26" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 0.00835989, 0, -0.999965, 0, 1, 0, 0.999965, 0, 0.00835989, -4.14384, 2.45, 16.9042 )
+
+[node name="House27" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -0.0163356, 0, -0.999867, 0, 1, 0, 0.999867, 0, -0.0163356, 13.41, 2.45, 16.9357 )
+
+[node name="House28" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 0.00197215, 0, 0.999998, 0, 1, 0, -0.999998, 0, 0.00197215, 4.34466, 2.45, -21.9772 )
+
+[node name="House29" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -0.00644028, 0, 0.999979, 0, 1, 0, -0.999979, 0, -0.00644028, 13.0599, 2.45, -21.992 )
+
+[node name="House30" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 0.018255, 0, 0.999833, 0, 1, 0, -0.999833, 0, 0.018255, -4.49389, 2.45, -22.0572 )
+
+[node name="House15" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6077, 2.45, -5.23276 )
+
+[node name="House16" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, 8.77522, 2.45, -4.72833 )
+
+[node name="House17" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6077, 2.45, -10.2511 )
+
+[node name="House18" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, 8.77522, 2.45, -9.74663 )
+
+[node name="House19" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6077, 2.45, -15.4838 )
+
+[node name="House20" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, 8.77522, 2.45, -14.9794 )
+
+[node name="House21" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6077, 2.45, 10.2939 )
+
+[node name="House22" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, 8.77522, 2.45, 10.7984 )
+
+[node name="House23" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6077, 2.45, 5.06119 )
+
+[node name="House24" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -0.000453623, 0, 1, 0, 0.000453623, 0, -1, 8.77522, 2.45, 5.56561 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.005
+margin_right = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2D" type="Node2D" parent="UI"]
+position = Vector2( -1, 2 )
+
+[node name="MoveController" parent="UI" instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = -303.0
+margin_right = 300.0
+margin_bottom = -103.0
+RUN_WAIT = 2.0
+
+[node name="idle" type="Button" parent="UI"]
+visible = false
+margin_left = 32.0
+margin_top = 45.0
+margin_right = 51.0
+margin_bottom = 65.0
+text = "I"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="walk" type="Button" parent="UI"]
+visible = false
+margin_left = 55.1914
+margin_top = 45.0
+margin_right = 80.1914
+margin_bottom = 65.0
+text = "W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="run" type="Button" parent="UI"]
+visible = false
+margin_left = 83.7646
+margin_top = 45.0
+margin_right = 108.765
+margin_bottom = 65.0
+text = "R"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fire" type="Button" parent="UI"]
+visible = false
+margin_left = 112.355
+margin_top = 45.8409
+margin_right = 137.355
+margin_bottom = 65.8409
+text = "F"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fireWeapon" parent="UI" instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -160.72
+margin_top = -253.0
+margin_right = -60.7197
+margin_bottom = -153.0
+
+[node name="list" type="Button" parent="UI"]
+visible = false
+margin_left = 218.729
+margin_top = 47.9431
+margin_right = 253.729
+margin_bottom = 67.9431
+text = "List"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="OptionButton" parent="UI"]
+visible = false
+margin_left = 33.0
+margin_top = 20.0
+margin_right = 256.0
+margin_bottom = 40.0
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon" type="OptionButton" parent="UI"]
+visible = false
+margin_left = 34.6818
+margin_top = 77.181
+margin_right = 257.682
+margin_bottom = 97.181
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeopanSelector" parent="UI" instance=ExtResource( 8 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -151.267
+margin_top = 44.2922
+margin_right = -51.2672
+margin_bottom = 144.293
+
+[node name="SunLight" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0.573577, -0.819152, 0, 0.819152, 0.573576, 1, 9.34475e-08, -1.33457e-07, 0, 5, 7.76414 )
+light_energy = 0.3
+light_indirect_energy = 0.0
+shadow_bias = 0.01
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_normal_bias = 0.65
+directional_shadow_bias_split_scale = 0.2
+directional_shadow_max_distance = 200.0
+
+[node name="player" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4.35699, -0.0143234, -2.58641 )
+[connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
+[connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
+[connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="UI/fire" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="UI/list" to="." method="_on_list_pressed"]
+[connection signal="item_selected" from="UI/Weapon" to="." method="_on_Weapon_item_selected"]

@@ -14,6 +14,7 @@ onready var player		   :Player 			 = $player #the player root
 onready var animations	   :OptionButton 	 = $UI/Options #animation List
 onready var fireWeapon	   :FireWeapon 		 = $UI/fireWeapon #Fire-weapon button
 onready var moveController :MoveControllerTS = $UI/MoveController #player movement controller
+onready var weaponSelector :WeaponSelector   = $UI/WeopanSelector #player movement controller
 
 func _ready():
 	var list:PoolStringArray
@@ -46,7 +47,9 @@ func _ready():
 		
 	fireWeapon.set_Player(player)
 	moveController.set_Player(player)
-	player.set_weapon(Weapon.WEAPON_HAND)
+	weaponSelector.set_Player(player)
+	
+	player.set_weapon(Weapon.HAND)
 
 func _process(delta):	
 	frameTime = delta
@@ -86,6 +89,11 @@ func _input(event):
 		return
 
 	if event is InputEventScreenDrag:
-		if moveController.index != (event.index):
+		var check:bool = false
+		check = moveController.index != (event.index)
+		check = check and fireWeapon.index != (event.index)
+		check = check and weaponSelector.index != (event.index)
+		
+		if check:
 			player.update_rotate(event.relative)
 	pass

@@ -2,7 +2,12 @@
 
 [sub_resource type="ProceduralSky" id=1]
 radiance_size = 1
+sky_top_color = Color( 0, 0, 0, 1 )
+sky_horizon_color = Color( 0.00392157, 0.00392157, 0.0313726, 1 )
 sun_longitude = -90.0
+sun_angle_max = 30.0
+sun_curve = 0.02
+sun_energy = 0.3
 texture_size = 1
 
 [resource]

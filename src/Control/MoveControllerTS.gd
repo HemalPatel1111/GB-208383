@@ -8,6 +8,10 @@ var ptr_pos_at_Rest:Vector2 = Vector2()
 var ptr_pos:Vector2 = Vector2()
 var ptr_size:Vector2 = Vector2()
 
+var press_color:Color = Color(0.8,0.8,0.8,0.8)
+var normal_color:Color = Color(1.0,1.0,1.0,1.0)
+
+
 signal Move(speedFront, speedLeft)
 signal run(run)
 
@@ -100,9 +104,11 @@ func _input(event):
 				_calc_Component(true)
 				
 				index = e.index
+				$Pointer.modulate = press_color
 				onHit = true
 			elif _touch_ended(e):
 				index = -1
+				$Pointer.modulate = normal_color
 				onHit = false
 		
 		elif event is InputEventScreenDrag:
@@ -118,6 +124,7 @@ func _input(event):
 			
 			if _touch_started(event) and  _holded_Pointer(e):
 				index = e.index
+				$Pointer.modulate = press_color
 				onHit = true
 			elif _touch_ended(e):
 				index = -1
