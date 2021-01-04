@@ -247,18 +247,10 @@ margin_top = 44.2922
 margin_right = -51.2672
 margin_bottom = 144.293
 
-[node name="SunLight" parent="." instance=ExtResource( 7 )]
-transform = Transform( -1.62921e-07, 0.573577, -0.819152, 0, 0.819152, 0.573576, 1, 9.34475e-08, -1.33457e-07, 0, 5, 7.76414 )
-light_color = Color( 0.419608, 0.419608, 0.419608, 1 )
-light_indirect_energy = 0.0
-shadow_bias = 0.01
-directional_shadow_blend_splits = true
-directional_shadow_normal_bias = 0.65
-directional_shadow_bias_split_scale = 0.2
-directional_shadow_max_distance = 200.0
-
 [node name="player" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4.35699, -0.0143234, -2.58641 )
+
+[node name="SunLight" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]

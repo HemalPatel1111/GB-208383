@@ -1,22 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://src/Control/WeaponSelector.gd" type="Script" id=2]
 
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/hand.1e.png-8edcd3d59888f0b3ab053dbe8c28dffe.stex"
-
 [node name="WeopanSelector" type="Control"]
-margin_left = 100.0
-margin_top = 100.0
-margin_right = 200.0
-margin_bottom = 200.0
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Button" type="TouchScreenButton" parent="."]
-show_behind_parent = true
-scale = Vector2( 0.33, 0.33 )
-normal = SubResource( 1 )

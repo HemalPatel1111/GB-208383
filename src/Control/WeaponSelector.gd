@@ -32,6 +32,9 @@ func _holded(e: InputEventScreenTouch) -> bool:
 
 var xdir:= 1
 
+func _ready():
+	texture.load(Icon[weapon])
+
 func _process(delta):
 	update()
 	
@@ -61,7 +64,7 @@ func _input(event):
 			
 			_player.set_weapon(weapon)
 			texture.load(Icon[weapon])
-			$Button.set_texture(texture)
+#			$Button.set_texture(texture)
 	elif event is InputEventScreenDrag:
 		var e:InputEventScreenDrag = event
 		
@@ -72,7 +75,15 @@ func _input(event):
 				xdir = 1
 
 func _draw():
+		
+	color.a = 0.5
+	draw_circle(cen, 70, color)	
+	draw_set_transform(Vector2(), 0, Vector2(0.33,0.33))
+	draw_texture(texture, Vector2())
+	
+	draw_set_transform(-get_position(), 0, Vector2(1,1))
 	if index >= 0:
-		draw_set_transform(-get_position(), 0, Vector2(1,1))
+		color.a = 1
 		draw_rect(get_rect(), color, false)
+
 	pass
