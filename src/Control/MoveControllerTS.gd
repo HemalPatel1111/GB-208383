@@ -56,7 +56,7 @@ func _process(delta):
 	
 	if not run:
 		if(!onHit):
-			$Pointer.set_position(pos + deltaPos / 5)
+			$Pointer.set_position(pos + deltaPos / 1.5)
 			ptr_pos = pos - ptr_pos_at_Rest + ptr_size / 2
 			if ptr_pos.length() > 0.1:
 				emit_signal("Move", FRONT, LEFT)
