@@ -5,15 +5,16 @@ type="StreamTexture"
 path.s3tc="res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.s3tc.stex"
 path.etc2="res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.etc2.stex"
 path.etc="res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.etc.stex"
+path.pvrtc="res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.pvrtc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
+"imported_formats": [ "bptc", "s3tc", "etc2", "etc", "pvrtc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Textures/20749278-square-of-grass-texture.jpg"
-dest_files=[ "res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.s3tc.stex", "res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.etc2.stex", "res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.etc.stex" ]
+dest_files=[ "res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.s3tc.stex", "res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.etc2.stex", "res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.etc.stex", "res://.import/20749278-square-of-grass-texture.jpg-09c2767af687f0e083e1208794d3e241.pvrtc.stex" ]
 
 [params]
 
