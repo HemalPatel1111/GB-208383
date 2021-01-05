@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Menu/UI/Components/SceneButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Menu/Main.gd" type="Script" id=3]
 [ext_resource path="res://src/Menu/UI/Components/QuitButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Scenes/LevelBase.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Scenes/Level0.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0

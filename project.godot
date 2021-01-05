@@ -91,6 +91,7 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 vram_compression/import_bptc=true
 vram_compression/import_etc=true
@@ -100,4 +101,4 @@ quality/shadows/filter_mode.mobile=1
 quality/reflections/texture_array_reflections.mobile=true
 quality/reflections/high_quality_ggx.mobile=true
 quality/depth/hdr.mobile=true
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://src/Player/default_env.tres"

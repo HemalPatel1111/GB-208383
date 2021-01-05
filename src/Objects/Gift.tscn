@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/Gift/Box1/11564_Gift_Box_v1_l2.obj" type="ArrayMesh" id=1]
+
+[node name="Gift" type="Spatial"]
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 0, 0, 0 )
+
+[node name="11564_Gift_Box_v1_l2" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null

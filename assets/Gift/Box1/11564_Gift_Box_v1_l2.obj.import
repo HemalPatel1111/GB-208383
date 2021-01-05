@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/11564_Gift_Box_v1_l2.obj-b065c78985fc5deaa13fba5246bee167.mesh"
+
+[deps]
+
+files=[ "res://.import/11564_Gift_Box_v1_l2.obj-b065c78985fc5deaa13fba5246bee167.mesh" ]
+
+source_file="res://assets/Gift/Box1/11564_Gift_Box_v1_l2.obj"
+dest_files=[ "res://.import/11564_Gift_Box_v1_l2.obj-b065c78985fc5deaa13fba5246bee167.mesh", "res://.import/11564_Gift_Box_v1_l2.obj-b065c78985fc5deaa13fba5246bee167.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

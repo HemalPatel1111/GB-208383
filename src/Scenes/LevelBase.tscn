@@ -5,12 +5,12 @@
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Player/boy1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/Scenes/House.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Scenes/house/House.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Control/WeaponSelector.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PlaneMesh" id=1]
-size = Vector2( 200, 200 )
+size = Vector2( 373, 253 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 3 )
@@ -19,14 +19,16 @@ transmission = Color( 0, 0, 0, 1 )
 uv1_scale = Vector3( 150, 150, 1 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 200, 0.1, 200 )
+extents = Vector3( 373, 0.1, 253 )
 
 [node name="Level 1" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -186.5, 0, -126.5 )
 script = ExtResource( 2 )
 
 [node name="Gifts" type="Spatial" parent="."]
 
 [node name="Ground" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 186.5, 0, 126.5 )
 
 [node name="Landscape" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8905, -2.38419e-07, 15.5255 )
@@ -43,94 +45,94 @@ shape = SubResource( 3 )
 [node name="Houses" type="Spatial" parent="."]
 
 [node name="House" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 180.165, 0, 124.88 )
 
 [node name="House2" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, -7.83244, 0, 0.504423 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 172.332, 0, 125.384 )
 
 [node name="House3" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -5.23276 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 180.165, 0, 119.647 )
 
 [node name="House4" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, -7.83244, 0, -4.72833 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 172.332, 0, 120.151 )
 
 [node name="House5" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -10.2511 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 180.165, 0, 114.629 )
 
 [node name="House6" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, -7.83244, 0, -9.74663 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 172.332, 0, 115.133 )
 
 [node name="House7" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -15.4838 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 180.165, 0, 109.396 )
 
 [node name="House8" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, -7.83244, 0, -14.9794 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 172.332, 0, 109.9 )
 
 [node name="House9" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 10.2939 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 180.165, 0, 135.174 )
 
 [node name="House10" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, -7.83244, 0, 10.7984 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 172.332, 0, 135.678 )
 
 [node name="House11" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 5.06119 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 180.165, 0, 129.941 )
 
 [node name="House12" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, -7.83244, 0, 5.56561 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 172.332, 0, 130.445 )
 
 [node name="House13" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6077, 0, 0 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 196.773, 0, 124.88 )
 
 [node name="House14" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 8.77522, 0, 0.504423 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 188.94, 0, 125.384 )
 
 [node name="House25" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -0.000262479, 0, -5, 0, 5, 0, 5, 0, -0.000262479, 4.57135, 0, 16.8726 )
+transform = Transform( -0.000262479, 0, -5, 0, 5, 0, 5, 0, -0.000262479, 184.736, 0, 141.752 )
 
 [node name="House26" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 0.0417994, 0, -4.99983, 0, 5, 0, 4.99983, 0, 0.0417994, -4.14384, 0, 16.9042 )
+transform = Transform( 0.0417994, 0, -4.99983, 0, 5, 0, 4.99983, 0, 0.0417994, 176.021, 0, 141.784 )
 
 [node name="House27" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -0.0816782, 0, -4.99933, 0, 5, 0, 4.99933, 0, -0.0816782, 13.41, 0, 16.9357 )
+transform = Transform( -0.0816782, 0, -4.99933, 0, 5, 0, 4.99933, 0, -0.0816782, 193.575, 0, 141.815 )
 
 [node name="House28" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 0.00986077, 0, 4.99999, 0, 5, 0, -4.99999, 0, 0.00986077, 4.34466, 0, -21.9772 )
+transform = Transform( 0.00986077, 0, 4.99999, 0, 5, 0, -4.99999, 0, 0.00986077, 184.51, 0, 102.902 )
 
 [node name="House29" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -0.0322014, 0, 4.9999, 0, 5, 0, -4.9999, 0, -0.0322014, 13.0599, 0, -21.992 )
+transform = Transform( -0.0322014, 0, 4.9999, 0, 5, 0, -4.9999, 0, -0.0322014, 193.225, 0, 102.888 )
 
 [node name="House30" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 0.0912751, 0, 4.99917, 0, 5, 0, -4.99917, 0, 0.0912751, -4.49389, 0, -22.0572 )
+transform = Transform( 0.0912751, 0, 4.99917, 0, 5, 0, -4.99917, 0, 0.0912751, 175.671, 0, 102.822 )
 
 [node name="House15" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6077, 0, -5.23276 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 196.773, 0, 119.647 )
 
 [node name="House16" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 8.77522, 0, -4.72833 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 188.94, 0, 120.151 )
 
 [node name="House17" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6077, 0, -10.2511 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 196.773, 0, 114.629 )
 
 [node name="House18" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 8.77522, 0, -9.74663 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 188.94, 0, 115.133 )
 
 [node name="House19" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6077, 0, -15.4838 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 196.773, 0, 109.396 )
 
 [node name="House20" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 8.77522, 0, -14.9794 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 188.94, 0, 109.9 )
 
 [node name="House21" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6077, 0, 10.2939 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 196.773, 0, 135.174 )
 
 [node name="House22" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 8.77522, 0, 10.7984 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 188.94, 0, 135.678 )
 
 [node name="House23" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 16.6077, 0, 5.06119 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 196.773, 0, 129.941 )
 
 [node name="House24" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 8.77522, 0, 5.56561 )
+transform = Transform( -5, 0, -0.00226812, 0, 5, 0, 0.00226812, 0, -5, 188.94, 0, 130.445 )
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
@@ -248,7 +250,7 @@ margin_right = -51.2672
 margin_bottom = 144.293
 
 [node name="player" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4.35699, -0.0143234, -2.58641 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 184.046, -0.0143234, 119.676 )
 
 [node name="SunLight" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
