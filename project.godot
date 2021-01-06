@@ -91,10 +91,6 @@ run/main_scene="res://src/Menu/Main.tscn"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
 
-[autoload]
-
-GiftData="*res://src/Control/GiftData.gd"
-
 [display]
 
 window/size/borderless=true
