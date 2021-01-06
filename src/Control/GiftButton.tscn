@@ -11,17 +11,20 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 30.0
-margin_right = 200.0
-margin_bottom = 25.0
+anchor_left = 0.15
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.90735e-06
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Icon" type="TextureButton" parent="."]
-margin_right = 25.0
-margin_bottom = 25.0
+anchor_right = 0.125
+anchor_bottom = 1.0
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="ready" from="Label" to="." method="_on_Label_ready"]
+[connection signal="ready" from="Icon" to="." method="_on_Icon_ready"]
