@@ -16,6 +16,5 @@ margin_bottom = 300.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="gui_input" from="." to="." method="_on_Node2D_gui_input"]
 [connection signal="ready" from="Tree" to="." method="_on_Tree_ready"]
 [connection signal="tree_entered" from="Tree" to="." method="_on_Tree_tree_entered"]
