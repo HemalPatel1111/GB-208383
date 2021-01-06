@@ -13,12 +13,12 @@ func _process(delta):
 
 func load_gift(id:int, type_id:int):
 	GiftData.load_data()
-	var path:String= GiftData.gifts_icons[type_id - 1]
+	var path:String= GiftData.gifts_icons[type_id]
 	texture = load(path)
 	index = id - 1
-	$Icon.set_stretch_mode(5)
-	$Icon.set_expand(true)
-	$Icon.set_pressed_texture(texture)
+#	$Icon.set_stretch_mode(5)
+#	$Icon.set_expand(true)
+	$Icon.set_normal_texture(texture)
 	$Label.text = "Gift " + str(index + 1)
 
 func _on_Label_ready():

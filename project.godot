@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Gift",
 "language": "GDScript",
-"path": "res://src/Objects/Gift.gd"
+"path": "res://src/Objects/Gifts/Gift.gd"
 }, {
 "base": "Control",
 "class": "GiftButton",

@@ -12,7 +12,10 @@ func _ready():
 
 func load_data():
 	if not loaded:
-		gifts_icons.append("res://assets/Textures/gift.png")
+		gifts_icons.append("res://assets/Textures/gifts/gift.png")
+		gifts_icons.append("res://assets/Textures/gifts/gift1.png")
+		gifts_icons.append("res://assets/Textures/gifts/gift2.png")
+		gifts_icons.append("res://assets/Textures/gifts/gift3.png")
 		loaded = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

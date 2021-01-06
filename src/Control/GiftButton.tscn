@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Control/GiftButton.gd" type="Script" id=1]
+[ext_resource path="res://assets/Textures/gifts/gift1.png" type="Texture" id=2]
 
 [node name="GiftButton" type="Control"]
 margin_right = 200.0
-margin_bottom = 25.0
+margin_bottom = 33.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -23,6 +24,11 @@ __meta__ = {
 [node name="Icon" type="TextureButton" parent="."]
 anchor_right = 0.125
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 2.0
+margin_bottom = -6.0
+texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 5
 __meta__ = {

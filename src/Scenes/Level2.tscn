@@ -8,8 +8,10 @@
 [ext_resource path="res://src/Scenes/house/House.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Control/WeaponSelector.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/Objects/Gift.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/Objects/Tree.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Objects/Gifts/Gift.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=10]
+
+
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 373, 253 )
