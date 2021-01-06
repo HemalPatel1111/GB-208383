@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Objects/Gift.gd"
 }, {
+"base": "Control",
+"class": "GiftButton",
+"language": "GDScript",
+"path": "res://src/Control/GiftButton.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -68,6 +73,7 @@ _global_script_class_icons={
 "Boy1": "res://src/Player/boy1.gd",
 "FireWeapon": "",
 "Gift": "",
+"GiftButton": "",
 "GitAPI": "",
 "LevelBase": "",
 "MoveController": "",
@@ -84,6 +90,10 @@ config/name="Santa In Danger"
 run/main_scene="res://src/Menu/Main.tscn"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
+
+[autoload]
+
+GiftData="*res://src/Control/GiftData.gd"
 
 [display]
 

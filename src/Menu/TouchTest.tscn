@@ -1,15 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/Textures/Buttons/Button Out.png" type="Texture" id=1]
 [ext_resource path="res://src/Menu/TouchTest.gd" type="Script" id=2]
-[ext_resource path="res://assets/Fonts/atwriter.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 25
-font_data = ExtResource( 3 )
-
-[node name="Node2D" type="Control"]
+[node name="control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -17,53 +10,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn1" type="TextureButton" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 50.0
-margin_top = -236.455
-margin_right = 200.0
-margin_bottom = -86.4554
-texture_normal = ExtResource( 1 )
-expand = true
+[node name="Tree" type="Tree" parent="."]
+margin_right = 323.0
+margin_bottom = 300.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="btn2" type="TextureButton" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -223.16
-margin_top = -230.106
-margin_right = -73.1599
-margin_bottom = -80.1058
-texture_normal = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-anchor_right = 1.0
-anchor_bottom = 0.168
-margin_right = 1.0
-margin_bottom = 0.199989
-custom_fonts/font = SubResource( 1 )
-text = "Type:"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Move" parent="." instance=ExtResource( 4 )]
-margin_left = 304.787
-margin_top = 341.297
-margin_right = 504.787
-margin_bottom = 541.297
 [connection signal="gui_input" from="." to="." method="_on_Node2D_gui_input"]
-[connection signal="gui_input" from="btn1" to="." method="_on_Node2D_gui_input"]
-[connection signal="gui_input" from="btn2" to="." method="_on_Node2D_gui_input"]
-[connection signal="run" from="Move" to="." method="_on_Move_run"]
+[connection signal="ready" from="Tree" to="." method="_on_Tree_ready"]

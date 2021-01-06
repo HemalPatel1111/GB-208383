@@ -15,8 +15,6 @@ var gifts_target:PoolIntArray = PoolIntArray()
 var gifts_type:PoolIntArray = PoolIntArray()
 #Runtime
 var gifts_picked:PoolIntArray = PoolIntArray()
-#Constant throught levels
-var gifts_icons:PoolStringArray = PoolStringArray()
 
 export var gravity :float = 9.81 #Gravitational Acceleration
 
@@ -61,7 +59,6 @@ func _ready():
 	
 	player.set_weapon(Weapon.HAND)
 	
-	gifts_icons.append("res://assets/Textures/gift.png")
 
 func _process(delta):	
 	frameTime = delta
