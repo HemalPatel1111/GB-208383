@@ -1,5 +1,5 @@
 extends Control
-class_name PickeButton
+class_name PickButton
 
 var _player:Player = null
 var gifts:PoolStringArray = PoolStringArray()
@@ -16,10 +16,10 @@ var index:= -1
 var giftIndex = -1
 var _gift:Gift = null
 
-func _got_Gift(gift:Gift):
+func got_Gift(gift:Gift):
 	_gift = gift
 	
-func _deny_Gift():
+func deny_Gift():
 	_gift = null
 
 # Called when the node enters the scene tree for the first time.
@@ -50,6 +50,8 @@ func _input(event):
 				var _index = int(_name.to_lower().replace("gift","")) - 1
 				_gift.queue_free()
 				_gift = null
+				
+				GiftData.set_current(null)
 				
 				emit_signal("gift_picked", _index)
 		elif _touch_ended(e):

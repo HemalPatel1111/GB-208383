@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Control/fireWeapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Scenes/Level0.gd" type="Script" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://src/Objects/Gifts/Gift.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Control/PickButton.tscn" type="PackedScene" id=11]
-
+[ext_resource path="res://src/Control/GiftList.tscn" type="PackedScene" id=12]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 373, 253 )
@@ -78,6 +78,12 @@ margin_right = -1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="control" parent="UI" instance=ExtResource( 12 )]
+margin_left = 200.012
+margin_top = 201.6
+margin_right = 200.012
+margin_bottom = 201.6
 
 [node name="2D" type="Node2D" parent="UI"]
 position = Vector2( -1, 2 )
@@ -178,7 +184,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WeopanSelector" parent="UI" instance=ExtResource( 8 )]
+[node name="WeaponSelector" parent="UI" instance=ExtResource( 8 )]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -150.0
@@ -195,10 +201,9 @@ margin_left = -150.0
 margin_top = -370.0
 margin_right = -50.0
 margin_bottom = -270.0
-script = null
 
 [node name="player" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 80, 0, 120 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 65, 0, 135 )
 PLAYER_SCALE = 0.3
 
 [node name="SunLight" parent="." instance=ExtResource( 7 )]

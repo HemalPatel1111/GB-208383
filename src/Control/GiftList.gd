@@ -9,7 +9,7 @@ func _on_Tree_ready():
 	pass
 
 
-func _on_Tree_tree_entered():
+func load_gifts():
 	for x in range(0,3):
 		var item = load("res://src/Control/GiftButton.tscn")
 		btn = item.instance()

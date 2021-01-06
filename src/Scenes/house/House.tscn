@@ -7,14 +7,12 @@ extents = Vector3( 0.710383, 0.493911, 0.573982 )
 
 [node name="House" type="Spatial"]
 
-[node name="Body" type="Spatial" parent="."]
+[node name="Body" type="StaticBody" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -0.210559 )
 
 [node name="Farm_house" parent="Body" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0, 0 )
 
-[node name="RigidBody" type="RigidBody" parent="Body"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Body/RigidBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Body"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48468, 0 )
 shape = SubResource( 1 )

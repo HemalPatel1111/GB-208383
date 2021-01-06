@@ -22,7 +22,8 @@ onready var player		   :Player 			 = $player #the player root
 onready var animations	   :OptionButton 	 = $UI/Options #animation List
 onready var fireWeapon	   :FireWeapon 		 = $UI/fireWeapon #Fire-weapon button
 onready var moveController :MoveControllerTS = $UI/MoveController #player movement controller
-onready var weaponSelector :WeaponSelector   = $UI/WeopanSelector #player movement controller
+onready var weaponSelector :WeaponSelector   = $UI/WeaponSelector #player movement controller
+onready var pickButton     :PickButton       = $UI/PickButton #player movement controller
 
 func _ready():
 	var list:PoolStringArray
@@ -56,6 +57,9 @@ func _ready():
 	fireWeapon.set_Player(player)
 	moveController.set_Player(player)
 	weaponSelector.set_Player(player)
+	pickButton.set_Player(player)
+	
+	GiftData.set_pick_button(pickButton)
 	
 	player.set_weapon(Weapon.HAND)
 	

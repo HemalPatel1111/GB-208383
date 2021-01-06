@@ -1,18 +1,18 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/Menu/TouchTest.gd" type="Script" id=2]
+[ext_resource path="res://src/Control/GiftList.gd" type="Script" id=1]
 
 [node name="control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Tree" type="Tree" parent="."]
-margin_right = 323.0
-margin_bottom = 300.0
+margin_left = -100.0
+margin_top = -150.0
+margin_right = 100.0
+margin_bottom = 150.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
