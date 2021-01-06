@@ -1,4 +1,5 @@
 extends Spatial
+class_name LevelBase
 
 var UP:  Vector3 = Vector3(0,1,0) #Camera UP direction
 var Look:Vector3 = Vector3()	 #Camera Look direction
@@ -7,7 +8,16 @@ var Left:Vector3 = Vector3()	 #Camera Left direction
 var velocity:  Vector3 = Vector3() #Player Overall Velocity
 var velocityg: Vector3 = Vector3() #Player Velocity due to gravity
 
-var frameTime	 :float = 0.0  #Time since last frame
+var frameTime	 :float  = 0.0  #Time since last frame
+
+#Level specific
+var gifts_target:PoolIntArray = PoolIntArray()
+var gifts_type:PoolIntArray = PoolIntArray()
+#Runtime
+var gifts_picked:PoolIntArray = PoolIntArray()
+#Constant throught levels
+var gifts_icons:PoolStringArray = PoolStringArray()
+
 export var gravity :float = 9.81 #Gravitational Acceleration
 
 onready var player		   :Player 			 = $player #the player root
@@ -50,6 +60,8 @@ func _ready():
 	weaponSelector.set_Player(player)
 	
 	player.set_weapon(Weapon.HAND)
+	
+	gifts_icons.append("res://assets/Textures/gift.png")
 
 func _process(delta):	
 	frameTime = delta
@@ -97,3 +109,12 @@ func _input(event):
 		if check:
 			player.update_rotate(event.relative)
 	pass
+
+func _can_grab_gift() -> bool:
+	return gifts_picked.size() <= 3
+
+func _on_gift_picked(gift_index):
+	gifts_picked.append(gift_index)
+	
+func _on_gift_delivered(gift_index):
+	gifts_picked.remove(gift_index)

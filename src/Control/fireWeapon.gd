@@ -31,15 +31,17 @@ func _input(event):
 		if _touch_started(e) and _holded(e):
 			index = e.index
 			self.modulate = press_color
+			_fire()
 		elif _touch_ended(e):
 			index = -1
 			self.modulate = normal_color
+			_stopFire()
 
-func _on_TouchScreenButton_pressed():
+func _fire():
 	if _player != null:
 		_player.fireIt(true)
 
-func _on_TouchScreenButton_released():
-#	if _player != null:
-#		_player.fireIt(false)
+func _stopFire():
+	if _player != null:
+		_player.fireIt(false)
 	pass

@@ -19,10 +19,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Control/fireWeapon.gd"
 }, {
+"base": "Spatial",
+"class": "Gift",
+"language": "GDScript",
+"path": "res://src/Objects/Gift.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Spatial",
+"class": "LevelBase",
+"language": "GDScript",
+"path": "res://src/Scenes/LevelBaseTS.gd"
 }, {
 "base": "TextureButton",
 "class": "MoveController",
@@ -33,6 +43,11 @@ _global_script_classes=[ {
 "class": "MoveControllerTS",
 "language": "GDScript",
 "path": "res://src/Control/MoveControllerTS.gd"
+}, {
+"base": "Control",
+"class": "PickeButton",
+"language": "GDScript",
+"path": "res://src/Control/PickButton.gd"
 }, {
 "base": "Spatial",
 "class": "Player",
@@ -52,9 +67,12 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Boy1": "res://src/Player/boy1.gd",
 "FireWeapon": "",
+"Gift": "",
 "GitAPI": "",
+"LevelBase": "",
 "MoveController": "",
 "MoveControllerTS": "",
+"PickeButton": "",
 "Player": "res://src/Player/Player.gd",
 "Weapon": "",
 "WeaponSelector": ""

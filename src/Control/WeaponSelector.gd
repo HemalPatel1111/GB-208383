@@ -82,8 +82,8 @@ func _draw():
 	draw_texture(texture, Vector2())
 	
 	draw_set_transform(-get_position(), 0, Vector2(1,1))
-	if index >= 0:
-		color.a = 1
-		draw_rect(get_rect(), color, false)
+#	if index >= 0:
+	color.a = 1
+	draw_rect(get_rect(), color, false)
 
 	pass
