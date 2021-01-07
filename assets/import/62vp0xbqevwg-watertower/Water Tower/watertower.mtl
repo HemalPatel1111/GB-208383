@@ -1,0 +1,57 @@
+# Blender MTL File: 'caixadaguaProjeto2.blend'
+# Material Count: 6
+
+newmtl Material
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Gunner Correa\Desktop\Hidden\O Padre\objetos 3D\CaixaDagua\base1.png
+
+newmtl Material.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.685300 0.370013
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd C:\Users\Gunner Correa\Desktop\Hidden\O Padre\objetos 3D\CaixaDagua\base2.png
+
+newmtl None_base3.png
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd C:\Users\Gunner Correa\Desktop\Hidden\O Padre\objetos 3D\CaixaDagua\base3.png
+
+newmtl None_caixa.png
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd C:\Users\Gunner Correa\Desktop\Hidden\O Padre\objetos 3D\CaixaDagua\caixa.png
+
+newmtl None_tampaCaixa.png
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd C:\Users\Gunner Correa\Desktop\Hidden\O Padre\objetos 3D\CaixaDagua\tampaCaixa.png

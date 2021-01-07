@@ -50,7 +50,7 @@ _global_script_classes=[ {
 "path": "res://src/Control/MoveControllerTS.gd"
 }, {
 "base": "Control",
-"class": "PickeButton",
+"class": "PickButton",
 "language": "GDScript",
 "path": "res://src/Control/PickButton.gd"
 }, {
@@ -78,7 +78,7 @@ _global_script_class_icons={
 "LevelBase": "",
 "MoveController": "",
 "MoveControllerTS": "",
-"PickeButton": "",
+"PickButton": "",
 "Player": "res://src/Player/Player.gd",
 "Weapon": "",
 "WeaponSelector": ""
