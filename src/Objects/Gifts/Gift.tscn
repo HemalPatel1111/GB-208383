@@ -15,12 +15,11 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -6.07691e-07, 13.9023 )
-visible = false
 shape = SubResource( 1 )
 
 [node name="11564_Gift_Box_v1_l2" type="MeshInstance" parent="RigidBody"]
 mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
-[connection signal="body_shape_entered" from="RigidBody" to="." method="_on_shape_entered"]
-[connection signal="body_shape_exited" from="RigidBody" to="." method="_on_shape_exited"]
+[connection signal="body_entered" from="RigidBody" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="RigidBody" to="." method="_on_body_exited"]

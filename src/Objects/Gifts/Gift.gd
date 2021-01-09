@@ -7,9 +7,10 @@ var _player:Player = null
 func _ready():
 	pass # Replace with function body.
 
-func _on_shape_entered(body_id, body, body_shape, local_shape):
+func _on_body_entered(body):
+	print_debug(body.name)
 	GiftData.set_current(self)
 
 
-func _on_shape_exited(body_id, body, body_shape, local_shape):
+func _on_body_exited(body):
 	GiftData.set_current(null)

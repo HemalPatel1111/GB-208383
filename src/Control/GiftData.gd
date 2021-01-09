@@ -16,6 +16,7 @@ func set_current(gift:Gift):
 	if gift != null:
 		_gift = gift
 		_button.got_Gift(gift)
+		print_debug(_gift.name)
 	else:
 		_button.deny_Gift()
 

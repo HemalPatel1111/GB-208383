@@ -36,7 +36,7 @@ var trackerDist:float = 10.0
 
 var move_dir:Vector3 = Vector3()	#direction of movement of player
 
-export var PLAYER_SCALE:float = 0.2 					#Scalling of the player
+var PLAYER_SCALE:float = 0.2 					#Scalling of the player
 var PLAYER_WALK	:float = 2.4642 * PLAYER_SCALE #player walk length per walk animation
 var PLAYER_RUN	:float = 9.1094 * PLAYER_SCALE #player walk length per walk animation
 var PLAYER_WALK_PISTOL:float = 4.1693 * PLAYER_SCALE

@@ -18,7 +18,10 @@ func init():
 		trackerDirBase = trackerDirBase.normalized()
 		trackerDir = trackerDirBase
 		
-		scale = Vector3(PLAYER_SCALE, PLAYER_SCALE, PLAYER_SCALE)
+		PLAYER_SCALE = scale.x
+		#			hand	Pistol		Rifle
+		#walk 	: 1.11668
+		#run 	: 1.81858
 
 func set_weapon(weapon:int):
 	match weapon:
