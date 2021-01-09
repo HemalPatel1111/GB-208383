@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Scenes/Level0.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Player/Aj.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Player/Pearl.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Scenes/house/House.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Control/WeaponSelector.tscn" type="PackedScene" id=8]
@@ -98,7 +98,6 @@ margin_bottom = -103.0
 RUN_WAIT = 2.0
 
 [node name="idle" type="Button" parent="UI"]
-visible = false
 margin_left = 32.0
 margin_top = 45.0
 margin_right = 51.0
@@ -109,7 +108,6 @@ __meta__ = {
 }
 
 [node name="walk" type="Button" parent="UI"]
-visible = false
 margin_left = 55.1914
 margin_top = 45.0
 margin_right = 80.1914
@@ -120,7 +118,6 @@ __meta__ = {
 }
 
 [node name="run" type="Button" parent="UI"]
-visible = false
 margin_left = 83.7646
 margin_top = 45.0
 margin_right = 108.765
@@ -131,7 +128,6 @@ __meta__ = {
 }
 
 [node name="fire" type="Button" parent="UI"]
-visible = false
 margin_left = 112.355
 margin_top = 45.8409
 margin_right = 137.355
@@ -152,7 +148,6 @@ margin_right = -50.0
 margin_bottom = -153.0
 
 [node name="list" type="Button" parent="UI"]
-visible = false
 margin_left = 218.729
 margin_top = 47.9431
 margin_right = 253.729
@@ -163,7 +158,6 @@ __meta__ = {
 }
 
 [node name="Options" type="OptionButton" parent="UI"]
-visible = false
 margin_left = 33.0
 margin_top = 20.0
 margin_right = 256.0
@@ -174,7 +168,6 @@ __meta__ = {
 }
 
 [node name="Weapon" type="OptionButton" parent="UI"]
-visible = false
 margin_left = 34.6818
 margin_top = 77.181
 margin_right = 257.682
@@ -237,7 +230,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 145 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245, 0, 180 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 136 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 135.722 )
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]

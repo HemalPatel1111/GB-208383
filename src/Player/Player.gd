@@ -19,7 +19,6 @@ var loop:bool = false
 
 var loaded:bool = false
 
-
 var run:bool = false
 
 var UP:Vector3 = Vector3(0,1,0) #_camera UP direction
@@ -76,19 +75,7 @@ func init():
 	pass
 	
 func set_weapon(weapon:int):
-	match weapon:
-		Weapon.HAND:
-			idle_id = 0 ; walk_id = 1; run_id = 2; fire_id = 3
-			player_walk = PLAYER_WALK
-			player_run = PLAYER_RUN
-		Weapon.PISTOL:
-			idle_id = 0; walk_id = 1; run_id = 2; fire_id = 3
-			player_walk = PLAYER_WALK_PISTOL
-			player_run = PLAYER_RUN_PISTOL
-		Weapon.RIFLE:
-			idle_id = 0; walk_id = 1; run_id = 2; fire_id = 3
-			player_walk = PLAYER_WALK_RIFLE
-			player_run = PLAYER_RUN_RIFLE
+	pass
 
 func update(delta):
 	frameTime = delta
