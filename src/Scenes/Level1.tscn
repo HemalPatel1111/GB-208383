@@ -12,7 +12,6 @@
 [ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Control/PickButton.tscn" type="PackedScene" id=11]
 
-
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 373, 253 )
 
@@ -76,7 +75,6 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 190, 0, 175 )
 
 [node name="House3" parent="Houses" instance=ExtResource( 6 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 45, 0, 55 )
-
 
 [node name="House4" parent="Houses" instance=ExtResource( 6 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 128, 0, 58 )
@@ -159,10 +157,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -160.72
-margin_top = -253.0
-margin_right = -60.7197
-margin_bottom = -153.0
+margin_left = -150.0
+margin_top = -250.0
+margin_right = -50.0
+margin_bottom = -150.0
 
 [node name="list" type="Button" parent="UI"]
 visible = false
@@ -207,11 +205,13 @@ margin_bottom = 144.293
 
 [node name="PickButton" parent="UI" instance=ExtResource( 11 )]
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-margin_left = -166.524
-margin_top = 200.217
-margin_right = -66.5242
-margin_bottom = 300.217
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -370.0
+margin_right = -50.0
+margin_bottom = -270.0
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 104, 0, 105 )

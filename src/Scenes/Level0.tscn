@@ -143,9 +143,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -150.0
-margin_top = -251.413
+margin_top = -250.0
 margin_right = -50.0
-margin_bottom = -151.413
+margin_bottom = -150.0
 
 [node name="list" type="Button" parent="UI"]
 margin_left = 218.729
@@ -231,7 +231,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245, 0, 180 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 135.722 )
-
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
