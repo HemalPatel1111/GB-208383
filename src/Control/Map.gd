@@ -53,7 +53,6 @@ func _draw():
 		var gift:Spatial = gifts.get_child(x)
 		var pos:=(Vector2(gift.translation.x, gift.translation.z) + MidPlace) * factor
 		draw_circle(pos, rad, g_color)
-		
 		draw_string(dynamic_font, pos, str(x), f_color)
 	
 		

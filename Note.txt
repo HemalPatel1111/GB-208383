@@ -1,2 +1,2 @@
 Use picking direct :-
-Implement Transformation using Matrix :-
+Implement Transformation using Matrix to print no. in straight cond. :-
