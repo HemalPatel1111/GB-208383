@@ -29,6 +29,23 @@ extents = Vector3( 373, 0.1, 253 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -186.5, 0, -126.5 )
 script = ExtResource( 2 )
 
+[node name="Houses" type="Spatial" parent="."]
+
+[node name="House" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 65, 0, 150 )
+
+[node name="House2" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 130, 0, 60 )
+
+[node name="House3" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 190, 0, 65 )
+
+[node name="House4" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 165, 0, 180 )
+
+[node name="House5" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 240, 0, 160 )
+
 [node name="Gifts" type="Spatial" parent="."]
 
 [node name="Gift" parent="Gifts" instance=ExtResource( 9 )]
@@ -53,23 +70,6 @@ __meta__ = {
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
 shape = SubResource( 3 )
-
-[node name="Houses" type="Spatial" parent="."]
-
-[node name="House" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 65, 0, 150 )
-
-[node name="House2" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 130, 0, 60 )
-
-[node name="House3" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 190, 0, 65 )
-
-[node name="House4" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 165, 0, 180 )
-
-[node name="House5" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 240, 0, 160 )
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
@@ -202,10 +202,6 @@ margin_top = -370.0
 margin_right = -50.0
 margin_bottom = -270.0
 
-[node name="player" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 65, 0, 135 )
-PLAYER_SCALE = 0.3
-
 [node name="SunLight" parent="." instance=ExtResource( 7 )]
 
 [node name="Tree" type="Spatial" parent="."]
@@ -239,6 +235,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 145 )
 
 [node name="tree10" parent="Tree" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245, 0, 180 )
+
+[node name="player" parent="." instance=ExtResource( 5 )]
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]

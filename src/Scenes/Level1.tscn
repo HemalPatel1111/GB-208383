@@ -1,15 +1,16 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Control/fireWeapon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/Scenes/LevelBaseTS.gd" type="Script" id=2]
+[ext_resource path="res://src/Scenes/Level1.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=3]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Player/boy1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Scenes/house/House.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Control/WeaponSelector.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/Objects/Gift.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/Objects/Tree.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Objects/Gifts/Gift.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Control/PickButton.tscn" type="PackedScene" id=11]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 373, 253 )
@@ -26,18 +27,29 @@ extents = Vector3( 373, 0.1, 253 )
 [node name="Level 1" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -186.5, 0, -126.5 )
 script = ExtResource( 2 )
-gravity = null
 
 [node name="Gifts" type="Spatial" parent="."]
 
 [node name="Gift" parent="Gifts" instance=ExtResource( 9 )]
-transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 65, 0, 145 )
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 105, 0, 100 )
 
 [node name="Gift2" parent="Gifts" instance=ExtResource( 9 )]
-transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 175, 0, 140 )
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 150, 0, 173 )
 
 [node name="Gift3" parent="Gifts" instance=ExtResource( 9 )]
-transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 275, 0, 50 )
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 185, 0, 63 )
+
+[node name="Gift4" parent="Gifts" instance=ExtResource( 9 )]
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 226, 0, 117 )
+
+[node name="Gift5" parent="Gifts" instance=ExtResource( 9 )]
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 210, 0, 172 )
+
+[node name="Gift6" parent="Gifts" instance=ExtResource( 9 )]
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 216, 0, 85 )
+
+[node name="Gift7" parent="Gifts" instance=ExtResource( 9 )]
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 251, 0, 141 )
 
 [node name="Ground" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 186.5, 0, 126.5 )
@@ -56,19 +68,25 @@ shape = SubResource( 3 )
 [node name="Houses" type="Spatial" parent="."]
 
 [node name="House" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 150 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 130, 0, 120 )
 
 [node name="House2" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 0, 60 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 190, 0, 175 )
 
 [node name="House3" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 190, 0, 65 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 45, 0, 55 )
 
 [node name="House4" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 165, 0, 180 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 128, 0, 58 )
 
 [node name="House5" parent="Houses" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 160 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 255, 0, 65 )
+
+[node name="House6" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 275, 0, 157.368 )
+
+[node name="House7" parent="Houses" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 315, 0, 205 )
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
@@ -177,7 +195,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WeopanSelector" parent="UI" instance=ExtResource( 8 )]
+[node name="WeaponSelector" parent="UI" instance=ExtResource( 8 )]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -151.267
@@ -185,42 +203,65 @@ margin_top = 44.2922
 margin_right = -51.2672
 margin_bottom = 144.293
 
+[node name="PickButton" parent="UI" instance=ExtResource( 11 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -166.524
+margin_top = 200.217
+margin_right = -66.5242
+margin_bottom = 300.217
+
 [node name="player" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 80, 0, 120 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 104, 0, 105 )
 
 [node name="SunLight" parent="." instance=ExtResource( 7 )]
 
 [node name="Tree" type="Spatial" parent="."]
 
 [node name="tree" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 80 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 62 )
 
 [node name="tree2" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 170 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 99 )
 
 [node name="tree3" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 105 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 163 )
 
 [node name="tree4" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 180 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 0, 192 )
 
 [node name="tree5" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 170, 0, 140 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 172 )
 
 [node name="tree6" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 190, 0, 65 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 175, 0, 141 )
 
 [node name="tree7" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 270, 0, 80 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 185, 0, 62 )
 
 [node name="tree8" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245, 0, 180 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 220, 0, 64 )
 
 [node name="tree9" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 145 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 226, 0, 116 )
 
 [node name="tree10" parent="Tree" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245, 0, 180 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 0, 171 )
+
+[node name="tree11" parent="Tree" instance=ExtResource( 10 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 255, 0, 95 )
+
+[node name="tree12" parent="Tree" instance=ExtResource( 10 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 280, 0, 70 )
+
+[node name="tree13" parent="Tree" instance=ExtResource( 10 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 295, 0, 165 )
+
+[node name="tree14" parent="Tree" instance=ExtResource( 10 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 300, 0, 180 )
+
+[node name="tree15" parent="Tree" instance=ExtResource( 10 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 305, 0, 195 )
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
