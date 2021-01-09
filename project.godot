@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Player",
-"class": "Boy1",
-"language": "GDScript",
-"path": "res://src/Player/boy1.gd"
-}, {
 "base": "Control",
 "class": "FireWeapon",
 "language": "GDScript",
@@ -70,7 +65,6 @@ _global_script_classes=[ {
 "path": "res://src/Control/WeaponSelector.gd"
 } ]
 _global_script_class_icons={
-"Boy1": "res://src/Player/boy1.gd",
 "FireWeapon": "",
 "Gift": "",
 "GiftButton": "",

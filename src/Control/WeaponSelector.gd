@@ -7,7 +7,7 @@ var Icon:= ["res://assets/weapon/hand.png",
 
 var _player:Player = null
 var weapon:int = Weapon.HAND
-var texture:ImageTexture = ImageTexture.new()
+var texture:StreamTexture = null
 
 onready var cen: = get_rect().size / 2
 var rad := 70.0
@@ -33,7 +33,7 @@ func _holded(e: InputEventScreenTouch) -> bool:
 var xdir:= 1
 
 func _ready():
-	texture.load(Icon[weapon])
+	texture = load(Icon[weapon])
 
 func _process(delta):
 	update()
@@ -63,7 +63,7 @@ func _input(event):
 					weapon = Weapon.RIFLE
 			
 			_player.set_weapon(weapon)
-			texture.load(Icon[weapon])
+			texture = load(Icon[weapon])
 #			$Button.set_texture(texture)
 	elif event is InputEventScreenDrag:
 		var e:InputEventScreenDrag = event
