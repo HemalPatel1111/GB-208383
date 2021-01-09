@@ -143,9 +143,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -150.0
-margin_top = -253.0
+margin_top = -251.413
 margin_right = -50.0
-margin_bottom = -153.0
+margin_bottom = -151.413
 
 [node name="list" type="Button" parent="UI"]
 margin_left = 218.729

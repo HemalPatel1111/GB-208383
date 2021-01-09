@@ -12,6 +12,7 @@
 [ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Control/PickButton.tscn" type="PackedScene" id=11]
 
+
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 373, 253 )
 
@@ -75,6 +76,7 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 190, 0, 175 )
 
 [node name="House3" parent="Houses" instance=ExtResource( 6 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 45, 0, 55 )
+
 
 [node name="House4" parent="Houses" instance=ExtResource( 6 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 128, 0, 58 )
