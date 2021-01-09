@@ -53,7 +53,7 @@ var frameTime	:float = 0.0					#Time since last frame
 
 var _animPlayer:AnimationPlayer
 var _player			:Player			#the player root
-var _playerCharacter :KinematicBody	#the player Character
+var playerCharacter :KinematicBody	#the player Character
 var _camera			:Camera			
 
 func set_run(running:bool):
@@ -92,7 +92,7 @@ func update(delta):
 	trackerDir = -trackerDir.rotated(Left, rot.x)
 	
 	if move_dir.length() > 0.1:
-		_playerCharacter.rotation.y = _camera.rotation.y + atan2(move_dir.z,-move_dir.x) - PI/2;
+		playerCharacter.rotation.y = _camera.rotation.y + atan2(move_dir.z,-move_dir.x) - PI/2;
 	
 	velocityp = velocityp * 0
 	
@@ -110,9 +110,9 @@ func update(delta):
 			else:
 				animate(IdleBreath)
 	
-	velocityp = _playerCharacter.move_and_slide(velocityp,UP)
+	velocityp = playerCharacter.move_and_slide(velocityp,UP)
 	
-	_camera.translation = _playerCharacter.translation
+	_camera.translation = playerCharacter.translation
 	_camera.translation += trackerTranslation.y * UP
 	_camera.translation += trackerDir * trackerDist
 
@@ -132,10 +132,10 @@ func loadAnimationList() -> PoolStringArray:
 	return AnimationList
 
 func is_on_floor() -> bool:
-	return _playerCharacter.is_on_floor()
+	return playerCharacter.is_on_floor()
 	
 func move_and_slide(velocityg:Vector3, _Up:Vector3) -> Vector3:
-	return _playerCharacter.move_and_slide(velocityg,_Up)
+	return playerCharacter.move_and_slide(velocityg,_Up)
 	
 func animate_id(id:int, forward:bool = true):
 	var name:String = AnimationList[id]

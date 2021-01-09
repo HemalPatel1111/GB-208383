@@ -34,6 +34,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Scenes/LevelBaseTS.gd"
 }, {
+"base": "ColorRect",
+"class": "Map",
+"language": "GDScript",
+"path": "res://src/Control/Map.gd"
+}, {
+"base": "Control",
+"class": "MapButton",
+"language": "GDScript",
+"path": "res://src/Control/MapButton.gd"
+}, {
 "base": "TextureButton",
 "class": "MoveController",
 "language": "GDScript",
@@ -69,7 +79,9 @@ _global_script_class_icons={
 "Gift": "",
 "GiftButton": "",
 "GitAPI": "",
-"LevelBase": "",
+"LevelBase": "res://src/Scenes/LevelBaseTS.gd",
+"Map": "",
+"MapButton": "",
 "MoveController": "",
 "MoveControllerTS": "",
 "PickButton": "",

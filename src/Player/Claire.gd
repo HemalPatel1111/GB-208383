@@ -4,7 +4,7 @@ func init():
 	if not loaded:
 		_animPlayer = $AnimationPlayer
 		_player = $"."
-		_playerCharacter = $Girl
+		playerCharacter = $Girl
 		_camera = $Camera
 		loaded = true
 		
@@ -26,10 +26,7 @@ func init():
 		PLAYER_RUN_PISTOL = 3.21874
 		PLAYER_WALK_RIFLE = 1.29117
 		PLAYER_RUN_RIFLE = 3.12801
-		#			hand	Pistol		Rifle
-		#walk 	: 1.11668	1.77258		1.29117
-		#run 	: 2.48100	3.21874		3.12801
-		
+
 func set_weapon(weapon:int):
 	match weapon:
 		Weapon.HAND:

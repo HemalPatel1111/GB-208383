@@ -4,7 +4,7 @@ func init():
 	if not loaded:
 		_animPlayer = $AnimationPlayer
 		_player = $"."
-		_playerCharacter = $Boy
+		playerCharacter = $Boy
 		_camera = $Camera
 		loaded = true
 		
@@ -19,9 +19,13 @@ func init():
 		trackerDir = trackerDirBase
 		
 		PLAYER_SCALE = scale.x
-		#			hand	Pistol		Rifle
-		#walk 	: 1.11668
-		#run 	: 1.81858
+		
+		PLAYER_WALK = 1.26215
+		PLAYER_RUN = 3.29797
+		PLAYER_WALK_PISTOL = 2.05105
+		PLAYER_RUN_PISTOL = 3.72442
+		PLAYER_WALK_RIFLE = 1.49400
+		PLAYER_RUN_RIFLE = 3.61939
 
 func set_weapon(weapon:int):
 	match weapon:

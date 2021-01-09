@@ -1,5 +1,5 @@
 extends Spatial
-class_name LevelBase
+class_name LevelBase, "res://src/Scenes/LevelBaseTS.gd"
 
 var UP:  Vector3 = Vector3(0,1,0) #Camera UP direction
 var Look:Vector3 = Vector3()	 #Camera Look direction
@@ -24,6 +24,13 @@ onready var fireWeapon	   :FireWeapon 		 = $UI/fireWeapon #Fire-weapon button
 onready var moveController :MoveControllerTS = $UI/MoveController #player movement controller
 onready var weaponSelector :WeaponSelector   = $UI/WeaponSelector #player movement controller
 onready var pickButton     :PickButton       = $UI/PickButton #player movement controller
+
+onready var mapButton    :MapButton = $UI/MapButton #player movement controller
+onready var map		     :Map       = $UI/Map #player movement controller
+
+onready var gifts:Spatial = $Gifts
+onready var houses:Spatial = $Houses
+onready var trees:Spatial = $Trees
 
 func _ready():
 	var list:PoolStringArray
@@ -62,7 +69,6 @@ func _ready():
 	GiftData.set_pick_button(pickButton)
 	
 	player.set_weapon(Weapon.HAND)
-	
 
 func _process(delta):	
 	frameTime = delta
@@ -75,6 +81,7 @@ func _process(delta):
 		if abs(velocityg.y) < 0.1: velocityg *= 0
 	
 	velocity = player.move_and_slide(velocityg,UP)
+	mapButton.setPlayer(player)
 
 func _on_idle_pressed():
 	player.set_idle_id(animations.get_selected_id())
