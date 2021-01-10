@@ -42,6 +42,16 @@ func setTrees(Trees:Spatial):
 func setHouses(Houses:Spatial):
 	_map.houses = Houses
 	
+func setZombies(Zombies:Spatial):
+	_map.zombies = Zombies 
+	
+func setGhosts(Ghosts:Spatial):
+	_map.ghosts = Ghosts 
+	
+func setMonsters(Monsters:Spatial):
+	_map.monsters = Monsters 
+	
+	
 func setPlayer(player: Player):
 	_map.player = Vector2(player.translation.x + player.playerCharacter.translation.x / player.scale.x, player.translation.z + player.playerCharacter.translation.z  / player.scale.z)
 	_map.rotation = player.rot.y

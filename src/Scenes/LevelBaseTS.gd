@@ -31,6 +31,9 @@ onready var map		     :Map       = $UI/Map #player movement controller
 onready var gifts:Spatial = $Gifts
 onready var houses:Spatial = $Houses
 onready var trees:Spatial = $Trees
+onready var zombies:Spatial = $Zombies
+onready var ghosts:Spatial = $Ghosts
+onready var monsters:Spatial = $Monsters
 
 func _ready():
 	var list:PoolStringArray

@@ -25,5 +25,10 @@ func _ready():
 
 	mapButton.set_Map(map)
 	mapButton.setHouses(houses)
+	
 	mapButton.setTrees(trees)
 	mapButton.setGifts(gifts)
+	
+	mapButton.setZombies(zombies)
+	mapButton.setGhosts(ghosts)
+	mapButton.setMonsters(monsters)

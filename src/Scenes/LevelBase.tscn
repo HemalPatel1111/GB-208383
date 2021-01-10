@@ -198,6 +198,12 @@ margin_bottom = 200.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 133.577 )
 
 [node name="Trees" type="Spatial" parent="."]
+
+[node name="Zombies" type="Spatial" parent="."]
+
+[node name="Ghosts" type="Spatial" parent="Zombies"]
+
+[node name="Monsters" type="Spatial" parent="Zombies/Ghosts"]
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
@@ -205,4 +211,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 133.577 )
 [connection signal="pressed" from="UI/list" to="." method="_on_list_pressed"]
 [connection signal="item_selected" from="UI/Weapon" to="." method="_on_Weapon_item_selected"]
 [connection signal="gift_picked" from="UI/PickButton" to="." method="_on_gift_picked"]
-[connection signal="MapOpened" from="UI/MapButton" to="." method="_on_MapOpened"]

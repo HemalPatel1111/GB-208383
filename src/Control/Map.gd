@@ -7,6 +7,10 @@ var h_color:Color = Color(1,0,1)
 var t_color:Color = Color(0,1,0)
 var f_color:Color = Color(1,1,1)
 
+var z_color:Color = Color(0.25,0.5,0)
+var gh_color:Color = Color(0.5,0.5,0.5)
+var m_color:Color = Color(0.5,0,0.25)
+
 var rad:float = 10.0
 var midPoint:Vector2 = Vector2()
 var factor:float = 1.0
@@ -14,6 +18,10 @@ var factor:float = 1.0
 var gifts:Spatial
 var houses:Spatial 
 var trees:Spatial
+var zombies:Spatial  
+var ghosts:Spatial 
+var monsters:Spatial
+
 var player:Vector2 = Vector2()
 var dynamic_font = DynamicFont.new()
 
@@ -47,6 +55,15 @@ func _draw():
 	draw_circle(Vector2(100,220), 20, h_color)
 	draw_string(dynamic_font, Vector2(125,225), "house")
 	
+	draw_circle(Vector2(100,260), 20, z_color)
+	draw_string(dynamic_font, Vector2(125,265), "zombie")
+	
+	draw_circle(Vector2(100,300), 20, gh_color)
+	draw_string(dynamic_font, Vector2(125,305), "ghost")
+	
+	draw_circle(Vector2(100,340), 20, m_color)
+	draw_string(dynamic_font, Vector2(125,345), "monster")
+	
 	draw_set_transform(midPoint, rotation, Vector2(1,1))
 	
 	for x in range(0, gifts.get_child_count()):
@@ -63,6 +80,18 @@ func _draw():
 	for x in range(0, trees.get_child_count()):
 		var tree:Spatial = trees.get_child(x)
 		draw_circle((Vector2(tree.translation.x, tree.translation.z) + MidPlace) * factor, rad, t_color)
+#
+	for x in range(0, zombies.get_child_count()):
+		var item:Spatial = zombies.get_child(x)
+		draw_circle((Vector2(item.translation.x, item.translation.z) + MidPlace) * factor, rad, z_color)
+		
+	for x in range(0, monsters.get_child_count()):
+		var item:Spatial = monsters.get_child(x)
+		draw_circle((Vector2(item.translation.x, item.translation.z) + MidPlace) * factor, rad, m_color)
+		
+	for x in range(0, ghosts.get_child_count()):
+		var item:Spatial = ghosts.get_child(x)
+		draw_circle((Vector2(item.translation.x, item.translation.z) + MidPlace) * factor, rad, gh_color)
 #
 #	for x in houses:
 #		draw_circle((houses[x] + MidPlace) * factor, rad, h_color)

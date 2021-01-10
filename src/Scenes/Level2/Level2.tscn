@@ -280,6 +280,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 99.5 )
 
 [node name="wooden watch tower2" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 300.815, 0, 116.856 )
+
+[node name="Ghosts" type="Spatial" parent="."]
+
+[node name="Spatial" type="Spatial" parent="Ghosts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 100 )
+
+[node name="Monsters" type="Spatial" parent="."]
+
+[node name="Zombies" type="Spatial" parent="."]
+
+[node name="Spatial" type="Spatial" parent="Zombies"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 0, 85 )
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
