@@ -35,7 +35,7 @@ script = ExtResource( 9 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 186.5, 0, 126.5 )
 
 [node name="Landscape" type="MeshInstance" parent="Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8905, -2.38419e-07, 15.5255 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6074, -1.54972e-05, 11.2503 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 __meta__ = {
@@ -49,6 +49,12 @@ shape = SubResource( 3 )
 [node name="Houses" type="Spatial" parent="."]
 
 [node name="House" parent="Houses" instance=ExtResource( 3 )]
+transform = Transform( -4.87857, 0, 1.09523, 0, 5, 0, -1.09523, 0, -4.87857, 202.61, -9.15527e-05, 99.7635 )
+
+[node name="House2" parent="Houses" instance=ExtResource( 3 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 180.165, 0, 124.88 )
+
+[node name="House3" parent="Houses" instance=ExtResource( 3 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 180.165, 0, 124.88 )
 
 [node name="UI" type="Control" parent="."]
