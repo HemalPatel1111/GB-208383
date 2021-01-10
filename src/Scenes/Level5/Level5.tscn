@@ -1,0 +1,298 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://src/Objects/Gifts/Gift.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Control/fireWeapon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Control/WeaponSelector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Control/DeliverButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Scenes/house/House.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Player/Kaya.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Scenes/Level2/Level2.gd" type="Script" id=10]
+[ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=11]
+[ext_resource path="res://src/Control/MapButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/Control/Map.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/Scenes/Tower/tower1.tscn" type="PackedScene" id=14]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 373, 253 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 11 )
+transmission_enabled = true
+transmission = Color( 0, 0, 0, 1 )
+uv1_scale = Vector3( 150, 150, 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 373, 0.1, 253 )
+
+[node name="Level 2" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -186.5, 0, -126.5 )
+script = ExtResource( 10 )
+
+[node name="Gifts" type="Spatial" parent="."]
+
+[node name="Gift" parent="Gifts" instance=ExtResource( 1 )]
+transform = Transform( 0.02, 0, 0, 0, -3.25841e-09, 0.02, 0, -0.02, -3.25841e-09, 105, 0, 100 )
+
+[node name="Gift2" parent="Gifts" instance=ExtResource( 1 )]
+transform = Transform( 0.02, 0, 0, 0, -3.25841e-09, 0.02, 0, -0.02, -3.25841e-09, 150, 0, 173 )
+
+[node name="Gift3" parent="Gifts" instance=ExtResource( 1 )]
+transform = Transform( 0.02, 0, 0, 0, -3.25841e-09, 0.02, 0, -0.02, -3.25841e-09, 185, 0, 63 )
+
+[node name="Gift4" parent="Gifts" instance=ExtResource( 1 )]
+transform = Transform( 0.02, 0, 0, 0, -3.25841e-09, 0.02, 0, -0.02, -3.25841e-09, 226, 0, 117 )
+
+[node name="Gift5" parent="Gifts" instance=ExtResource( 1 )]
+transform = Transform( 0.02, 0, 0, 0, -3.25841e-09, 0.02, 0, -0.02, -3.25841e-09, 210, 0, 172 )
+
+[node name="Gift6" parent="Gifts" instance=ExtResource( 1 )]
+transform = Transform( 0.02, 0, 0, 0, -3.25841e-09, 0.02, 0, -0.02, -3.25841e-09, 216, 0, 85 )
+
+[node name="Gift7" parent="Gifts" instance=ExtResource( 1 )]
+transform = Transform( 0.02, 0, 0, 0, -3.25841e-09, 0.02, 0, -0.02, -3.25841e-09, 251, 0, 141 )
+
+[node name="Ground" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 186.5, 0, 126.5 )
+
+[node name="Landscape" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+shape = SubResource( 3 )
+
+[node name="Houses" type="Spatial" parent="."]
+
+[node name="House" parent="Houses" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 130, 0, 120 )
+
+[node name="House2" parent="Houses" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 190, 0, 175 )
+
+[node name="House3" parent="Houses" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 45, 0, 55 )
+
+[node name="House4" parent="Houses" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 128, 0, 58 )
+
+[node name="House5" parent="Houses" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 255, 0, 65 )
+
+[node name="House6" parent="Houses" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 275, 0, 157.368 )
+
+[node name="House7" parent="Houses" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 315, 0, 205 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.005
+margin_right = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2D" type="Node2D" parent="UI"]
+position = Vector2( -1, 2 )
+
+[node name="MoveController" parent="UI" instance=ExtResource( 8 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = -303.0
+margin_right = 300.0
+margin_bottom = -103.0
+RUN_WAIT = 2.0
+
+[node name="idle" type="Button" parent="UI"]
+visible = false
+margin_left = 32.0
+margin_top = 45.0
+margin_right = 51.0
+margin_bottom = 65.0
+text = "I"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="walk" type="Button" parent="UI"]
+visible = false
+margin_left = 55.1914
+margin_top = 45.0
+margin_right = 80.1914
+margin_bottom = 65.0
+text = "W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="run" type="Button" parent="UI"]
+visible = false
+margin_left = 83.7646
+margin_top = 45.0
+margin_right = 108.765
+margin_bottom = 65.0
+text = "R"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fire" type="Button" parent="UI"]
+visible = false
+margin_left = 112.355
+margin_top = 45.8409
+margin_right = 137.355
+margin_bottom = 65.8409
+text = "F"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fireWeapon" parent="UI" instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -250.0
+margin_right = -50.0
+margin_bottom = -150.0
+
+[node name="list" type="Button" parent="UI"]
+visible = false
+margin_left = 218.729
+margin_top = 47.9431
+margin_right = 253.729
+margin_bottom = 67.9431
+text = "List"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="OptionButton" parent="UI"]
+visible = false
+margin_left = 33.0
+margin_top = 20.0
+margin_right = 256.0
+margin_bottom = 40.0
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon" type="OptionButton" parent="UI"]
+visible = false
+margin_left = 34.6818
+margin_top = 77.181
+margin_right = 257.682
+margin_bottom = 97.181
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponSelector" parent="UI" instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -151.267
+margin_top = 44.2922
+margin_right = -51.2672
+margin_bottom = 144.293
+
+[node name="Map" parent="UI" instance=ExtResource( 13 )]
+
+[node name="MapButton" parent="UI" instance=ExtResource( 12 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -150.0
+margin_top = 230.945
+margin_right = -50.0
+margin_bottom = 330.945
+
+[node name="DeliverButton" parent="UI" instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -151.961
+margin_top = 230.316
+margin_right = -51.9609
+margin_bottom = 330.316
+
+[node name="SunLight" parent="." instance=ExtResource( 6 )]
+
+[node name="Trees" type="Spatial" parent="."]
+
+[node name="tree" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 62 )
+
+[node name="tree2" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 99 )
+
+[node name="tree3" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 120, 0, 163 )
+
+[node name="tree4" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 0, 192 )
+
+[node name="tree5" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 172 )
+
+[node name="tree6" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 175, 0, 141 )
+
+[node name="tree7" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 185, 0, 62 )
+
+[node name="tree8" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 220, 0, 64 )
+
+[node name="tree9" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 226, 0, 116 )
+
+[node name="tree10" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 0, 171 )
+
+[node name="tree11" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 255, 0, 95 )
+
+[node name="tree12" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 280, 0, 70 )
+
+[node name="tree13" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 295, 0, 165 )
+
+[node name="tree14" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 300, 0, 180 )
+
+[node name="tree15" parent="Trees" instance=ExtResource( 2 )]
+transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 305, 0, 195 )
+
+[node name="player" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 99.5 )
+
+[node name="wooden watch tower2" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 300.815, 0, 116.856 )
+
+[node name="Ghosts" type="Spatial" parent="."]
+
+[node name="Spatial" type="Spatial" parent="Ghosts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 100 )
+
+[node name="Monsters" type="Spatial" parent="."]
+
+[node name="Zombies" type="Spatial" parent="."]
+
+[node name="Spatial" type="Spatial" parent="Zombies"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 0, 85 )
+[connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
+[connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
+[connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="UI/fire" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="UI/list" to="." method="_on_list_pressed"]
+[connection signal="item_selected" from="UI/Weapon" to="." method="_on_Weapon_item_selected"]

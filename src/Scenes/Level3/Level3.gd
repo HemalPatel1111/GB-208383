@@ -1,0 +1,28 @@
+extends LevelBase
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	gifts_type.append(1)
+	gifts_target.append(1)
+	
+	gifts_type.append(1)
+	gifts_target.append(1)
+	
+	gifts_type.append(1)
+	gifts_target.append(1)
+	
+	gifts_type.append(1)
+	gifts_target.append(1)
+	
+	gifts_type.append(1)
+	gifts_target.append(1)
+	
+	gifts_type.append(1)
+	gifts_target.append(1)
+	
+	gifts_type.append(1)
+	gifts_target.append(1)
+
+func _on_PlayerDied():
+	pass # Replace with function body.
+
