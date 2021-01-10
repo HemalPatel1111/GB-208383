@@ -1,10 +1,10 @@
 extends Button
 #      store  Input
 #      type   type
-export var nextScene:PackedScene = null
+export(String, FILE) var nextScene:String = "null"
 
 func _on_Button_pressed():
-	var err:int = get_tree().change_scene_to(nextScene)
+	var err:int = get_tree().change_scene(nextScene)
 	GiftData.points = 0
 
 func _get_configuration_warning() -> String:

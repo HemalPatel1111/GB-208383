@@ -1,5 +1,4 @@
-[gd_scene load_steps=20 format=2]
-
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/Objects/Gifts/Gift.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Control/DeliverButton.tscn" type="PackedScene" id=2]
@@ -17,7 +16,7 @@
 [ext_resource path="res://src/Control/MapButton.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/Scenes/Tower/tower1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/Scenes/Level1/Level1.tscn" type="PackedScene" id=16]
-[ext_resource path="res://src/Control/Health.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/Control/Health.tscn" type="PackedScene" id=17]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 373, 253 )
@@ -80,8 +79,7 @@ shape = SubResource( 3 )
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.005
-margin_left = 1.5874
-margin_right = 0.587402
+margin_right = -1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -215,12 +213,16 @@ margin_bottom = -275.205
 [node name="MapButton" parent="UI" instance=ExtResource( 14 )]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -150.721
-margin_top = 227.795
-margin_right = -50.7207
-margin_bottom = 327.795
+margin_left = -150.72
+margin_top = 230.97
+margin_right = -50.7208
+margin_bottom = 330.97
 
-[node name="HealthBar" parent="UI" instance=ExtResource( 15 )]
+[node name="HealthBar" parent="UI" instance=ExtResource( 17 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -253.0
+margin_right = -21.0
 
 [node name="SunLight" parent="." instance=ExtResource( 10 )]
 
@@ -260,7 +262,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245, 0, 180 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 135.722 )
 
 [node name="wooden watch tower2" parent="." instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 200 )
 nextScene = ExtResource( 16 )
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
@@ -268,4 +269,3 @@ nextScene = ExtResource( 16 )
 [connection signal="pressed" from="UI/fire" to="." method="_on_fire_pressed"]
 [connection signal="pressed" from="UI/list" to="." method="_on_list_pressed"]
 [connection signal="item_selected" from="UI/Weapon" to="." method="_on_Weapon_item_selected"]
-[connection signal="PlayerDied" from="player" to="." method="_on_player_PlayerDied"]

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/Wallpapers/Lonely Little Houses Lost In Majestic Winter.jpg" type="Texture" id=1]
 [ext_resource path="res://src/Menu/UI/Components/SceneButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Menu/Main.gd" type="Script" id=3]
 [ext_resource path="res://src/Menu/UI/Components/QuitButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Scenes/Level/Level0.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -29,7 +28,7 @@ margin_left = -163.564
 margin_top = -120.0
 margin_right = 156.436
 margin_bottom = -20.0
-nextScene = ExtResource( 5 )
+nextScene = "res://src/Scenes/Level/Level0.tscn"
 
 [node name="QuitButton" parent="." instance=ExtResource( 4 )]
 margin_left = -160.255
@@ -43,3 +42,6 @@ margin_top = 32.9633
 margin_right = 74.7451
 margin_bottom = 46.9633
 text = "Last Points : -"
+__meta__ = {
+"_edit_use_anchors_": false
+}
