@@ -23,12 +23,6 @@ func _ready():
 	gifts_type.append(1)
 	gifts_target.append(1)
 
-	mapButton.set_Map(map)
-	mapButton.setHouses(houses)
-	
-	mapButton.setTrees(trees)
-	mapButton.setGifts(gifts)
-	
-	mapButton.setZombies(zombies)
-	mapButton.setGhosts(ghosts)
-	mapButton.setMonsters(monsters)
+func _on_PlayerDied():
+	pass # Replace with function body.
+

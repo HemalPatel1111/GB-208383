@@ -40,7 +40,7 @@ func _ready():
 func _process(delta):
 	update()
 	midPoint = Vector2(get_rect().size.x / 2, get_rect().size.y / 2)
-	factor = get_rect().size.x / 400
+	factor = get_rect().size.x / 600
 
 func _draw():	
 	draw_circle(Vector2(100,100), 20, g_color)
@@ -80,18 +80,21 @@ func _draw():
 	for x in range(0, trees.get_child_count()):
 		var tree:Spatial = trees.get_child(x)
 		draw_circle((Vector2(tree.translation.x, tree.translation.z) + MidPlace) * factor, rad, t_color)
-#
-	for x in range(0, zombies.get_child_count()):
-		var item:Spatial = zombies.get_child(x)
-		draw_circle((Vector2(item.translation.x, item.translation.z) + MidPlace) * factor, rad, z_color)
 		
-	for x in range(0, monsters.get_child_count()):
-		var item:Spatial = monsters.get_child(x)
-		draw_circle((Vector2(item.translation.x, item.translation.z) + MidPlace) * factor, rad, m_color)
+	if zombies != null:
+		for x in range(0, zombies.get_child_count()):
+			var item:Spatial = zombies.get_child(x)
+			draw_circle((Vector2(item.translation.x, item.translation.z) + MidPlace) * factor, rad, z_color)
+	
+	if monsters != null:
+		for x in range(0, monsters.get_child_count()):
+			var item:Spatial = monsters.get_child(x)
+			draw_circle((Vector2(item.translation.x, item.translation.z) + MidPlace) * factor, rad, m_color)
 		
-	for x in range(0, ghosts.get_child_count()):
-		var item:Spatial = ghosts.get_child(x)
-		draw_circle((Vector2(item.translation.x, item.translation.z) + MidPlace) * factor, rad, gh_color)
+	if ghosts != null:
+		for x in range(0, ghosts.get_child_count()):
+			var item:Spatial = ghosts.get_child(x)
+			draw_circle((Vector2(item.translation.x, item.translation.z) + MidPlace) * factor, rad, gh_color)
 #
 #	for x in houses:
 #		draw_circle((houses[x] + MidPlace) * factor, rad, h_color)

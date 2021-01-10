@@ -6,7 +6,7 @@
 [ext_resource path="res://src/Control/fireWeapon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Control/GiftList.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/Control/PickButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Control/DeliverButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Player/Claire.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Scenes/LevelBaseTS.gd" type="Script" id=9]
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=10]
@@ -172,21 +172,19 @@ margin_top = 44.2922
 margin_right = -51.2672
 margin_bottom = 144.293
 
-[node name="PickButton" parent="UI" instance=ExtResource( 7 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -150.0
-margin_top = -370.0
-margin_right = -50.0
-margin_bottom = -270.0
-
 [node name="control" parent="UI" instance=ExtResource( 6 )]
 margin_left = 201.989
 margin_top = 232.193
 margin_right = 201.989
 margin_bottom = 232.193
+
+[node name="DeliverButton" parent="UI" instance=ExtResource( 7 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -150.933
+margin_top = 231.428
+margin_right = -50.933
+margin_bottom = 331.428
 
 [node name="Map" parent="UI" instance=ExtResource( 11 )]
 
@@ -194,9 +192,9 @@ margin_bottom = 232.193
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -150.0
-margin_top = 100.0
+margin_top = 230.0
 margin_right = -50.0
-margin_bottom = 200.0
+margin_bottom = 330.0
 
 [node name="SunLight" parent="." instance=ExtResource( 5 )]
 
@@ -206,14 +204,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 0, 133.577 )
 [node name="Trees" type="Spatial" parent="."]
 
 [node name="Zombies" type="Spatial" parent="."]
-
-[node name="Ghosts" type="Spatial" parent="Zombies"]
-
-[node name="Monsters" type="Spatial" parent="Zombies/Ghosts"]
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="UI/fire" to="." method="_on_fire_pressed"]
 [connection signal="pressed" from="UI/list" to="." method="_on_list_pressed"]
 [connection signal="item_selected" from="UI/Weapon" to="." method="_on_Weapon_item_selected"]
-[connection signal="gift_picked" from="UI/PickButton" to="." method="_on_gift_picked"]

@@ -22,9 +22,4 @@ func _ready():
 	
 	gifts_type.append(1)
 	gifts_target.append(1)
-	
-	mapButton.set_Map(map)
-	mapButton.setHouses(houses)
-	mapButton.setTrees(trees)
-	mapButton.setGifts(gifts)
 

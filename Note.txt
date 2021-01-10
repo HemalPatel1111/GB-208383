@@ -1,2 +1,3 @@
 Use picking direct :-
 Implement Transformation using Matrix to print no. in straight cond. :-
+dying animation :-

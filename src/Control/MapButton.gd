@@ -8,7 +8,7 @@ var index:= -1
 
 func set_Map(map:Map):
 	_map = map
-	_map.factor = 1024 / 400
+	_map.factor = 1024 / 600
 
 func _touch_started(e:InputEventScreenTouch) -> bool:
 	return e.pressed and index == -1

@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Control/fireWeapon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Control/WeaponSelector.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Control/PickButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Control/DeliverButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Scenes/house/House.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=8]
@@ -206,16 +206,6 @@ margin_top = 44.2922
 margin_right = -51.2672
 margin_bottom = 144.293
 
-[node name="PickButton" parent="UI" instance=ExtResource( 5 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -150.0
-margin_top = -370.0
-margin_right = -50.0
-margin_bottom = -270.0
-
 [node name="Map" parent="UI" instance=ExtResource( 13 )]
 
 [node name="MapButton" parent="UI" instance=ExtResource( 12 )]
@@ -225,6 +215,14 @@ margin_left = -150.0
 margin_top = 230.945
 margin_right = -50.0
 margin_bottom = 330.945
+
+[node name="DeliverButton" parent="UI" instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -151.961
+margin_top = 230.316
+margin_right = -51.9609
+margin_bottom = 330.316
 
 [node name="SunLight" parent="." instance=ExtResource( 6 )]
 
