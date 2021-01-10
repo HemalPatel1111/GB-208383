@@ -15,6 +15,7 @@ var gifts_target:PoolIntArray = PoolIntArray()
 var gifts_type:PoolIntArray = PoolIntArray()
 #Runtime
 var gifts_picked:PoolIntArray = PoolIntArray()
+const target:= "res://src/Menu/Main.tscn"
 
 export var gravity :float = 9.81 #Gravitational Acceleration
 
@@ -26,6 +27,7 @@ onready var weaponSelector :WeaponSelector   = $UI/WeaponSelector #player moveme
 
 onready var mapButton    :MapButton = $UI/MapButton #player movement controller
 onready var map		     :Map       = $UI/Map #player movement controller
+onready var healthBar    :Control   = $UI/HealthBar #player movement controller
 
 onready var gifts:Spatial = $Gifts
 onready var houses:Spatial = $Houses
@@ -73,6 +75,8 @@ func _ready():
 	moveController.set_Player(player)
 	weaponSelector.set_Player(player)
 	
+	GiftData.set_Player(player)
+	
 	player.set_weapon(Weapon.HAND)
 
 func _process(delta):	
@@ -87,6 +91,8 @@ func _process(delta):
 	
 	velocity = player.move_and_slide(velocityg,UP)
 	mapButton.setPlayer(player)
+	
+	healthBar.value = player.get_health()
 
 func _on_idle_pressed():
 	player.set_idle_id(animations.get_selected_id())
@@ -131,3 +137,7 @@ func _on_gift_picked(gift_index):
 	
 func _on_gift_delivered(gift_index):
 	gifts_picked.remove(gift_index)
+
+
+func on_PlayerDied():
+	get_tree().change_scene(target)

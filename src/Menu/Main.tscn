@@ -36,3 +36,10 @@ margin_left = -160.255
 margin_top = 20.0
 margin_right = 159.745
 margin_bottom = 120.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 34.7451
+margin_top = 32.9633
+margin_right = 74.7451
+margin_bottom = 46.9633
+text = "Last Points : -"

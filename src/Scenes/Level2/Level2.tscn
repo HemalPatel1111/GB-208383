@@ -15,6 +15,7 @@
 [ext_resource path="res://src/Control/Map.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/Scenes/Tower/tower1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/Scenes/Level3/Level3.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/Control/Health.tscn" type="PackedScene" id=15]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 373, 253 )
@@ -207,6 +208,16 @@ margin_top = 44.2922
 margin_right = -51.2672
 margin_bottom = 144.293
 
+[node name="DeliverButton" parent="UI" instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -151.961
+margin_top = -372.684
+margin_right = -51.9609
+margin_bottom = -272.684
+
 [node name="Map" parent="UI" instance=ExtResource( 13 )]
 
 [node name="MapButton" parent="UI" instance=ExtResource( 12 )]
@@ -217,13 +228,7 @@ margin_top = 230.945
 margin_right = -50.0
 margin_bottom = 330.945
 
-[node name="DeliverButton" parent="UI" instance=ExtResource( 5 )]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -151.961
-margin_top = 230.316
-margin_right = -51.9609
-margin_bottom = 330.316
+[node name="HealthBar" parent="UI" instance=ExtResource( 15 )]
 
 [node name="SunLight" parent="." instance=ExtResource( 6 )]
 

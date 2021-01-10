@@ -10,3 +10,7 @@ func _ready():
 	
 	gifts_type.append(1)
 	gifts_target.append(3)
+
+
+func _on_player_PlayerDied():
+	on_PlayerDied()

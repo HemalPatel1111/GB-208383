@@ -35,23 +35,25 @@ func _input(event):
 
 func setGifts(Gifts:Spatial):
 	_map.gifts = Gifts
-	
+
+func setGiftTarget(target:PoolIntArray):
+	_map.gift_target = target
+
 func setTrees(Trees:Spatial):
 	_map.trees = Trees
-	
+
 func setHouses(Houses:Spatial):
 	_map.houses = Houses
-	
+
 func setZombies(Zombies:Spatial):
 	_map.zombies = Zombies 
-	
+
 func setGhosts(Ghosts:Spatial):
 	_map.ghosts = Ghosts 
-	
+
 func setMonsters(Monsters:Spatial):
 	_map.monsters = Monsters 
-	
-	
+
 func setPlayer(player: Player):
 	_map.player = Vector2(player.translation.x + player.playerCharacter.translation.x / player.scale.x, player.translation.z + player.playerCharacter.translation.z  / player.scale.z)
 	_map.rotation = player.rot.y

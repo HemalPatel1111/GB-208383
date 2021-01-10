@@ -6,6 +6,11 @@ var gifts_icons:PoolStringArray = PoolStringArray()
 var loaded:= false
 
 var _gift:Gift= null
+var _player:Player = null
+var points:int = -1
+
+func set_Player(player:Player):
+	_player = player
 
 func set_current(gift:Gift):
 	_gift = gift
@@ -16,10 +21,9 @@ func set_current(gift:Gift):
 				var _index = int(_name.to_lower().replace("gift","")) - 1
 				_gift.queue_free()
 				_gift = null
-				
+				_player.up_health(5)
+				points += 5
 				GiftData.set_current(null)
-				
-				emit_signal("gift_picked", _index)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

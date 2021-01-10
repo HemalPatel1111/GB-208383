@@ -69,7 +69,7 @@ func get_health() -> float:
 
 func down_health(down:float):
 	_health = max(0, _health - down)
-	if _health == 0:
+	if _health < 1:
 		emit_signal("PlayerDied")
 	
 func up_health(down:float):
@@ -177,7 +177,9 @@ func _walk():
 		animate_id(walk_id)
 	else:
 		play_animation(Walk, true, sqrt(abs(move_dir.length())))
-
+	
+	down_health(0.2 * frameTime)
+	
 	velocityp = move_dir.x * Left * player_walk
 	velocityp += move_dir.z * Look * player_walk
 
@@ -186,6 +188,8 @@ func _run():
 		animate_id(run_id)
 	else:
 		play_animation(Run, true, sqrt(abs(move_dir.length())))
+		
+	down_health(0.6 * frameTime)
 	
 	velocityp = move_dir.x * Left * player_run
 	velocityp += move_dir.z * Look * player_run

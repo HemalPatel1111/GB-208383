@@ -12,6 +12,5 @@ func _on_body_entered(body):
 #		print_debug("Body : " + str(body.name))
 		GiftData.set_current(self)
 
-
 func _on_body_exited(body):
 	pass # Replace with function body.

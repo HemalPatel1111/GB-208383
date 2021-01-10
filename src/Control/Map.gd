@@ -22,6 +22,8 @@ var zombies:Spatial
 var ghosts:Spatial 
 var monsters:Spatial
 
+var gift_target:PoolIntArray
+
 var player:Vector2 = Vector2()
 var dynamic_font = DynamicFont.new()
 
