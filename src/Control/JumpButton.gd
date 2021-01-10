@@ -1,5 +1,5 @@
 extends Control
-class_name PickButton, "res://src/Control/PickButton.gd"
+class_name JumpButton,  "res://src/Control/JumpButton.gd"
 
 var _player:Player = null
 var gifts:PoolStringArray = PoolStringArray()
@@ -7,25 +7,14 @@ var gifts:PoolStringArray = PoolStringArray()
 var press_color:Color = Color(0.8,0.8,0.8,0.8)
 var normal_color:Color = Color(1.0,1.0,1.0,1.0)
 
-signal gift_picked(gift_index)
-
 func set_Player(player:Player):
 	_player = player
 
 var index:= -1
-var giftIndex = -1
-var _gift:Gift = null
-
-func got_Gift(gift:Gift):
-	_gift = gift
-	
-func deny_Gift():
-	_gift = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
 
 func _touch_started(e:InputEventScreenTouch) -> bool:
 	return e.pressed and index == -1
@@ -45,14 +34,13 @@ func _input(event):
 		
 		if _touch_started(e) and _holded(e):
 			index = e.index
-#			if _gift != null:
-#				var _name:= _gift.name
-#				var _index = int(_name.to_lower().replace("gift","")) - 1
-#				_gift.queue_free()
-#				_gift = null
-#
-#				GiftData.set_current(null)
-#
-#				emit_signal("gift_picked", _index)
+			if _player.get_weapon() == Weapon.RIFLE:
+				_player.play_animation("Rifle Jump Up")
+			if _player.get_weapon() == Weapon.HAND:
+				_player.play_animation("Jump")
+			if _player.get_weapon() == Weapon.PISTOL:
+				_player.play_animation("Pistol Jump")
 		elif _touch_ended(e):
 			index = -1
+			if _player.get_weapon() == Weapon.RIFLE:
+				_player.play_animation("Rifle Jump Down")

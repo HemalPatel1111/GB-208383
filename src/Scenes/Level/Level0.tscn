@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Objects/Gifts/Gift.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/Control/PickButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Control/DeliverButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Player/Pearl.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Scenes/house/House.tscn" type="PackedScene" id=5]
@@ -12,6 +12,8 @@
 [ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Scenes/Level/Level0.gd" type="Script" id=11]
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=12]
+[ext_resource path="res://src/Control/Map.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/Control/MapButton.tscn" type="PackedScene" id=14]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 373, 253 )
@@ -79,7 +81,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="control" parent="UI" instance=ExtResource( 6 )]
+[node name="GiftList" parent="UI" instance=ExtResource( 6 )]
 margin_left = 200.012
 margin_top = 201.6
 margin_right = 200.012
@@ -98,6 +100,7 @@ margin_bottom = -103.0
 RUN_WAIT = 2.0
 
 [node name="idle" type="Button" parent="UI"]
+visible = false
 margin_left = 32.0
 margin_top = 45.0
 margin_right = 51.0
@@ -108,6 +111,7 @@ __meta__ = {
 }
 
 [node name="walk" type="Button" parent="UI"]
+visible = false
 margin_left = 55.1914
 margin_top = 45.0
 margin_right = 80.1914
@@ -118,6 +122,7 @@ __meta__ = {
 }
 
 [node name="run" type="Button" parent="UI"]
+visible = false
 margin_left = 83.7646
 margin_top = 45.0
 margin_right = 108.765
@@ -128,6 +133,7 @@ __meta__ = {
 }
 
 [node name="fire" type="Button" parent="UI"]
+visible = false
 margin_left = 112.355
 margin_top = 45.8409
 margin_right = 137.355
@@ -148,6 +154,7 @@ margin_right = -50.0
 margin_bottom = -150.0
 
 [node name="list" type="Button" parent="UI"]
+visible = false
 margin_left = 218.729
 margin_top = 47.9431
 margin_right = 253.729
@@ -158,6 +165,7 @@ __meta__ = {
 }
 
 [node name="Options" type="OptionButton" parent="UI"]
+visible = false
 margin_left = 33.0
 margin_top = 20.0
 margin_right = 256.0
@@ -168,6 +176,7 @@ __meta__ = {
 }
 
 [node name="Weapon" type="OptionButton" parent="UI"]
+visible = false
 margin_left = 34.6818
 margin_top = 77.181
 margin_right = 257.682
@@ -185,15 +194,23 @@ margin_top = 44.2922
 margin_right = -50.0
 margin_bottom = 144.293
 
-[node name="PickButton" parent="UI" instance=ExtResource( 2 )]
+[node name="DeliverButton" parent="UI" instance=ExtResource( 2 )]
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -150.0
-margin_top = -370.0
-margin_right = -50.0
-margin_bottom = -270.0
+margin_left = -152.308
+margin_top = 227.795
+margin_right = -52.3082
+margin_bottom = 327.795
+
+[node name="Map" parent="UI" instance=ExtResource( 13 )]
+
+[node name="MapButton" parent="UI" instance=ExtResource( 14 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -149.133
+margin_top = 232.557
+margin_right = -49.1334
+margin_bottom = 332.557
 
 [node name="SunLight" parent="." instance=ExtResource( 10 )]
 

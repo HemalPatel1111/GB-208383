@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Control/fireWeapon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Control/WeaponSelector.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Control/PickButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Control/DeliverButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Scenes/SunLight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Scenes/house/House.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=8]
@@ -203,16 +203,6 @@ margin_top = 44.2922
 margin_right = -51.2672
 margin_bottom = 144.293
 
-[node name="PickButton" parent="UI" instance=ExtResource( 5 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -150.0
-margin_top = -370.0
-margin_right = -50.0
-margin_bottom = -270.0
-
 [node name="Map" parent="UI" instance=ExtResource( 12 )]
 
 [node name="MapButton" parent="UI" instance=ExtResource( 13 )]
@@ -222,6 +212,14 @@ margin_left = -148.0
 margin_top = 237.0
 margin_right = -48.0
 margin_bottom = 337.0
+
+[node name="DeliverButton" parent="UI" instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -147.546
+margin_top = 232.557
+margin_right = -47.546
+margin_bottom = 332.557
 
 [node name="SunLight" parent="." instance=ExtResource( 6 )]
 
@@ -273,7 +271,7 @@ transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 3
 transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 305, 0, 195 )
 
 [node name="player" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 105, 0, 99.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 99.5 )
 
 [node name="Zombies" type="Spatial" parent="."]
 

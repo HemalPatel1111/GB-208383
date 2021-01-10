@@ -23,7 +23,6 @@ onready var animations	   :OptionButton 	 = $UI/Options #animation List
 onready var fireWeapon	   :FireWeapon 		 = $UI/fireWeapon #Fire-weapon button
 onready var moveController :MoveControllerTS = $UI/MoveController #player movement controller
 onready var weaponSelector :WeaponSelector   = $UI/WeaponSelector #player movement controller
-onready var pickButton     :PickButton       = $UI/PickButton #player movement controller
 
 onready var mapButton    :MapButton = $UI/MapButton #player movement controller
 onready var map		     :Map       = $UI/Map #player movement controller
@@ -32,8 +31,6 @@ onready var gifts:Spatial = $Gifts
 onready var houses:Spatial = $Houses
 onready var trees:Spatial = $Trees
 onready var zombies:Spatial = $Zombies
-onready var ghosts:Spatial = $Ghosts
-onready var monsters:Spatial = $Monsters
 
 func _ready():
 	var list:PoolStringArray
@@ -63,13 +60,18 @@ func _ready():
 		
 	for x in ["Hand", "Pistol", "Rifle"]:
 		$UI/Weapon.add_item(x)
-		
+	
+	mapButton.set_Map(map)
+	mapButton.setHouses(houses)
+	
+	mapButton.setTrees(trees)
+	mapButton.setGifts(gifts)
+	
+	mapButton.setZombies(zombies)
+	
 	fireWeapon.set_Player(player)
 	moveController.set_Player(player)
 	weaponSelector.set_Player(player)
-	pickButton.set_Player(player)
-	
-	GiftData.set_pick_button(pickButton)
 	
 	player.set_weapon(Weapon.HAND)
 

@@ -10,6 +10,8 @@ var walk_id:int = -1
 var run_id:int = -1
 var fire_id:int = -1
 
+signal PlayerDied()
+
 var fire:bool = false
 
 var backward:bool = false
@@ -35,6 +37,8 @@ var trackerDir:Vector3 = Vector3() 	#Position of player Camera
 var trackerDist:float = 10.0
 
 var move_dir:Vector3 = Vector3()	#direction of movement of player
+
+var _weapon:= Weapon.HAND
 
 var PLAYER_SCALE:float = 0.2 					#Scalling of the player
 var PLAYER_WALK	:float = 2.4642 * PLAYER_SCALE #player walk length per walk animation
@@ -65,6 +69,8 @@ func get_health() -> float:
 
 func down_health(down:float):
 	_health = max(0, _health - down)
+	if _health == 0:
+		emit_signal("PlayerDied")
 	
 func up_health(down:float):
 	_health = min(Max_Health, _health + down)
@@ -91,7 +97,10 @@ func init():
 	pass
 	
 func set_weapon(weapon:int):
-	pass
+	_weapon = weapon
+	
+func get_weapon() -> int:
+	return _weapon
 
 func update(delta):
 	frameTime = delta

@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://git_api.gdns"
 }, {
+"base": "Control",
+"class": "JumpButton",
+"language": "GDScript",
+"path": "res://src/Control/JumpButton.gd"
+}, {
 "base": "Spatial",
 "class": "LevelBase",
 "language": "GDScript",
@@ -79,12 +84,13 @@ _global_script_class_icons={
 "Gift": "",
 "GiftButton": "",
 "GitAPI": "",
+"JumpButton": "res://src/Control/JumpButton.gd",
 "LevelBase": "res://src/Scenes/LevelBaseTS.gd",
 "Map": "",
 "MapButton": "",
 "MoveController": "",
 "MoveControllerTS": "",
-"PickButton": "",
+"PickButton": "res://src/Control/PickButton.gd",
 "Player": "res://src/Player/Player.gd",
 "Weapon": "",
 "WeaponSelector": ""

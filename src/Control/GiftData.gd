@@ -6,19 +6,20 @@ var gifts_icons:PoolStringArray = PoolStringArray()
 var loaded:= false
 
 var _gift:Gift= null
-var _button:PickButton = null
-
-func set_pick_button(button:PickButton):
-	_button = button
 
 func set_current(gift:Gift):
 	_gift = gift
 	if gift != null:
 		_gift = gift
-		_button.got_Gift(gift)
-#		print_debug(_gift.name)
-	else:
-		_button.deny_Gift()
+		if _gift != null:
+				var _name:= _gift.name
+				var _index = int(_name.to_lower().replace("gift","")) - 1
+				_gift.queue_free()
+				_gift = null
+				
+				GiftData.set_current(null)
+				
+				emit_signal("gift_picked", _index)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
