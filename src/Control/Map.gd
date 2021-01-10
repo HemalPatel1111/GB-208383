@@ -1,9 +1,9 @@
 extends ColorRect
 class_name Map
 
-var g_color:Color = Color(0,1,1)
+var g_color:Color = Color(0,0,1)
 var p_color:Color = Color(1,0,0)
-var h_color:Color = Color(0,1,1)
+var h_color:Color = Color(1,0,1)
 var t_color:Color = Color(0,1,0)
 var f_color:Color = Color(1,1,1)
 

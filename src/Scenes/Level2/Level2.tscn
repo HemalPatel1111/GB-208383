@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Objects/Gifts/Gift.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Objects/Trees/Tree.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/Textures/TexturesCom_Grass0130_1_seamless_S.jpg" type="Texture" id=11]
 [ext_resource path="res://src/Control/MapButton.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/Control/Map.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/Scenes/Tower/tower1.tscn" type="PackedScene" id=14]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 373, 253 )
@@ -276,6 +277,9 @@ transform = Transform( 0.796076, 0, -0.605197, 0, 1, 0, 0.605197, 0, 0.796076, 3
 
 [node name="player" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 99.5 )
+
+[node name="wooden watch tower2" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 300.815, 0, 116.856 )
 [connection signal="pressed" from="UI/idle" to="." method="_on_idle_pressed"]
 [connection signal="pressed" from="UI/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="UI/run" to="." method="_on_run_pressed"]

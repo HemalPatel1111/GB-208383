@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Scenes/house/Farm_house.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Scenes/house/House.gd" type="Script" id=2]
 
 [node name="House" type="Spatial"]
+script = ExtResource( 2 )
 
-[node name="Farm_house" parent="." instance=ExtResource( 1 )]
-transform = Transform( 4, 0, 7.4506e-09, 0, 4, 0, -7.4506e-09, 0, 4, 0, 0, -0.210559 )
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="Farm_house" type="RigidBody" parent="Body" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0, -0.210559 )
+mode = 1
+[connection signal="body_entered" from="Body/Farm_house" to="." method="_on_body_entered"]

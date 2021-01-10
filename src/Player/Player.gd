@@ -49,12 +49,28 @@ var player_run:float = PLAYER_RUN
 
 export var mouse_sens			:float = 0.01					#Mouse sensitivity
 export var rotation_multiplier	:float = 25.0
+
+var _health:float = 100.0
+const Max_Health:float = 100.0
+
 var frameTime	:float = 0.0					#Time since last frame
 
 var _animPlayer:AnimationPlayer
 var _player			:Player			#the player root
 var playerCharacter :KinematicBody	#the player Character
 var _camera			:Camera			
+
+func get_health() -> float:
+	return _health
+
+func down_health(down:float):
+	_health = max(0, _health - down)
+	
+func up_health(down:float):
+	_health = min(Max_Health, _health + down)
+
+func set_health(health:float):
+	_health = health
 
 func set_run(running:bool):
 	run = running
