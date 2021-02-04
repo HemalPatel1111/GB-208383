@@ -9,6 +9,10 @@ var _gift:Gift= null
 var _player:Player = null
 var points:int = -1
 
+var UP:  Vector3 = Vector3(0,1,0) #Camera UP direction
+var Look:Vector3 = Vector3()	 #Camera Look direction
+var Left:Vector3 = Vector3()	 #Camera Left direction
+
 func set_Player(player:Player):
 	_player = player
 

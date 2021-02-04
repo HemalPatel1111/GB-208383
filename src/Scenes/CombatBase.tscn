@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/Player/Pearl.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Scenes/house/House4.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Control/MoveController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Character/maria.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Scenes/CombatBase.gd" type="Script" id=5]
+[ext_resource path="res://src/Control/WeaponSelector.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Control/fireWeapon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Control/Health.tscn" type="PackedScene" id=8]
+
+[node name="Combat" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1, 0.56965, 0.519533 )
+
+[node name="maria" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.69282, 0, 0.4, 0, 0.8, 0, -0.4, 0, -0.69282, 0, 0.35582, 0.365443 )
+
+[node name="Old_house" parent="." instance=ExtResource( 2 )]
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveController" parent="UI" instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 69.5246
+margin_top = -261.533
+margin_right = 269.525
+margin_bottom = -61.5328
+
+[node name="WeaponSelector" parent="UI" instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -150.0
+margin_top = 22.0813
+margin_right = -50.0
+margin_bottom = 122.081
+
+[node name="fireWeapon" parent="UI" instance=ExtResource( 7 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -206.164
+margin_right = -50.0
+margin_bottom = -106.164
+
+[node name="HealthBar" parent="UI" instance=ExtResource( 8 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -254.0
+margin_right = -22.0

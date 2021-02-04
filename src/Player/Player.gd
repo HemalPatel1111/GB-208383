@@ -23,10 +23,6 @@ var loaded:bool = false
 
 var run:bool = false
 
-var UP:Vector3 = Vector3(0,1,0) #_camera UP direction
-var Look:Vector3 = Vector3() 	#Camera Look direction
-var Left:Vector3 = Vector3() 	#Camera Left direction
-
 var rot:Vector3 = Vector3() 	#Camera Target rotation
 
 var velocityp:Vector3 = Vector3() 	#Player Velocity frm Move Controller
@@ -106,15 +102,15 @@ func update(delta):
 	frameTime = delta
 	#rot = camera.rotation
 	
-	Look = Vector3(0,0,1)
-	UP = Vector3(0,1,0)
-	Left = Vector3(1,0,0)
+	GiftData.Look = Vector3(0,0,1)
+	GiftData.UP = Vector3(0,1,0)
+	GiftData.Left = Vector3(1,0,0)
 	
-	Look = Look.rotated(UP, rot.y)
-	Left = Left.rotated(UP, rot.y)
+	GiftData.Look = GiftData.Look.rotated(GiftData.UP, rot.y)
+	GiftData.Left = GiftData.Left.rotated(GiftData.UP, rot.y)
 	
-	trackerDir = trackerDirBase.rotated(UP, rot.y)
-	trackerDir = -trackerDir.rotated(Left, rot.x)
+	trackerDir = trackerDirBase.rotated(GiftData.UP, rot.y)
+	trackerDir = -trackerDir.rotated(GiftData.Left, rot.x)
 	
 	if move_dir.length() > 0.1:
 		playerCharacter.rotation.y = _camera.rotation.y + atan2(move_dir.z,-move_dir.x) - PI/2;
@@ -135,10 +131,10 @@ func update(delta):
 			else:
 				animate(IdleBreath)
 	
-	velocityp = playerCharacter.move_and_slide(velocityp,UP)
+	velocityp = playerCharacter.move_and_slide(velocityp,GiftData.UP)
 	
 	_camera.translation = playerCharacter.translation
-	_camera.translation += trackerTranslation.y * UP
+	_camera.translation += trackerTranslation.y * GiftData.UP
 	_camera.translation += trackerDir * trackerDist
 
 func update_rotate(dir:Vector2):
@@ -178,10 +174,10 @@ func _walk():
 	else:
 		play_animation(Walk, true, sqrt(abs(move_dir.length())))
 	
-	down_health(0.2 * frameTime)
+	down_health(0.02 * frameTime)
 	
-	velocityp = move_dir.x * Left * player_walk
-	velocityp += move_dir.z * Look * player_walk
+	velocityp = move_dir.x * GiftData.Left * player_walk
+	velocityp += move_dir.z * GiftData.Look * player_walk
 
 func _run():
 	if run_id >= 0:
@@ -189,10 +185,10 @@ func _run():
 	else:
 		play_animation(Run, true, sqrt(abs(move_dir.length())))
 		
-	down_health(0.6 * frameTime)
+	down_health(0.06 * frameTime)
 	
-	velocityp = move_dir.x * Left * player_run
-	velocityp += move_dir.z * Look * player_run
+	velocityp = move_dir.x * GiftData.Left * player_run
+	velocityp += move_dir.z * GiftData.Look * player_run
 
 func get_animation(x:String) -> Animation:
 	return _animPlayer.get_animation(x)

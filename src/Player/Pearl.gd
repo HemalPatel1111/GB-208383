@@ -8,6 +8,8 @@ func init():
 		_camera = $Camera
 		loaded = true
 		
+		loadAnimationList()
+		
 		rot = _camera.rotation
 		
 		trackerDirBase = _camera.translation

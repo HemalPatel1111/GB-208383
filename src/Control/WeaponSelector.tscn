@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/Control/WeaponSelector.gd" type="Script" id=2]
 
-[node name="WeopanSelector" type="Control"]
+[node name="WeaponSelector" type="Control"]
 margin_left = -50.0
 margin_top = -50.0
 margin_right = 50.0
