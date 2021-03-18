@@ -70,6 +70,7 @@ func _ready():
 	fireWeapon.set_Player(player)
 	moveController.set_Player(player)
 	weaponSelector.set_Player(player)
+	mapButton.setPlayer(player)
 	
 	GiftData.set_Player(player)
 	
@@ -87,6 +88,7 @@ func _process(delta):
 	
 	velocity = player.move_and_slide(velocityg, GiftData.UP)	
 	healthBar.value = player.get_health()
+	mapButton.setPlayer(player)
 
 func _on_idle_pressed():
 	player.set_idle_id(animations.get_selected_id())

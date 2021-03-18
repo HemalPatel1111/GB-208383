@@ -105,3 +105,6 @@ func _draw():
 #		draw_circle((trees[x] + MidPlace) * factor, rad, t_color)
 		
 	draw_circle((player + MidPlace) * factor, rad, p_color)
+	
+	draw_set_transform(midPoint, rotation, Vector2(1,1))
+	draw_line((player + MidPlace) * factor,Vector2(0,100),p_color)

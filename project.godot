@@ -90,7 +90,7 @@ _global_script_class_icons={
 "MapButton": "",
 "MoveController": "",
 "MoveControllerTS": "",
-"PickButton": "res://src/Control/PickButton.gd",
+"PickButton": "",
 "Player": "res://src/Player/Player.gd",
 "Weapon": "",
 "WeaponSelector": ""
@@ -131,7 +131,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 vram_compression/import_bptc=true
 vram_compression/import_etc=true
