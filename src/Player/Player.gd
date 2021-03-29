@@ -33,6 +33,7 @@ var trackerDir:Vector3 = Vector3() 	#Position of player Camera
 var trackerDist:float = 10.0
 
 var move_dir:Vector3 = Vector3()	#direction of movement of player
+var look_dir:Vector2 = Vector2()	#direction of movement of player
 
 var _weapon:= Weapon.HAND
 
@@ -147,6 +148,7 @@ func set_move(speedFront, speedLeft):
 	move_dir.x = speedLeft;  move_dir.z = speedFront
 	if move_dir.length() > 0.1:
 		move_dir = move_dir.normalized() * max(move_dir.length(), 0.7)
+		look_dir = Vector2(speedLeft, speedFront)
 		
 func loadAnimationList() -> PoolStringArray:
 	_loadAnimationList(_animPlayer)

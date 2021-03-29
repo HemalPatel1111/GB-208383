@@ -55,5 +55,7 @@ func setMonsters(Monsters:Spatial):
 	_map.monsters = Monsters 
 
 func setPlayer(player: Player):
-	_map.player = Vector2(player.translation.x + player.playerCharacter.translation.x / player.scale.x, player.translation.z + player.playerCharacter.translation.z  / player.scale.z)
+	_map.playerPos = Vector2(player.translation.x + player.playerCharacter.translation.x / player.scale.x, player.translation.z + player.playerCharacter.translation.z  / player.scale.z)
+	_map.playerVel = Vector2(player.velocityp.x, player.velocityp.z)
+	_map.playerLook = player.look_dir if player.look_dir.length() > 0 else MapConstants.Up
 	_map.rotation = player.rot.y

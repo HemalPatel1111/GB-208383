@@ -24,8 +24,12 @@ var monsters:Spatial
 
 var gift_target:PoolIntArray
 
-var player:Vector2 = Vector2()
+var playerPos:Vector2 = Vector2()
+var playerVel:Vector2 = Vector2()
+var playerLook:Vector2 = MapConstants.Up
 var dynamic_font = DynamicFont.new()
+
+var scale:Vector2 = Vector2(1,1)
 
 var rotation:float = 0;
 
@@ -66,7 +70,7 @@ func _draw():
 	draw_circle(Vector2(100,340), 20, m_color)
 	draw_string(dynamic_font, Vector2(125,345), "monster")
 	
-	draw_set_transform(midPoint, rotation, Vector2(1,1))
+	draw_set_transform(midPoint, rotation, scale)
 	
 	for x in range(0, gifts.get_child_count()):
 		var gift:Spatial = gifts.get_child(x)
@@ -104,7 +108,8 @@ func _draw():
 #	for x in trees:
 #		draw_circle((trees[x] + MidPlace) * factor, rad, t_color)
 		
-	draw_circle((player + MidPlace) * factor, rad, p_color)
+	var pos :Vector2 = (playerPos + MidPlace) * factor;
+	draw_circle(pos, rad, p_color)
 	
-	draw_set_transform(midPoint, rotation, Vector2(1,1))
-	draw_line((player + MidPlace) * factor,Vector2(0,100),p_color)
+	draw_set_transform(midPoint, rotation, scale)
+	draw_line(pos, pos - 100 * playerLook.normalized(), p_color)

@@ -90,7 +90,7 @@ _global_script_class_icons={
 "MapButton": "",
 "MoveController": "",
 "MoveControllerTS": "",
-"PickButton": "",
+"PickButton": "res://src/Control/PickButton.gd",
 "Player": "res://src/Player/Player.gd",
 "Weapon": "",
 "WeaponSelector": ""
@@ -106,6 +106,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GiftData="*res://src/Control/GiftData.gd"
+MapConstants="*res://src/Control/MapConst.gd"
 
 [display]
 
